@@ -3,27 +3,41 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2C72C1BF2466E4BD00A8AC47 /* EnterKeyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C72C1BE2466E4BD00A8AC47 /* EnterKeyViewController.swift */; };
+		2C72C1C32467345100A8AC47 /* EnterKahootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C72C1C22467345100A8AC47 /* EnterKahootViewController.swift */; };
+		2C72C1C5246734A900A8AC47 /* CreateSpaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C72C1C4246734A900A8AC47 /* CreateSpaceViewController.swift */; };
+		2C72C1C7246734CA00A8AC47 /* JoinSpaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C72C1C6246734CA00A8AC47 /* JoinSpaceViewController.swift */; };
+		2C72C1C9246735D100A8AC47 /* SpaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C72C1C8246735D100A8AC47 /* SpaceViewController.swift */; };
+		2C72C1CD2467370D00A8AC47 /* AccountService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C72C1CC2467370D00A8AC47 /* AccountService.swift */; };
+		2CBABC72B6B5D0E832F83B42 /* Pods_cryptospace.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB683D097DC8022B02CA6E96 /* Pods_cryptospace.framework */; };
 		2CD9178C244B16D100DB055C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CD9178B244B16D100DB055C /* AppDelegate.swift */; };
 		2CD9178E244B16D100DB055C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CD9178D244B16D100DB055C /* SceneDelegate.swift */; };
-		2CD91790244B16D100DB055C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CD9178F244B16D100DB055C /* ViewController.swift */; };
 		2CD91793244B16D100DB055C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2CD91791244B16D100DB055C /* Main.storyboard */; };
 		2CD91795244B16D300DB055C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2CD91794244B16D300DB055C /* Assets.xcassets */; };
 		2CD91798244B16D300DB055C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2CD91796244B16D300DB055C /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2C72C1BE2466E4BD00A8AC47 /* EnterKeyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterKeyViewController.swift; sourceTree = "<group>"; };
+		2C72C1C22467345100A8AC47 /* EnterKahootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterKahootViewController.swift; sourceTree = "<group>"; };
+		2C72C1C4246734A900A8AC47 /* CreateSpaceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateSpaceViewController.swift; sourceTree = "<group>"; };
+		2C72C1C6246734CA00A8AC47 /* JoinSpaceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinSpaceViewController.swift; sourceTree = "<group>"; };
+		2C72C1C8246735D100A8AC47 /* SpaceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceViewController.swift; sourceTree = "<group>"; };
+		2C72C1CC2467370D00A8AC47 /* AccountService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountService.swift; sourceTree = "<group>"; };
 		2CD91788244B16D100DB055C /* cryptospace.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = cryptospace.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2CD9178B244B16D100DB055C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2CD9178D244B16D100DB055C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		2CD9178F244B16D100DB055C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		2CD91792244B16D100DB055C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		2CD91794244B16D300DB055C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2CD91797244B16D300DB055C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2CD91799244B16D300DB055C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		ABF70F56E9982EC763E145CB /* Pods-cryptospace.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-cryptospace.release.xcconfig"; path = "Target Support Files/Pods-cryptospace/Pods-cryptospace.release.xcconfig"; sourceTree = "<group>"; };
+		B81400D8FD20AD52F8C50F6C /* Pods-cryptospace.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-cryptospace.debug.xcconfig"; path = "Target Support Files/Pods-cryptospace/Pods-cryptospace.debug.xcconfig"; sourceTree = "<group>"; };
+		BB683D097DC8022B02CA6E96 /* Pods_cryptospace.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_cryptospace.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,17 +45,40 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2CBABC72B6B5D0E832F83B42 /* Pods_cryptospace.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2C72C1CA246735ED00A8AC47 /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				2C72C1BE2466E4BD00A8AC47 /* EnterKeyViewController.swift */,
+				2C72C1C22467345100A8AC47 /* EnterKahootViewController.swift */,
+				2C72C1C4246734A900A8AC47 /* CreateSpaceViewController.swift */,
+				2C72C1C6246734CA00A8AC47 /* JoinSpaceViewController.swift */,
+				2C72C1C8246735D100A8AC47 /* SpaceViewController.swift */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
+		2C72C1CE2467371400A8AC47 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				2C72C1CC2467370D00A8AC47 /* AccountService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
 		2CD9177F244B16D100DB055C = {
 			isa = PBXGroup;
 			children = (
 				2CD9178A244B16D100DB055C /* cryptospace */,
 				2CD91789244B16D100DB055C /* Products */,
+				3CAB72671A2D745353936B56 /* Pods */,
+				91AAD65981A764569199B0CB /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -56,15 +93,33 @@
 		2CD9178A244B16D100DB055C /* cryptospace */ = {
 			isa = PBXGroup;
 			children = (
-				2CD9178B244B16D100DB055C /* AppDelegate.swift */,
-				2CD9178D244B16D100DB055C /* SceneDelegate.swift */,
-				2CD9178F244B16D100DB055C /* ViewController.swift */,
+				2C72C1CA246735ED00A8AC47 /* Screens */,
+				2C72C1CE2467371400A8AC47 /* Services */,
 				2CD91791244B16D100DB055C /* Main.storyboard */,
 				2CD91794244B16D300DB055C /* Assets.xcassets */,
+				2CD9178B244B16D100DB055C /* AppDelegate.swift */,
+				2CD9178D244B16D100DB055C /* SceneDelegate.swift */,
 				2CD91796244B16D300DB055C /* LaunchScreen.storyboard */,
 				2CD91799244B16D300DB055C /* Info.plist */,
 			);
 			path = cryptospace;
+			sourceTree = "<group>";
+		};
+		3CAB72671A2D745353936B56 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				B81400D8FD20AD52F8C50F6C /* Pods-cryptospace.debug.xcconfig */,
+				ABF70F56E9982EC763E145CB /* Pods-cryptospace.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		91AAD65981A764569199B0CB /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				BB683D097DC8022B02CA6E96 /* Pods_cryptospace.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -74,9 +129,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2CD9179C244B16D300DB055C /* Build configuration list for PBXNativeTarget "cryptospace" */;
 			buildPhases = (
+				A74BBA85787027769D420885 /* [CP] Check Pods Manifest.lock */,
 				2CD91784244B16D100DB055C /* Sources */,
 				2CD91785244B16D100DB055C /* Frameworks */,
 				2CD91786244B16D100DB055C /* Resources */,
+				1035ADA9E2C541D71E20195E /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -133,12 +190,59 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		1035ADA9E2C541D71E20195E /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-cryptospace/Pods-cryptospace-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-cryptospace/Pods-cryptospace-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-cryptospace/Pods-cryptospace-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A74BBA85787027769D420885 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-cryptospace-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		2CD91784244B16D100DB055C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2CD91790244B16D100DB055C /* ViewController.swift in Sources */,
+				2C72C1C9246735D100A8AC47 /* SpaceViewController.swift in Sources */,
+				2C72C1C5246734A900A8AC47 /* CreateSpaceViewController.swift in Sources */,
+				2C72C1C7246734CA00A8AC47 /* JoinSpaceViewController.swift in Sources */,
+				2C72C1BF2466E4BD00A8AC47 /* EnterKeyViewController.swift in Sources */,
+				2C72C1C32467345100A8AC47 /* EnterKahootViewController.swift in Sources */,
+				2C72C1CD2467370D00A8AC47 /* AccountService.swift in Sources */,
 				2CD9178C244B16D100DB055C /* AppDelegate.swift in Sources */,
 				2CD9178E244B16D100DB055C /* SceneDelegate.swift in Sources */,
 			);
@@ -282,6 +386,7 @@
 		};
 		2CD9179D244B16D300DB055C /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B81400D8FD20AD52F8C50F6C /* Pods-cryptospace.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -300,6 +405,7 @@
 		};
 		2CD9179E244B16D300DB055C /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = ABF70F56E9982EC763E145CB /* Pods-cryptospace.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

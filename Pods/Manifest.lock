@@ -1,0 +1,20 @@
+PODS:
+  - BigInt (5.0.0)
+  - web3.swift (0.3.4):
+    - BigInt (~> 5.0.0)
+
+DEPENDENCIES:
+  - web3.swift
+
+SPEC REPOS:
+  trunk:
+    - BigInt
+    - web3.swift
+
+SPEC CHECKSUMS:
+  BigInt: 74b4d88367b0e819d9f77393549226d36faeb0d8
+  web3.swift: 107bfa1ccc14b2c2aa03035f6a395e32682a4429
+
+PODFILE CHECKSUM: 9c17cc7546b5d90aaf165d74574f97888746407e
+
+COCOAPODS: 1.8.4

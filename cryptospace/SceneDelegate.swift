@@ -1,10 +1,4 @@
-//
-//  SceneDelegate.swift
-//  cryptospace
-//
-//  Created by Ivan Grachev on 18.04.2020.
-//  Copyright © 2020 Ivan Grachev. All rights reserved.
-//
+// Copyright © 2020 cryptospace. All rights reserved.
 
 import UIKit
 

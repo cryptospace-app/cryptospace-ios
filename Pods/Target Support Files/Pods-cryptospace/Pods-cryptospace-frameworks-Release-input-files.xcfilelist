@@ -1,0 +1,3 @@
+${PODS_ROOT}/Target Support Files/Pods-cryptospace/Pods-cryptospace-frameworks.sh
+${BUILT_PRODUCTS_DIR}/BigInt/BigInt.framework
+${BUILT_PRODUCTS_DIR}/web3.swift/web3.framework

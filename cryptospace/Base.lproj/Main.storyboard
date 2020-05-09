@@ -1,24 +1,166 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Enter Key View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="EnterKeyViewController" id="BYZ-38-t0r" customClass="EnterKeyViewController" customModule="cryptospace" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LSI-g4-x0d">
+                                <rect key="frame" x="175" y="438" width="64" height="30"/>
+                                <state key="normal" title="Enter key"/>
+                                <connections>
+                                    <action selector="enterButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="WEQ-av-7Dc"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="LSI-g4-x0d" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="4T5-8U-6hs"/>
+                            <constraint firstItem="LSI-g4-x0d" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="EbA-Yp-72z"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="enterButton" destination="LSI-g4-x0d" id="wYM-Ts-eRT"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="139" y="138"/>
+        </scene>
+        <!--Enter Kahoot View Controller-->
+        <scene sceneID="tvD-uX-lao">
+            <objects>
+                <viewController storyboardIdentifier="EnterKahootViewController" id="PJh-g3-gpx" customClass="EnterKahootViewController" customModule="cryptospace" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="zNj-6F-m1z">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gKI-Kh-s1S">
+                                <rect key="frame" x="163" y="438" width="88" height="30"/>
+                                <state key="normal" title="Enter kahoot"/>
+                                <connections>
+                                    <action selector="enterButtonTapped:" destination="PJh-g3-gpx" eventType="touchUpInside" id="9xZ-bO-bFg"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="gKI-Kh-s1S" firstAttribute="centerX" secondItem="h4r-zJ-DSt" secondAttribute="centerX" id="LGg-dW-GYJ"/>
+                            <constraint firstItem="gKI-Kh-s1S" firstAttribute="centerY" secondItem="h4r-zJ-DSt" secondAttribute="centerY" id="vmG-Jp-atO"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="h4r-zJ-DSt"/>
+                    </view>
+                    <connections>
+                        <outlet property="enterButton" destination="gKI-Kh-s1S" id="BkW-Hm-lgI"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="x9Q-3c-Trc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="903" y="138"/>
+        </scene>
+        <!--Create Space View Controller-->
+        <scene sceneID="tCU-DY-f6I">
+            <objects>
+                <viewController storyboardIdentifier="CreateSpaceViewController" id="FBq-FJ-8fo" customClass="CreateSpaceViewController" customModule="cryptospace" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="40q-3D-Soc">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pdg-p3-6O6">
+                                <rect key="frame" x="161.5" y="438" width="91" height="30"/>
+                                <state key="normal" title="Create space"/>
+                                <connections>
+                                    <action selector="createButtonTapped:" destination="FBq-FJ-8fo" eventType="touchUpInside" id="YHi-iS-DCF"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="Pdg-p3-6O6" firstAttribute="centerY" secondItem="Urj-BV-oZM" secondAttribute="centerY" id="J3c-b3-jH4"/>
+                            <constraint firstItem="Pdg-p3-6O6" firstAttribute="centerX" secondItem="Urj-BV-oZM" secondAttribute="centerX" id="ydJ-Lj-obT"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Urj-BV-oZM"/>
+                    </view>
+                    <connections>
+                        <outlet property="createButton" destination="Pdg-p3-6O6" id="R2X-9m-fcj"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="GT4-WT-Nb5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1670" y="138"/>
+        </scene>
+        <!--Join Space View Controller-->
+        <scene sceneID="IHF-yI-hEA">
+            <objects>
+                <viewController storyboardIdentifier="JoinSpaceViewController" id="qpd-CM-4Mg" customClass="JoinSpaceViewController" customModule="cryptospace" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Evm-UB-nUL">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7ru-2o-P7X">
+                                <rect key="frame" x="170" y="438" width="74" height="30"/>
+                                <state key="normal" title="Join space"/>
+                                <connections>
+                                    <action selector="joinButtonTapped:" destination="qpd-CM-4Mg" eventType="touchUpInside" id="U6s-DO-dDR"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="7ru-2o-P7X" firstAttribute="centerY" secondItem="nq1-Pp-8XH" secondAttribute="centerY" id="Ai3-1U-7wR"/>
+                            <constraint firstItem="7ru-2o-P7X" firstAttribute="centerX" secondItem="nq1-Pp-8XH" secondAttribute="centerX" id="mlA-Nn-jTP"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="nq1-Pp-8XH"/>
+                    </view>
+                    <connections>
+                        <outlet property="joinButton" destination="7ru-2o-P7X" id="U9M-1p-qP2"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gFp-Af-UfR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2436" y="138"/>
+        </scene>
+        <!--Space View Controller-->
+        <scene sceneID="8eE-dG-q5i">
+            <objects>
+                <viewController storyboardIdentifier="SpaceViewController" id="LIw-Hb-teH" customClass="SpaceViewController" customModule="cryptospace" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="JL3-t1-6j1">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lit-Ow-jtb">
+                                <rect key="frame" x="175.5" y="438" width="63" height="30"/>
+                                <state key="normal" title="Get prize"/>
+                                <connections>
+                                    <action selector="getPrizeButtonTapped:" destination="LIw-Hb-teH" eventType="touchUpInside" id="glY-2W-Urp"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="Lit-Ow-jtb" firstAttribute="centerX" secondItem="Oam-Kx-jm2" secondAttribute="centerX" id="6QG-og-c1v"/>
+                            <constraint firstItem="Lit-Ow-jtb" firstAttribute="centerY" secondItem="Oam-Kx-jm2" secondAttribute="centerY" id="k7C-E4-EiH"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Oam-Kx-jm2"/>
+                    </view>
+                    <connections>
+                        <outlet property="getPrizeButton" destination="Lit-Ow-jtb" id="uFA-ed-tf1"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aDT-E6-hLx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3222" y="138"/>
         </scene>
     </scenes>
 </document>
