@@ -14,6 +14,14 @@
 		2C72C1C9246735D100A8AC47 /* SpaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C72C1C8246735D100A8AC47 /* SpaceViewController.swift */; };
 		2C72C1CD2467370D00A8AC47 /* AccountService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C72C1CC2467370D00A8AC47 /* AccountService.swift */; };
 		2C72C1D024673A6C00A8AC47 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C72C1CF24673A6C00A8AC47 /* Network.swift */; };
+		2C72C1D22467431600A8AC47 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C72C1D12467431600A8AC47 /* UIViewController.swift */; };
+		2C72C1D52467436600A8AC47 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C72C1D42467436600A8AC47 /* UIView.swift */; };
+		2C72C1D72467438500A8AC47 /* UICollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C72C1D62467438500A8AC47 /* UICollectionView.swift */; };
+		2C72C1D92467439C00A8AC47 /* UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C72C1D82467439C00A8AC47 /* UITableView.swift */; };
+		2C72C1DB246743E300A8AC47 /* Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C72C1DA246743E300A8AC47 /* Images.swift */; };
+		2C72C1DE2467445A00A8AC47 /* ButtonWithExtendedArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C72C1DD2467445A00A8AC47 /* ButtonWithExtendedArea.swift */; };
+		2C72C1E02467448F00A8AC47 /* MessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C72C1DF2467448F00A8AC47 /* MessageView.swift */; };
+		2C72C1E4246744B100A8AC47 /* MessageView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C72C1E2246744B100A8AC47 /* MessageView.xib */; };
 		2CBABC72B6B5D0E832F83B42 /* Pods_cryptospace.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB683D097DC8022B02CA6E96 /* Pods_cryptospace.framework */; };
 		2CD9178C244B16D100DB055C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CD9178B244B16D100DB055C /* AppDelegate.swift */; };
 		2CD9178E244B16D100DB055C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CD9178D244B16D100DB055C /* SceneDelegate.swift */; };
@@ -30,6 +38,14 @@
 		2C72C1C8246735D100A8AC47 /* SpaceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceViewController.swift; sourceTree = "<group>"; };
 		2C72C1CC2467370D00A8AC47 /* AccountService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountService.swift; sourceTree = "<group>"; };
 		2C72C1CF24673A6C00A8AC47 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
+		2C72C1D12467431600A8AC47 /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
+		2C72C1D42467436600A8AC47 /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
+		2C72C1D62467438500A8AC47 /* UICollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICollectionView.swift; sourceTree = "<group>"; };
+		2C72C1D82467439C00A8AC47 /* UITableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableView.swift; sourceTree = "<group>"; };
+		2C72C1DA246743E300A8AC47 /* Images.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Images.swift; sourceTree = "<group>"; };
+		2C72C1DD2467445A00A8AC47 /* ButtonWithExtendedArea.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonWithExtendedArea.swift; sourceTree = "<group>"; };
+		2C72C1DF2467448F00A8AC47 /* MessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageView.swift; sourceTree = "<group>"; };
+		2C72C1E2246744B100A8AC47 /* MessageView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MessageView.xib; sourceTree = "<group>"; };
 		2CD91788244B16D100DB055C /* cryptospace.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = cryptospace.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2CD9178B244B16D100DB055C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2CD9178D244B16D100DB055C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -75,6 +91,28 @@
 			path = Services;
 			sourceTree = "<group>";
 		};
+		2C72C1D32467432000A8AC47 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				2C72C1D12467431600A8AC47 /* UIViewController.swift */,
+				2C72C1DD2467445A00A8AC47 /* ButtonWithExtendedArea.swift */,
+				2C72C1DF2467448F00A8AC47 /* MessageView.swift */,
+				2C72C1E2246744B100A8AC47 /* MessageView.xib */,
+				2C72C1D62467438500A8AC47 /* UICollectionView.swift */,
+				2C72C1D82467439C00A8AC47 /* UITableView.swift */,
+				2C72C1D42467436600A8AC47 /* UIView.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		2C72C1DC246743F100A8AC47 /* Content */ = {
+			isa = PBXGroup;
+			children = (
+				2C72C1DA246743E300A8AC47 /* Images.swift */,
+			);
+			path = Content;
+			sourceTree = "<group>";
+		};
 		2CD9177F244B16D100DB055C = {
 			isa = PBXGroup;
 			children = (
@@ -98,11 +136,13 @@
 			children = (
 				2C72C1CA246735ED00A8AC47 /* Screens */,
 				2C72C1CE2467371400A8AC47 /* Services */,
+				2C72C1D32467432000A8AC47 /* Utilities */,
+				2C72C1DC246743F100A8AC47 /* Content */,
 				2CD91791244B16D100DB055C /* Main.storyboard */,
-				2CD91794244B16D300DB055C /* Assets.xcassets */,
 				2CD9178B244B16D100DB055C /* AppDelegate.swift */,
 				2CD9178D244B16D100DB055C /* SceneDelegate.swift */,
 				2CD91796244B16D300DB055C /* LaunchScreen.storyboard */,
+				2CD91794244B16D300DB055C /* Assets.xcassets */,
 				2CD91799244B16D300DB055C /* Info.plist */,
 			);
 			path = cryptospace;
@@ -186,6 +226,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2CD91798244B16D300DB055C /* LaunchScreen.storyboard in Resources */,
+				2C72C1E4246744B100A8AC47 /* MessageView.xib in Resources */,
 				2CD91795244B16D300DB055C /* Assets.xcassets in Resources */,
 				2CD91793244B16D100DB055C /* Main.storyboard in Resources */,
 			);
@@ -240,13 +281,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2C72C1DE2467445A00A8AC47 /* ButtonWithExtendedArea.swift in Sources */,
 				2C72C1C9246735D100A8AC47 /* SpaceViewController.swift in Sources */,
 				2C72C1C5246734A900A8AC47 /* CreateSpaceViewController.swift in Sources */,
+				2C72C1D52467436600A8AC47 /* UIView.swift in Sources */,
 				2C72C1C7246734CA00A8AC47 /* JoinSpaceViewController.swift in Sources */,
 				2C72C1BF2466E4BD00A8AC47 /* EnterKeyViewController.swift in Sources */,
+				2C72C1D22467431600A8AC47 /* UIViewController.swift in Sources */,
+				2C72C1D72467438500A8AC47 /* UICollectionView.swift in Sources */,
+				2C72C1DB246743E300A8AC47 /* Images.swift in Sources */,
 				2C72C1C32467345100A8AC47 /* EnterKahootViewController.swift in Sources */,
 				2C72C1D024673A6C00A8AC47 /* Network.swift in Sources */,
 				2C72C1CD2467370D00A8AC47 /* AccountService.swift in Sources */,
+				2C72C1E02467448F00A8AC47 /* MessageView.swift in Sources */,
+				2C72C1D92467439C00A8AC47 /* UITableView.swift in Sources */,
 				2CD9178C244B16D100DB055C /* AppDelegate.swift in Sources */,
 				2CD9178E244B16D100DB055C /* SceneDelegate.swift in Sources */,
 			);
