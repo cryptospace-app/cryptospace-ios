@@ -22,16 +22,25 @@
                                     <action selector="enterButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="WEQ-av-7Dc"/>
                                 </connections>
                             </button>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DuL-q6-W1j">
+                                <rect key="frame" x="20" y="384" width="374" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="LSI-g4-x0d" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="4T5-8U-6hs"/>
+                            <constraint firstItem="DuL-q6-W1j" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="DZB-0J-sPa"/>
                             <constraint firstItem="LSI-g4-x0d" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="EbA-Yp-72z"/>
+                            <constraint firstItem="LSI-g4-x0d" firstAttribute="top" secondItem="DuL-q6-W1j" secondAttribute="bottom" constant="20" id="hns-la-83N"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="DuL-q6-W1j" secondAttribute="trailing" constant="20" id="mhl-d2-CMo"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
                         <outlet property="enterButton" destination="LSI-g4-x0d" id="wYM-Ts-eRT"/>
+                        <outlet property="textField" destination="DuL-q6-W1j" id="1S3-tH-Vsz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -53,16 +62,25 @@
                                     <action selector="enterButtonTapped:" destination="PJh-g3-gpx" eventType="touchUpInside" id="9xZ-bO-bFg"/>
                                 </connections>
                             </button>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2eV-L0-w1S">
+                                <rect key="frame" x="20" y="384" width="374" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="gKI-Kh-s1S" firstAttribute="centerX" secondItem="h4r-zJ-DSt" secondAttribute="centerX" id="LGg-dW-GYJ"/>
+                            <constraint firstItem="2eV-L0-w1S" firstAttribute="leading" secondItem="h4r-zJ-DSt" secondAttribute="leading" constant="20" id="Oov-5M-3lM"/>
+                            <constraint firstItem="gKI-Kh-s1S" firstAttribute="top" secondItem="2eV-L0-w1S" secondAttribute="bottom" constant="20" id="TMD-Es-nXH"/>
+                            <constraint firstItem="h4r-zJ-DSt" firstAttribute="trailing" secondItem="2eV-L0-w1S" secondAttribute="trailing" constant="20" id="nPe-qU-FAO"/>
                             <constraint firstItem="gKI-Kh-s1S" firstAttribute="centerY" secondItem="h4r-zJ-DSt" secondAttribute="centerY" id="vmG-Jp-atO"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="h4r-zJ-DSt"/>
                     </view>
                     <connections>
                         <outlet property="enterButton" destination="gKI-Kh-s1S" id="BkW-Hm-lgI"/>
+                        <outlet property="textField" destination="2eV-L0-w1S" id="5dl-lJ-tDe"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x9Q-3c-Trc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -139,8 +157,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="6XU-yL-FbL">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lit-Ow-jtb">
-                                <rect key="frame" x="175.5" y="438" width="63" height="30"/>
+                                <rect key="frame" x="175.5" y="812" width="63" height="30"/>
                                 <state key="normal" title="Get prize"/>
                                 <connections>
                                     <action selector="getPrizeButtonTapped:" destination="LIw-Hb-teH" eventType="touchUpInside" id="glY-2W-Urp"/>
@@ -150,12 +172,17 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="Lit-Ow-jtb" firstAttribute="centerX" secondItem="Oam-Kx-jm2" secondAttribute="centerX" id="6QG-og-c1v"/>
-                            <constraint firstItem="Lit-Ow-jtb" firstAttribute="centerY" secondItem="Oam-Kx-jm2" secondAttribute="centerY" id="k7C-E4-EiH"/>
+                            <constraint firstItem="6XU-yL-FbL" firstAttribute="top" secondItem="JL3-t1-6j1" secondAttribute="top" id="FnH-nh-FN3"/>
+                            <constraint firstItem="Oam-Kx-jm2" firstAttribute="bottom" secondItem="Lit-Ow-jtb" secondAttribute="bottom" constant="20" id="KgJ-JJ-4hS"/>
+                            <constraint firstItem="Oam-Kx-jm2" firstAttribute="trailing" secondItem="6XU-yL-FbL" secondAttribute="trailing" id="hWd-JN-Wv9"/>
+                            <constraint firstItem="6XU-yL-FbL" firstAttribute="leading" secondItem="Oam-Kx-jm2" secondAttribute="leading" id="mBF-yg-YDE"/>
+                            <constraint firstAttribute="bottom" secondItem="6XU-yL-FbL" secondAttribute="bottom" id="vAE-fA-QNu"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Oam-Kx-jm2"/>
                     </view>
                     <connections>
                         <outlet property="getPrizeButton" destination="Lit-Ow-jtb" id="uFA-ed-tf1"/>
+                        <outlet property="tableView" destination="6XU-yL-FbL" id="B1m-Pu-CCU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aDT-E6-hLx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

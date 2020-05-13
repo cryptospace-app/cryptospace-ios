@@ -4,6 +4,8 @@ import UIKit
 
 class CreateSpaceViewController: UIViewController {
 
+    var kahootId: String!
+    
     @IBOutlet weak var createButton: UIButton!
     
     override func viewDidLoad() {
@@ -11,7 +13,9 @@ class CreateSpaceViewController: UIViewController {
     }
 
     @IBAction func createButtonTapped(_ sender: Any) {
-        
+        let space = instantiate(SpaceViewController.self)
+        space.kahootId = kahootId
+        navigationController?.pushViewController(space, animated: true)
     }
     
 }
