@@ -5,5 +5,6 @@ use_frameworks!
 target 'cryptospace' do
 
   pod 'web3.swift'
+  pod 'Web3Swift.io'
 
 end

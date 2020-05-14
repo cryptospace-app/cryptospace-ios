@@ -25,7 +25,6 @@ public protocol EthereumClientProtocol {
     func eth_getTransactionReceipt(txHash: String, completion: @escaping((EthereumClientError?, EthereumTransactionReceipt?) -> Void))
     func eth_call(_ transaction: EthereumTransaction, block: EthereumBlock, completion: @escaping((EthereumClientError?, String?) -> Void))
     func eth_getLogs(addresses: [String]?, topics: [String?]?, fromBlock: EthereumBlock, toBlock: EthereumBlock, completion: @escaping((EthereumClientError?, [EthereumLog]?) -> Void))
-    func eth_getLogs(addresses: [String]?, orTopics: [[String]?]?, fromBlock: EthereumBlock, toBlock: EthereumBlock, completion: @escaping((EthereumClientError?, [EthereumLog]?) -> Void))
     func eth_getBlockByNumber(_ block: EthereumBlock, completion: @escaping((EthereumClientError?, EthereumBlockInfo?) -> Void))
 }
 
@@ -39,12 +38,28 @@ public enum EthereumClientError: Error {
 
 public class EthereumClient: EthereumClientProtocol {
     public let url: URL
+    private let sessionConfig: URLSessionConfiguration
     private var retreivedNetwork: EthereumNetwork?
+
+    private lazy var networkQueue: OperationQueue = {
+        let queue = OperationQueue()
+        queue.name = "web3swift.client.networkQueue"
+        queue.qualityOfService = .background
+        queue.maxConcurrentOperationCount = 4
+        return queue
+    }()
     
-    private let networkQueue: OperationQueue
-    private let concurrentQueue: OperationQueue
+    private lazy var concurrentQueue: OperationQueue = {
+        let queue = OperationQueue()
+        queue.name = "web3swift.client.rawTxQueue"
+        queue.qualityOfService = .background
+        queue.maxConcurrentOperationCount = 1
+        return queue
+    }()
     
-    public let session: URLSession
+    public lazy var session: URLSession = {
+        return URLSession(configuration: self.sessionConfig, delegate: nil, delegateQueue: self.networkQueue)
+    }()
     
     public var network: EthereumNetwork? {
         if let _ = self.retreivedNetwork {
@@ -69,19 +84,7 @@ public class EthereumClient: EthereumClientProtocol {
     
     required public init(url: URL, sessionConfig: URLSessionConfiguration) {
         self.url = url
-        let networkQueue = OperationQueue()
-        networkQueue.name = "web3swift.client.networkQueue"
-        networkQueue.qualityOfService = .background
-        networkQueue.maxConcurrentOperationCount = 4
-        self.networkQueue = networkQueue
-        
-        let txQueue = OperationQueue()
-        txQueue.name = "web3swift.client.rawTxQueue"
-        txQueue.qualityOfService = .background
-        txQueue.maxConcurrentOperationCount = 1
-        self.concurrentQueue = txQueue
-        
-        self.session = URLSession(configuration: sessionConfig, delegate: nil, delegateQueue: networkQueue)
+        self.sessionConfig = sessionConfig
     }
     
     required public convenience init(url: URL) {
@@ -132,7 +135,7 @@ public class EthereumClient: EthereumClientProtocol {
     
     public func eth_getBalance(address: String, block: EthereumBlock, completion: @escaping ((EthereumClientError?, BigUInt?) -> Void)) {
         EthereumRPC.execute(session: session, url: url, method: "eth_getBalance", params: [address, block.stringValue], receive: String.self) { (error, response) in
-            if let resString = response as? String, let balanceInt = BigUInt(hex: resString.web3.noHexPrefix) {
+            if let resString = response as? String, let balanceInt = BigUInt(hex: resString.noHexPrefix) {
                 completion(nil, balanceInt)
             } else {
                 completion(EthereumClientError.unexpectedReturnValue, nil)
@@ -170,7 +173,7 @@ public class EthereumClient: EthereumClientProtocol {
                     transaction.chainId = network.intValue
                 }
                 
-                guard let _ = transaction.chainId, let signedTx = (try? account.sign(transaction)), let transactionHex = signedTx.raw?.web3.hexString else {
+                guard let _ = transaction.chainId, let signedTx = (try? account.sign(transaction)), let transactionHex = signedTx.raw?.hexString else {
                     group.leave()
                     return completion(EthereumClientError.encodeIssue, nil)
                 }
@@ -252,7 +255,7 @@ public class EthereumClient: EthereumClientProtocol {
             }
         }
         
-        let params = CallParams(from: transaction.from?.value, to: transaction.to.value, data: transactionData.web3.hexString, block: block.stringValue)
+        let params = CallParams(from: transaction.from?.value, to: transaction.to.value, data: transactionData.hexString, block: block.stringValue)
         EthereumRPC.execute(session: session, url: url, method: "eth_call", params: params, receive: String.self) { (error, response) in
             if let resDataString = response as? String {
                 completion(nil, resDataString)
@@ -281,25 +284,6 @@ public class EthereumClient: EthereumClientProtocol {
             }
         }
         
-    }
-    
-    public func eth_getLogs(addresses: [String]?, orTopics: [[String]?]?, fromBlock: EthereumBlock, toBlock: EthereumBlock, completion: @escaping((EthereumClientError?, [EthereumLog]?) -> Void)) {
-        struct CallParams: Encodable {
-            let fromBlock: String
-            let toBlock: String
-            let address: [String]?
-            let topics: [[String]?]?
-        }
-        
-        let params = CallParams(fromBlock: fromBlock.stringValue, toBlock: toBlock.stringValue, address: addresses, topics: orTopics)
-        
-        EthereumRPC.execute(session: session, url: url, method: "eth_getLogs", params: [params], receive: [EthereumLog].self) { (error, response) in
-            if let log = response as? [EthereumLog] {
-                completion(nil, log)
-            } else {
-                completion(EthereumClientError.unexpectedReturnValue, nil)
-            }
-        }
     }
     
     public func eth_getBlockByNumber(_ block: EthereumBlock, completion: @escaping((EthereumClientError?, EthereumBlockInfo?) -> Void)) {

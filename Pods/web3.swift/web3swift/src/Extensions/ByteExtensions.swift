@@ -9,12 +9,12 @@
 import Foundation
 import BigInt
 
-public extension Web3Extensions where Base == BigUInt {
-    var bytes: [UInt8] {
-        let data = base.magnitude.serialize()
-        let bytes = data.web3.bytes
+extension BigUInt {
+    public var bytes: [UInt8] {
+        let data = self.magnitude.serialize()
+        let bytes = data.bytes
         let lastIndex = bytes.count - 1
-        let firstIndex = bytes.firstIndex(where: {$0 != 0x00}) ?? lastIndex
+        let firstIndex = bytes.index(where: {$0 != 0x00}) ?? lastIndex
         
         if lastIndex < 0 {
             return Array([0])
@@ -25,6 +25,30 @@ public extension Web3Extensions where Base == BigUInt {
 }
 
 extension BigInt {
+    public var bytes: [UInt8] {
+        let data: Data
+        if self.sign == .plus {
+            data = self.magnitude.serialize()
+        } else {
+            // Twos Complement
+            let len = self.magnitude.serialize().count
+            let maximum = BigUInt(1) << (len * 8)
+            let twosComplement = maximum - self.magnitude
+            data = twosComplement.serialize()
+        }
+        
+        
+        let bytes = data.bytes
+        let lastIndex = bytes.count - 1
+        let firstIndex = bytes.index(where: {$0 != 0x00}) ?? lastIndex
+        
+        if lastIndex < 0 {
+            return Array([0])
+        }
+        
+        return Array(bytes[firstIndex...lastIndex])
+    }
+    
     init(twosComplement data: Data) {
         let unsigned = BigUInt(data)
         self.init(BigInt(unsigned))
@@ -34,45 +58,11 @@ extension BigInt {
     }
 }
 
-public extension Web3Extensions where Base == BigInt {
-    var bytes: [UInt8] {
-        let data: Data
-        if base.sign == .plus {
-            data = base.magnitude.serialize()
-        } else {
-            // Twos Complement
-            let len = base.magnitude.serialize().count
-            let maximum = BigUInt(1) << (len * 8)
-            let twosComplement = maximum - base.magnitude
-            data = twosComplement.serialize()
-        }
-        
-        
-        let bytes = data.web3.bytes
-        let lastIndex = bytes.count - 1
-        let firstIndex = bytes.firstIndex(where: {$0 != 0x00}) ?? lastIndex
-        
-        if lastIndex < 0 {
-            return Array([0])
-        }
-        
-        return Array(bytes[firstIndex...lastIndex])
-    }
-}
-
-public extension Data {
-    static func ^ (lhs: Data, rhs: Data) -> Data {
-        let bytes = zip(lhs.web3.bytes, rhs.web3.bytes).map { lhsByte, rhsByte in
-            return lhsByte ^ rhsByte
-        }
-        
-        return Data(bytes)
-    }
-}
-
-public extension Web3Extensions where Base == Data {
-    var bytes: [UInt8] {
-        return Array(base)
+extension Data {
+    public var bytes: [UInt8] {
+        var sigBytes = [UInt8](repeating: 0, count: self.count)
+        self.copyBytes(to: &sigBytes, count: self.count)
+        return sigBytes
     }
     
     var strippingZeroesFromBytes: Data {
@@ -80,23 +70,25 @@ public extension Web3Extensions where Base == Data {
         while bytes.first == 0 {
             bytes.removeFirst()
         }
-        return Data.init(bytes)
+        return Data.init(bytes: bytes)
     }
     
-    var bytes4: Data {
-        return base.prefix(4)
+    public var bytes4: Data {
+        return prefix(4)
+    }
+    
+    public static func ^ (lhs: Data, rhs: Data) -> Data {
+        let bytes = zip(lhs.bytes, rhs.bytes).map { lhsByte, rhsByte in
+            return lhsByte ^ rhsByte
+        }
+        
+        return Data(bytes: bytes)
     }
 }
 
-public extension String {
-    init(hexFromBytes bytes: [UInt8]) {
-        self.init("0x" + bytes.map() { String(format: "%02x", $0) }.reduce("", +))
-    }
-}
-
-public extension Web3Extensions where Base == String {
+extension String {
     var bytes: [UInt8] {
-        return [UInt8](base.utf8)
+        return [UInt8](self.utf8)
     }
     
     var bytesFromHex: [UInt8]? {
@@ -107,5 +99,9 @@ public extension Web3Extensions where Base == String {
         } catch {
             return nil
         }
+    }
+    
+    public init(hexFromBytes bytes: [UInt8]) {
+        self.init("0x" + bytes.map() { String(format: "%02x", $0) }.reduce("", +))
     }
 }

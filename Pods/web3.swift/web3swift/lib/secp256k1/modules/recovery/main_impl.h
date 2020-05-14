@@ -9,7 +9,7 @@
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wconditional-uninitialized"
 
-#include "secp256k1_recovery.h"
+//#include "secp256k1_recovery.h"
 
 static void secp256k1_ecdsa_recoverable_signature_load(const secp256k1_context* ctx, secp256k1_scalar* r, secp256k1_scalar* s, int* recid, const secp256k1_ecdsa_recoverable_signature* sig) {
     (void)ctx;

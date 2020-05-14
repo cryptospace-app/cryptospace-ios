@@ -45,91 +45,8 @@ client.eth_getPrice { (error, currentPrice) in
 }
 ```
 
-### Smart contracts: Static types
+For more advanced use, you will find support for smart contract parsing. This can be from an ABI JSON definition (e.g. ENS), or by creating strictly typed functions and responses (e.g. ERC20).
 
-Given a smart contract function ABI like ERC20 `transfer`:
-```
-function transfer(address recipient, uint256 amount) public returns (bool)
-```
-
-then you can define an `ABIFunction` with corresponding encodable Swift types like so:
-```
-public struct transfer: ABIFunction {
-        public static let name = "transfer"
-        public let gasPrice: BigUInt? = nil
-        public let gasLimit: BigUInt? = nil
-        public var contract: EthereumAddress
-        public let from: EthereumAddress?
-
-        public let to: EthereumAddress
-        public let value: BigUInt
-
-        public init(contract: EthereumAddress,
-                    from: EthereumAddress? = nil,
-                    to: EthereumAddress,
-                    value: BigUInt) {
-            self.contract = contract
-            self.from = from
-            self.to = to
-            self.value = value
-        }
-
-        public func encode(to encoder: ABIFunctionEncoder) throws {
-            try encoder.encode(to)
-            try encoder.encode(value)
-        }
-    }
-```
-
-This function can be used to generate contract call transactions to send with the client:
-```
-let function = transfer(contract: EthereumAddress("0xtokenaddress"), from: EthereumAddress("0xfrom"), to: EthereumAddress("0xto"), value: 100)
-let transaction = try function.transaction()
-
-client.eth_sendRawTransaction(transacton, withAccount: account) { (error, txHash) in
-    print("TX Hash: \(txHash)")
-}
-```
-
-### Data types
-
-The library provides some types and helpers to make interacting with web3 and Ethereum easier.
-
-- `EthereumAddress`: For representation of addresses, including checksum support.
-- `BigInt` and `BigUInt`: Using [BigInt](https://github.com/attaswift/BigInt) library
-- `EthereumBlock`: Represents the block, either number of RPC-specific defintions like 'Earliest' or 'Latest'
-- `EthereumTransaction`: Wraps a transaction. Encoders and decoders can work with it to generate proper `data` fields.
-
-#### Conversion from and to Foundation types
-
-All extensions are namespaced under '<type>'.web3. So for example, to convert an `Int` to a hex string:
-    
-```
-let gwei = 100
-let hexgwei = gwei.web3.hexString
-```
-
-Supported conversions:
-- Convert from hex byte string ("0xabc") to `Data`
-- Convert from hex byte string ("0xabc") to `Int`
-- Convert from hex byte string ("0xabc") to `BigUInt`
-- Convert `String`, `Int`, `BigUInt`, `Data` to a hex byte string ("0xabc")
-- Add or remove hex prefixes when working with `String`
-
-### ERC20
-
-We support querying ERC20 token data via the `ERC20` struct. Calls allow to:
-- Get the token symbol, name, and decimals
-- Get a token balance
-- Retrieve `Transfer` events
-
-### ERC721
-
-We support querying ERC721 token data via the `ERC721` struct. Including:
-- Get the token symbol, name, and decimals
-- Get a token balance
-- Retrieve `Transfer` events
-- Decode standard JSON for NFT metadata. Please be aware some smart contracts are not 100% compliant with standard.
 
 ### Running Tests
 
@@ -150,7 +67,7 @@ We also use Apple's own CommonCrypto (via [this](https://github.com/sergejp/Comm
 There are some features that have yet to be fully implemented! Not every RPC method is currently supported, and here's some other suggestions we would like to see in the future:
 
 
-- ABI encoding support for tuples
+- ABI encoding support for tuples and arrays
 - Batch support for JSONRPC interface
 - Use a Hex struct for values to be more explicit in expected types
 - Use [Truffle](https://github.com/trufflesuite/ganache-cli) for running tests
