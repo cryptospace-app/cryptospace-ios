@@ -10,7 +10,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let scene = scene as? UIWindowScene else { return }
         let window = UIWindow(windowScene: scene)
-        window.rootViewController = instantiate(EnterKeyViewController.self).inNavigationController
+        let navigationController = instantiate(EnterKeyViewController.self).inNavigationController
+        if Defaults.privateKey != nil {
+            let enterKahoot = instantiate(EnterKahootViewController.self)
+            navigationController.viewControllers.append(enterKahoot)
+        }
+        window.rootViewController = navigationController
         self.window = window
         window.makeKeyAndVisible()
     }
@@ -43,6 +48,4 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // to restore the scene back to its current state.
     }
 
-
 }
-

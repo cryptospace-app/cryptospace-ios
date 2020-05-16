@@ -9,6 +9,7 @@ class EnterKahootViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationController?.setNavigationBarHidden(true, animated: false)
     }
     
     @IBAction func enterButtonTapped(_ sender: Any) {

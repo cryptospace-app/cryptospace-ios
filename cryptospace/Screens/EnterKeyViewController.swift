@@ -17,10 +17,11 @@ class EnterKeyViewController: UIViewController {
     @IBAction func enterButtonTapped(_ sender: Any) {
         guard let text = textField.text else { return }
         
-        print(String(bytes: try! EthPrivateKey(hex: text).address().value().bytes))
-        
-//        let enterKahoot = instantiate(EnterKahootViewController.self)
-//        navigationController?.pushViewController(enterKahoot, animated: true)
+        if let _ = try? EthPrivateKey(hex: text).address().value() {
+            Defaults.privateKey = text
+            let enterKahoot = instantiate(EnterKahootViewController.self)
+            navigationController?.pushViewController(enterKahoot, animated: true)
+        }
     }
     
 }
