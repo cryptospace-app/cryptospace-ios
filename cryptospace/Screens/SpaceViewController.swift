@@ -18,6 +18,7 @@ class SpaceViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationController?.setNavigationBarHidden(true, animated: false)
         Network.shared.getChallenge(id: kahootId) { [weak self] result in
             guard case .success(let challenge) = result else { return }
             let results = challenge.leaderboard.players.map { "\($0.playerId) — \($0.finalScore)" }
@@ -29,6 +30,7 @@ class SpaceViewController: UIViewController {
     @IBAction func getPrizeButtonTapped(_ sender: Any) {
         guard let enterKahoot = navigationController?.viewControllers.first(where: { $0 is EnterKahootViewController }) else { return }
         navigationController?.popToViewController(enterKahoot, animated: true)
+        Defaults.kahootId = nil
     }
     
 }

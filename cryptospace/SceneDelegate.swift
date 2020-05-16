@@ -14,6 +14,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         if Defaults.privateKey != nil {
             let enterKahoot = instantiate(EnterKahootViewController.self)
             navigationController.viewControllers.append(enterKahoot)
+            
+            if let kahootId = Defaults.kahootId {
+                let space = instantiate(SpaceViewController.self)
+                space.kahootId = kahootId
+                navigationController.viewControllers.append(space)
+            }
         }
         window.rootViewController = navigationController
         self.window = window

@@ -10,9 +10,11 @@ class CreateSpaceViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationController?.setNavigationBarHidden(true, animated: false)
     }
 
     @IBAction func createButtonTapped(_ sender: Any) {
+        Defaults.kahootId = kahootId
         let space = instantiate(SpaceViewController.self)
         space.kahootId = kahootId
         navigationController?.pushViewController(space, animated: true)

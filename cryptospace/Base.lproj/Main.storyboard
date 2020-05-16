@@ -67,10 +67,21 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mGd-vC-yZB">
+                                <rect key="frame" x="150" y="476" width="115" height="30"/>
+                                <state key="normal" title="Remove account">
+                                    <color key="titleColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="removeAccountButtonTapped:" destination="PJh-g3-gpx" eventType="touchUpInside" id="buL-sj-Wvs"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="gKI-Kh-s1S" firstAttribute="centerX" secondItem="h4r-zJ-DSt" secondAttribute="centerX" id="LGg-dW-GYJ"/>
+                            <constraint firstItem="mGd-vC-yZB" firstAttribute="top" secondItem="gKI-Kh-s1S" secondAttribute="bottom" constant="8" id="Lzg-8E-C4v"/>
+                            <constraint firstItem="mGd-vC-yZB" firstAttribute="centerX" secondItem="gKI-Kh-s1S" secondAttribute="centerX" id="MHa-dU-JIl"/>
                             <constraint firstItem="2eV-L0-w1S" firstAttribute="leading" secondItem="h4r-zJ-DSt" secondAttribute="leading" constant="20" id="Oov-5M-3lM"/>
                             <constraint firstItem="gKI-Kh-s1S" firstAttribute="top" secondItem="2eV-L0-w1S" secondAttribute="bottom" constant="20" id="TMD-Es-nXH"/>
                             <constraint firstItem="h4r-zJ-DSt" firstAttribute="trailing" secondItem="2eV-L0-w1S" secondAttribute="trailing" constant="20" id="nPe-qU-FAO"/>

@@ -14,6 +14,11 @@ class EnterKeyViewController: UIViewController {
         navigationController?.setNavigationBarHidden(true, animated: false)
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        textField.text = nil
+    }
+    
     @IBAction func enterButtonTapped(_ sender: Any) {
         guard let text = textField.text else { return }
         

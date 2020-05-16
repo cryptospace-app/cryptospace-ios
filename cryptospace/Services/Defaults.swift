@@ -15,4 +15,13 @@ struct Defaults {
         }
     }
     
+    static var kahootId: String? {
+        get {
+            return defaults.string(forKey: "kahoot_id")
+        }
+        set {
+            defaults.set(newValue, forKey: "kahoot_id")
+        }
+    }
+    
 }
