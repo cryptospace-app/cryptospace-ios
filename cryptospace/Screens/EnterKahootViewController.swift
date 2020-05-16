@@ -4,6 +4,7 @@ import UIKit
 
 class EnterKahootViewController: UIViewController {
 
+    @IBOutlet weak var balanceLabel: UILabel!
     @IBOutlet weak var textField: UITextField!
     @IBOutlet weak var enterButton: UIButton!
     
@@ -11,6 +12,11 @@ class EnterKahootViewController: UIViewController {
         super.viewDidLoad()
         navigationController?.setNavigationBarHidden(true, animated: false)
         // TODO: initial button title should be "paste"
+        
+        AccountService.shared.getBalance { [weak self] result in
+            guard case let .success(balance) = result else { return }
+            self?.balanceLabel.text = balance
+        }
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -19,7 +25,7 @@ class EnterKahootViewController: UIViewController {
     }
 
     private func showWrongInputError() {
-        
+        // TODO: implement
     }
     
     @IBAction func removeAccountButtonTapped(_ sender: Any) {

@@ -6,6 +6,7 @@ struct Defaults {
     
     private static let defaults = UserDefaults.standard
     
+    // For hack purposes. Not secure at all.
     static var privateKey: String? {
         get {
             return defaults.string(forKey: "private_key")

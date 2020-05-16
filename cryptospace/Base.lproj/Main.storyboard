@@ -68,7 +68,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mGd-vC-yZB">
-                                <rect key="frame" x="150" y="476" width="115" height="30"/>
+                                <rect key="frame" x="149.5" y="476" width="115" height="30"/>
                                 <state key="normal" title="Remove account">
                                     <color key="titleColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
@@ -76,20 +76,29 @@
                                     <action selector="removeAccountButtonTapped:" destination="PJh-g3-gpx" eventType="touchUpInside" id="buL-sj-Wvs"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wkV-Zz-bQu">
+                                <rect key="frame" x="207" y="95" width="0.0" height="0.0"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="wkV-Zz-bQu" firstAttribute="centerX" secondItem="h4r-zJ-DSt" secondAttribute="centerX" id="2Ta-Ms-KuK"/>
                             <constraint firstItem="gKI-Kh-s1S" firstAttribute="centerX" secondItem="h4r-zJ-DSt" secondAttribute="centerX" id="LGg-dW-GYJ"/>
                             <constraint firstItem="mGd-vC-yZB" firstAttribute="top" secondItem="gKI-Kh-s1S" secondAttribute="bottom" constant="8" id="Lzg-8E-C4v"/>
                             <constraint firstItem="mGd-vC-yZB" firstAttribute="centerX" secondItem="gKI-Kh-s1S" secondAttribute="centerX" id="MHa-dU-JIl"/>
                             <constraint firstItem="2eV-L0-w1S" firstAttribute="leading" secondItem="h4r-zJ-DSt" secondAttribute="leading" constant="20" id="Oov-5M-3lM"/>
                             <constraint firstItem="gKI-Kh-s1S" firstAttribute="top" secondItem="2eV-L0-w1S" secondAttribute="bottom" constant="20" id="TMD-Es-nXH"/>
                             <constraint firstItem="h4r-zJ-DSt" firstAttribute="trailing" secondItem="2eV-L0-w1S" secondAttribute="trailing" constant="20" id="nPe-qU-FAO"/>
+                            <constraint firstItem="wkV-Zz-bQu" firstAttribute="top" secondItem="h4r-zJ-DSt" secondAttribute="top" constant="51" id="sE0-XR-Wq9"/>
                             <constraint firstItem="gKI-Kh-s1S" firstAttribute="centerY" secondItem="h4r-zJ-DSt" secondAttribute="centerY" id="vmG-Jp-atO"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="h4r-zJ-DSt"/>
                     </view>
                     <connections>
+                        <outlet property="balanceLabel" destination="wkV-Zz-bQu" id="ODj-jA-0QB"/>
                         <outlet property="enterButton" destination="gKI-Kh-s1S" id="BkW-Hm-lgI"/>
                         <outlet property="textField" destination="2eV-L0-w1S" id="5dl-lJ-tDe"/>
                     </connections>
