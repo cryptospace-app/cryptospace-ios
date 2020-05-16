@@ -2,6 +2,7 @@
 
 import UIKit
 import web3
+import Web3Swift
 
 class EnterKeyViewController: UIViewController {
     
@@ -14,10 +15,12 @@ class EnterKeyViewController: UIViewController {
     }
     
     @IBAction func enterButtonTapped(_ sender: Any) {
-        guard let _ = textField.text else { return }
-        // TODO: create ethereum account
-        let enterKahoot = instantiate(EnterKahootViewController.self)
-        navigationController?.pushViewController(enterKahoot, animated: true)
+        guard let text = textField.text else { return }
+        
+        print(String(bytes: try! EthPrivateKey(hex: text).address().value().bytes))
+        
+//        let enterKahoot = instantiate(EnterKahootViewController.self)
+//        navigationController?.pushViewController(enterKahoot, animated: true)
     }
     
 }
