@@ -12,6 +12,7 @@ class EnterKeyViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.setNavigationBarHidden(true, animated: false)
+        // TODO: initial button title should be "paste"
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -20,7 +21,10 @@ class EnterKeyViewController: UIViewController {
     }
     
     @IBAction func enterButtonTapped(_ sender: Any) {
-        guard let text = textField.text else { return }
+        guard let text = textField.text, !text.isEmpty else {
+            textField.text = UIPasteboard.general.string
+            return
+        }
         
         if let _ = try? EthPrivateKey(hex: text).address().value() {
             Defaults.privateKey = text
