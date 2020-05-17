@@ -5,15 +5,35 @@ import web3
 import Web3Swift
 import BigInt
 
-class AccountService {
+class Ethereum {
     
-    static let shared = AccountService()
+    static let shared = Ethereum()
     private init() {}
     
     private let client = EthereumClient(url: URL(string: "https://ropsten.infura.io/v3/3f99b6096fda424bbb26e17866dcddfc")!)
     
     var hasAccount: Bool {
         return Defaults.privateKey != nil
+    }
+    
+    func getContractChallenge(id: String, completion: @escaping (Result<ContractChallenge?, Error>) -> Void) {
+        // TODO: get value from contract
+        completion(.success(nil)) // this means that request was successful, but there is no challenge on contract yet
+    }
+    
+    func createContractChallenge(id: String, name: String, bidSize: Double, completion: @escaping (Bool) -> Void) {
+        // TODO: talk to contract
+        completion(true) // this means challenge was created successfully
+    }
+    
+    func joinContractChallenge(_ challenge: ContractChallenge, name: String, completion: @escaping (Bool) -> Void) {
+        // TODO: talk to contract
+        completion(true) // this means challenge was joined successfully
+    }
+    
+    func sendPrize(id: String, completion: @escaping (Result<Bool, Error>) -> Void) {
+        // TODO: talk to contract
+        completion(.success(true)) // this means that prize was sent
     }
     
     func getBalance(completion: @escaping (Result<String, Error>) -> Void) {
@@ -38,4 +58,12 @@ class AccountService {
         }
     }
 
+}
+
+struct ContractChallenge {
+    let id: String
+    let bidSize: Double
+    let playerNames: [String]
+    let winner: String?
+    let isFinished: Bool
 }

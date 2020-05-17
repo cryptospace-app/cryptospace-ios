@@ -13,7 +13,7 @@ class EnterKahootViewController: UIViewController {
         navigationController?.setNavigationBarHidden(true, animated: false)
         // TODO: initial button title should be "paste"
         
-        AccountService.shared.getBalance { [weak self] result in
+        Ethereum.shared.getBalance { [weak self] result in
             guard case let .success(balance) = result else { return }
             self?.balanceLabel.text = balance
         }

@@ -12,7 +12,7 @@
 		2C72C1C5246734A900A8AC47 /* CreateSpaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C72C1C4246734A900A8AC47 /* CreateSpaceViewController.swift */; };
 		2C72C1C7246734CA00A8AC47 /* JoinSpaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C72C1C6246734CA00A8AC47 /* JoinSpaceViewController.swift */; };
 		2C72C1C9246735D100A8AC47 /* SpaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C72C1C8246735D100A8AC47 /* SpaceViewController.swift */; };
-		2C72C1CD2467370D00A8AC47 /* AccountService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C72C1CC2467370D00A8AC47 /* AccountService.swift */; };
+		2C72C1CD2467370D00A8AC47 /* Ethereum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C72C1CC2467370D00A8AC47 /* Ethereum.swift */; };
 		2C72C1D024673A6C00A8AC47 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C72C1CF24673A6C00A8AC47 /* Network.swift */; };
 		2C72C1D22467431600A8AC47 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C72C1D12467431600A8AC47 /* UIViewController.swift */; };
 		2C72C1D52467436600A8AC47 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C72C1D42467436600A8AC47 /* UIView.swift */; };
@@ -37,7 +37,7 @@
 		2C72C1C4246734A900A8AC47 /* CreateSpaceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateSpaceViewController.swift; sourceTree = "<group>"; };
 		2C72C1C6246734CA00A8AC47 /* JoinSpaceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinSpaceViewController.swift; sourceTree = "<group>"; };
 		2C72C1C8246735D100A8AC47 /* SpaceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceViewController.swift; sourceTree = "<group>"; };
-		2C72C1CC2467370D00A8AC47 /* AccountService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountService.swift; sourceTree = "<group>"; };
+		2C72C1CC2467370D00A8AC47 /* Ethereum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ethereum.swift; sourceTree = "<group>"; };
 		2C72C1CF24673A6C00A8AC47 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		2C72C1D12467431600A8AC47 /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		2C72C1D42467436600A8AC47 /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
@@ -87,7 +87,7 @@
 		2C72C1CE2467371400A8AC47 /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				2C72C1CC2467370D00A8AC47 /* AccountService.swift */,
+				2C72C1CC2467370D00A8AC47 /* Ethereum.swift */,
 				2CA0E4692470513700D1BB52 /* Defaults.swift */,
 				2C72C1CF24673A6C00A8AC47 /* Network.swift */,
 			);
@@ -296,7 +296,7 @@
 				2C72C1C32467345100A8AC47 /* EnterKahootViewController.swift in Sources */,
 				2C72C1D024673A6C00A8AC47 /* Network.swift in Sources */,
 				2CA0E46A2470513700D1BB52 /* Defaults.swift in Sources */,
-				2C72C1CD2467370D00A8AC47 /* AccountService.swift in Sources */,
+				2C72C1CD2467370D00A8AC47 /* Ethereum.swift in Sources */,
 				2C72C1E02467448F00A8AC47 /* MessageView.swift in Sources */,
 				2C72C1D92467439C00A8AC47 /* UITableView.swift in Sources */,
 				2CD9178C244B16D100DB055C /* AppDelegate.swift in Sources */,
