@@ -4,7 +4,8 @@ import UIKit
 
 class JoinSpaceViewController: UIViewController {
 
-    var kahootId: String!
+    var challenge: ContractChallenge!
+    private let ethereum = Ethereum.shared
     
     @IBOutlet weak var joinButton: UIButton!
     
@@ -14,7 +15,17 @@ class JoinSpaceViewController: UIViewController {
     }
 
     @IBAction func joinButtonTapped(_ sender: Any) {
-        Defaults.kahootId = kahootId
+        let challenge = self.challenge!
+        ethereum.joinContractChallenge(challenge, name: Defaults.name) { [weak self] success in
+            if success {
+                Defaults.kahootId = challenge.id // TODO: it'd better to store entire challenge model
+                let space = instantiate(SpaceViewController.self)
+                space.kahootId = challenge.id
+                self?.navigationController?.pushViewController(space, animated: true)
+            } else {
+                // TODO: process error
+            }
+        }
     }
     
 }

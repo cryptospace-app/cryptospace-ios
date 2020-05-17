@@ -25,4 +25,6 @@ struct Defaults {
         }
     }
     
+    static var name: String { return "Ivan" } // TODO: name should be provided by user
+    
 }

@@ -4,6 +4,8 @@ import UIKit
 
 class EnterKahootViewController: UIViewController {
 
+    private let ethereum = Ethereum.shared
+    
     @IBOutlet weak var balanceLabel: UILabel!
     @IBOutlet weak var textField: UITextField!
     @IBOutlet weak var enterButton: UIButton!
@@ -28,6 +30,26 @@ class EnterKahootViewController: UIViewController {
         // TODO: implement
     }
     
+    private func didEnterKahootId(_ kahootId: String) {
+        ethereum.getContractChallenge(id: kahootId) { [weak self] result in
+            switch result {
+            case let .success(challenge):
+                if let challenge = challenge {
+                    let joinSpace = instantiate(JoinSpaceViewController.self)
+                    joinSpace.challenge = challenge
+                    self?.navigationController?.pushViewController(joinSpace, animated: true)
+                } else {
+                    let createSpace = instantiate(CreateSpaceViewController.self)
+                    createSpace.kahootId = kahootId
+                    self?.navigationController?.pushViewController(createSpace, animated: true)
+                }
+            case .failure:
+                // TODO: process error
+                break
+            }
+        }
+    }
+    
     @IBAction func removeAccountButtonTapped(_ sender: Any) {
         Defaults.privateKey = nil
         navigationController?.popToRootViewController(animated: true)
@@ -50,9 +72,7 @@ class EnterKahootViewController: UIViewController {
             return
         }
         
-        let createSpace = instantiate(CreateSpaceViewController.self)
-        createSpace.kahootId = String(id)
-        navigationController?.pushViewController(createSpace, animated: true)
+        didEnterKahootId(String(id))
     }
 
 }

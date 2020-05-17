@@ -5,6 +5,7 @@ import UIKit
 class CreateSpaceViewController: UIViewController {
 
     var kahootId: String!
+    private let ethereum = Ethereum.shared
     
     @IBOutlet weak var createButton: UIButton!
     
@@ -14,10 +15,18 @@ class CreateSpaceViewController: UIViewController {
     }
 
     @IBAction func createButtonTapped(_ sender: Any) {
-        Defaults.kahootId = kahootId
-        let space = instantiate(SpaceViewController.self)
-        space.kahootId = kahootId
-        navigationController?.pushViewController(space, animated: true)
+        let kahootId = self.kahootId!
+        // TODO: name and bid size should be correct
+        ethereum.createContractChallenge(id: kahootId, name: Defaults.name, bidSize: 0.001) { [weak self] success in
+            if success {
+                Defaults.kahootId = kahootId
+                let space = instantiate(SpaceViewController.self)
+                space.kahootId = kahootId
+                self?.navigationController?.pushViewController(space, animated: true)
+            } else {
+                // TODO: process error
+            }
+        }
     }
     
 }

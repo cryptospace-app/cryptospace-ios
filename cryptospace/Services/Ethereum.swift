@@ -31,9 +31,9 @@ class Ethereum {
         completion(true) // this means challenge was joined successfully
     }
     
-    func sendPrize(id: String, completion: @escaping (Result<Bool, Error>) -> Void) {
+    func sendPrize(id: String, completion: @escaping (Bool) -> Void) {
         // TODO: talk to contract
-        completion(.success(true)) // this means that prize was sent
+        completion(true) // this means that prize was sent
     }
     
     func getBalance(completion: @escaping (Result<String, Error>) -> Void) {

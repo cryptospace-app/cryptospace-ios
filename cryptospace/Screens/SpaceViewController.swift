@@ -6,6 +6,7 @@ class SpaceViewController: UIViewController {
 
     var kahootId: String!
     
+    private let ethereum = Ethereum.shared
     private var results = [String]()
     
     @IBOutlet weak var getPrizeButton: UIButton!
@@ -28,9 +29,16 @@ class SpaceViewController: UIViewController {
     }
 
     @IBAction func getPrizeButtonTapped(_ sender: Any) {
-        guard let enterKahoot = navigationController?.viewControllers.first(where: { $0 is EnterKahootViewController }) else { return }
-        navigationController?.popToViewController(enterKahoot, animated: true)
-        Defaults.kahootId = nil
+        ethereum.sendPrize(id: kahootId) { [weak self] success in
+            if success {
+                guard let enterKahoot = self?.navigationController?.viewControllers.first(where: { $0 is EnterKahootViewController }) else { return }
+                self?.navigationController?.popToViewController(enterKahoot, animated: true)
+                Defaults.kahootId = nil
+                // TODO: show some congratulation
+            } else {
+                // TODO: process error
+            }
+        }
     }
     
 }
