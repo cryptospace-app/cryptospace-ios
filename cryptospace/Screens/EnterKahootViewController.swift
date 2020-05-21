@@ -31,23 +31,23 @@ class EnterKahootViewController: UIViewController {
     }
     
     private func didEnterKahootId(_ kahootId: String) {
-        ethereum.getContractChallenge(id: kahootId) { [weak self] result in
-            switch result {
-            case let .success(challenge):
-                if let challenge = challenge {
-                    let joinSpace = instantiate(JoinSpaceViewController.self)
-                    joinSpace.challenge = challenge
-                    self?.navigationController?.pushViewController(joinSpace, animated: true)
-                } else {
-                    let createSpace = instantiate(CreateSpaceViewController.self)
-                    createSpace.kahootId = kahootId
-                    self?.navigationController?.pushViewController(createSpace, animated: true)
-                }
-            case .failure:
-                // TODO: process error
-                break
-            }
-        }
+//        ethereum.getContractChallenge(id: kahootId) { [weak self] result in
+//            switch result {
+//            case let .success(challenge):
+//                if let challenge = challenge {
+//                    let joinSpace = instantiate(JoinSpaceViewController.self)
+//                    joinSpace.challenge = challenge
+//                    self?.navigationController?.pushViewController(joinSpace, animated: true)
+//                } else {
+//                    let createSpace = instantiate(CreateSpaceViewController.self)
+//                    createSpace.kahootId = kahootId
+//                    self?.navigationController?.pushViewController(createSpace, animated: true)
+//                }
+//            case .failure:
+//                // TODO: process error
+//                break
+//            }
+//        }
     }
     
     @IBAction func removeAccountButtonTapped(_ sender: Any) {

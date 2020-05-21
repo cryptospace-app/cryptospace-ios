@@ -6,6 +6,7 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        Ethereum.shared.getChallengeNames(id: "1269fde8-1e13-463b-b93d-6bcf69a83ac2_1589570307693")
         return true
     }
 
