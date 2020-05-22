@@ -16,7 +16,7 @@ class JoinSpaceViewController: UIViewController {
 
     @IBAction func joinButtonTapped(_ sender: Any) {
         let challenge = self.challenge!
-        ethereum.joinContractChallenge(challenge, name: Defaults.name, bidSize: "0.01") { [weak self] success in
+        ethereum.joinContractChallenge(id: challenge.id, name: Defaults.name, bidSize: "0.01") { [weak self] success in
             if success {
                 Defaults.kahootId = challenge.id // TODO: it'd better to store entire challenge model
                 let space = instantiate(SpaceViewController.self)
