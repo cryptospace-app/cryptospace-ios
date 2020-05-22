@@ -40,6 +40,7 @@ public final class SendRawTransactionProcedure: RemoteProcedure {
     `DescribedError` if something went wrong
     */
     public func call() throws -> JSON {
+        print("transactionBytes = ", try! transactionBytes.value().toHexString())
         return try JSON(
             data: network.call(
                 method: "eth_sendRawTransaction",

@@ -19,7 +19,8 @@ class Ethereum {
     
     private let contractInteractor: ContractInteractor
     
-    private let contractAddress = EthAddress(hex: "0xd9F3845f8A485d0474Df4bF2F0Fb03e702633F41")
+//    private let contractAddress = EthAddress(hex: "0xd9F3845f8A485d0474Df4bF2F0Fb03e702633F41")
+    private let contractAddress = EthAddress(hex: "0x8a43f2b322258fcbcb3fe594079c953e56b28668")
 
     init() {
         contractInteractor = Web3ContractInteractor(
@@ -28,20 +29,38 @@ class Ethereum {
         )
     }
     
-    func getContractChallenge(id: String){//, completion: @escaping (Result<ContractChallenge?, Error>) -> Void) {
-        // TODO: get value from contract
+    private func getChallengeWinner(id: String) -> String? {
+        let signature = "getChallengeWinner(string)"
+        let ethString = SimpleString(string: id)
+        let functionABI = EncodedABIFunction(signature: signature, parameters: [
+            ABIString(origin: ethString)
+        ])
+        if let abiMessage = try? contractInteractor.call(function: functionABI) {
+            let winner = try? ABIDecoder().string(message: abiMessage)
+            print("winner = \(winner)")
+            if winner?.isEmpty == true {
+                return nil
+            } else {
+                return winner
+            }
+        } else {
+            return nil
+        }
+    }
+    
+    private func getChallengeBid(id: String) -> EthNumber {
         let signature = "getChallengeBid(string)"
         let ethString = SimpleString(string: id)
         let functionABI = EncodedABIFunction(signature: signature, parameters: [
             ABIString(origin: ethString)
         ])
         let abiMessage = try! contractInteractor.call(function: functionABI)
-        let number = try! ABIDecoder().number(message: abiMessage)
-        print("abiMessage = ", try! number.value().toHexString())
-//        completion(.success(nil)) // this means that request was successful, but there is no challenge on contract yet
+        let bid = try! ABIDecoder().number(message: abiMessage)
+        print("bid = ", try! bid.value().toHexString())
+        return bid
     }
     
-    func getChallengeNames(id: String) {
+    private func getChallengeNames(id: String) -> [String] {
         let signature = "getChallengeNames(string)"
         let ethString = SimpleString(string: id)
         let functionABI = EncodedABIFunction(signature: signature, parameters: [
@@ -59,44 +78,99 @@ class Ethereum {
         }, index: 0)
         let names = try! decodedMessage.value()
         print("names = \(names)")
+        return names
+    }
+    
+    func getContractChallenge(id: String, completion: @escaping (Result<ContractChallenge?, Error>) -> Void) {
+        DispatchQueue.main.async {
+            // TODO: dispatch
+            let bidData = self.getChallengeBid(id: id)
+            let bidHex = try! bidData.value().toHexString()
+            let bidInt = UInt64(bidHex, radix: 16)!
+            let bid = Double(bidInt) / 1e18;
+            
+            let names = self.getChallengeNames(id: id)
+            let winner = self.getChallengeWinner(id: id)
+            let result = ContractChallenge(id: id, bidSize: bid, playerNames: names, winner: winner, isFinished: winner != nil)
+            
+            completion(.success(result))
+        }
     }
     
     func createContractChallenge(id: String, name: String, bidSize: Double, completion: @escaping (Bool) -> Void) {
+        let bidStr = String(UInt64(bidSize * 1e18))
+        let bid = EthNumber(decimal: bidStr)
+        
+        let signature = "createNewChallange(string,string)"
+        let idString = SimpleString(string: id)
+        let nameString = SimpleString(string: name)
+        let functionABI = EncodedABIFunction(signature: signature, parameters: [
+            ABIString(origin: idString),
+            ABIString(origin: nameString)
+        ])
+        let privateKey = EthPrivateKey(hex: Defaults.privateKey!)
+        print("bid = ", try! bid.value().toHexString())
+        print("function = ", try! functionABI.value().toHexString())
+        print("address = ", try! privateKey.address().value().toHexString())
+        _ = try! contractInteractor.send(function: functionABI, value: bid, sender: privateKey)
+
         // TODO: talk to contract
         completion(true) // this means challenge was created successfully
     }
     
-    func joinContractChallenge(_ challenge: ContractChallenge, name: String, completion: @escaping (Bool) -> Void) {
+    func joinContractChallenge(id: String, name: String, bid: EthNumber, completion: @escaping (Bool) -> Void) {
         // TODO: talk to contract
-        completion(true) // this means challenge was joined successfully
+//        completion(true) // this means challenge was joined successfully
+        let signature = "connectToChallenge(string,string)"
+        let idString = SimpleString(string: id)
+        let nameString = SimpleString(string: name)
+        let functionABI = EncodedABIFunction(signature: signature, parameters: [
+            ABIString(origin: idString),
+            ABIString(origin: nameString)
+        ])
+        let privateKey = EthPrivateKey(hex: Defaults.privateKey!)
+        _ = try! contractInteractor.send(function: functionABI, value: bid, sender: privateKey)
+    }
+    
+    private func sendFunds(id: String) -> Bool {
+        let signature = "sendFunds(string)"
+        let ethString = SimpleString(string: id)
+        let functionABI = EncodedABIFunction(signature: signature, parameters: [
+            ABIString(origin: ethString)
+        ])
+        let privateKey = EthPrivateKey(hex: Defaults.privateKey!)
+        _ = try! contractInteractor.send(function: functionABI, value: EthNumber(value: 0), sender: privateKey)
+        return true
     }
     
     func sendPrize(id: String, completion: @escaping (Bool) -> Void) {
-        // TODO: talk to contract
-        completion(true) // this means that prize was sent
+        DispatchQueue.main.async {
+            _ = self.sendFunds(id: id)
+            completion(true)
+        }
     }
     
     func getBalance(completion: @escaping (Result<String, Error>) -> Void) {
         // TODO: process errors
         guard let key = Defaults.privateKey else { return }
 //        let address = String(bytes: try! EthPrivateKey(hex: key).address().value().bytes)
-        let address = String(data: try! EthPrivateKey(hex: key).address().value(), encoding: .utf8)!
-        client.eth_blockNumber { [weak client] error, block in
-            guard let block = block else { return }
-            client?.eth_getBalance(address: address, block: EthereumBlock(rawValue: block)) { error, balance in
-                guard let balance = balance, key == Defaults.privateKey else { return }
-                DispatchQueue.main.async {
-                    var balanceString = String(balance, radix: 10)
-                    if balanceString != "0" {
-                        while balanceString.hasSuffix("0") {
-                            balanceString.removeLast(1)
-                        }
-                        balanceString = "0.\(balanceString) ETH"
-                    }
-                    completion(.success(balanceString))
-                }
-            }
-        }
+//        let address = String(data: try! EthPrivateKey(hex: key).address().value(), encoding: .utf8)!
+//        client.eth_blockNumber { [weak client] error, block in
+//            guard let block = block else { return }
+//            client?.eth_getBalance(address: address, block: EthereumBlock(rawValue: block)) { error, balance in
+//                guard let balance = balance, key == Defaults.privateKey else { return }
+//                DispatchQueue.main.async {
+//                    var balanceString = String(balance, radix: 10)
+//                    if balanceString != "0" {
+//                        while balanceString.hasSuffix("0") {
+//                            balanceString.removeLast(1)
+//                        }
+//                        balanceString = "0.\(balanceString) ETH"
+//                    }
+//                    completion(.success(balanceString))
+//                }
+//            }
+//        }
     }
 
 }
