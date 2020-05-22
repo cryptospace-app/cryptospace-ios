@@ -158,7 +158,8 @@ class Ethereum {
         // TODO: process errors
         guard let key = Defaults.privateKey else { return }
 //        let address = String(bytes: try! EthPrivateKey(hex: key).address().value().bytes)
-        let address = String(data: try! EthPrivateKey(hex: key).address().value(), encoding: .utf8)!
+        let address = "0x" + (try! EthPrivateKey(hex: key).address().value().toHexString())
+//        let address = String(data: try! EthPrivateKey(hex: key).address().value(), encoding: .utf8)!
         client.eth_blockNumber { [weak client] error, block in
             guard let block = block else { return }
             client?.eth_getBalance(address: address, block: EthereumBlock(rawValue: block)) { error, balance in
