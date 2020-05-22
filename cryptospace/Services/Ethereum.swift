@@ -20,7 +20,7 @@ class Ethereum {
     private let contractInteractor: ContractInteractor
     
 //    private let contractAddress = EthAddress(hex: "0xd9F3845f8A485d0474Df4bF2F0Fb03e702633F41")
-    private let contractAddress = EthAddress(hex: "0x8a43f2b322258fcbcb3fe594079c953e56b28668")
+    private let contractAddress = EthAddress(hex: "0x3fdd9353c4b56b9c0ee72083043b3e150f182855")
 
     init() {
         contractInteractor = Web3ContractInteractor(
@@ -118,9 +118,12 @@ class Ethereum {
         completion(true) // this means challenge was created successfully
     }
     
-    func joinContractChallenge(id: String, name: String, bid: EthNumber, completion: @escaping (Bool) -> Void) {
+    func joinContractChallenge(id: String, name: String, bidSize: Double, completion: @escaping (Bool) -> Void) {
         // TODO: talk to contract
 //        completion(true) // this means challenge was joined successfully
+        let bidStr = String(UInt64(bidSize * 1e18))
+        let bid = EthNumber(decimal: bidStr)
+
         let signature = "connectToChallenge(string,string)"
         let idString = SimpleString(string: id)
         let nameString = SimpleString(string: name)
@@ -130,6 +133,7 @@ class Ethereum {
         ])
         let privateKey = EthPrivateKey(hex: Defaults.privateKey!)
         _ = try! contractInteractor.send(function: functionABI, value: bid, sender: privateKey)
+        completion(true)
     }
     
     private func sendFunds(id: String) -> Bool {
@@ -154,23 +158,23 @@ class Ethereum {
         // TODO: process errors
         guard let key = Defaults.privateKey else { return }
 //        let address = String(bytes: try! EthPrivateKey(hex: key).address().value().bytes)
-//        let address = String(data: try! EthPrivateKey(hex: key).address().value(), encoding: .utf8)!
-//        client.eth_blockNumber { [weak client] error, block in
-//            guard let block = block else { return }
-//            client?.eth_getBalance(address: address, block: EthereumBlock(rawValue: block)) { error, balance in
-//                guard let balance = balance, key == Defaults.privateKey else { return }
-//                DispatchQueue.main.async {
-//                    var balanceString = String(balance, radix: 10)
-//                    if balanceString != "0" {
-//                        while balanceString.hasSuffix("0") {
-//                            balanceString.removeLast(1)
-//                        }
-//                        balanceString = "0.\(balanceString) ETH"
-//                    }
-//                    completion(.success(balanceString))
-//                }
-//            }
-//        }
+        let address = String(data: try! EthPrivateKey(hex: key).address().value(), encoding: .utf8)!
+        client.eth_blockNumber { [weak client] error, block in
+            guard let block = block else { return }
+            client?.eth_getBalance(address: address, block: EthereumBlock(rawValue: block)) { error, balance in
+                guard let balance = balance, key == Defaults.privateKey else { return }
+                DispatchQueue.main.async {
+                    var balanceString = String(balance, radix: 10)
+                    if balanceString != "0" {
+                        while balanceString.hasSuffix("0") {
+                            balanceString.removeLast(1)
+                        }
+                        balanceString = "0.\(balanceString) ETH"
+                    }
+                    completion(.success(balanceString))
+                }
+            }
+        }
     }
 
 }
