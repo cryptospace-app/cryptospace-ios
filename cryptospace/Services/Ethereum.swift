@@ -99,7 +99,7 @@ class Ethereum {
         
         let signature = "createNewChallange(string,string)"
         let idString = SimpleString(string: id)
-        let nameString = SimpleString(string: name)
+        let nameString = SimpleString(string: name.lowercased())
         let functionABI = EncodedABIFunction(signature: signature, parameters: [
             ABIString(origin: idString),
             ABIString(origin: nameString)
@@ -119,7 +119,7 @@ class Ethereum {
 
         let signature = "connectToChallenge(string,string)"
         let idString = SimpleString(string: id)
-        let nameString = SimpleString(string: name)
+        let nameString = SimpleString(string: name.lowercased())
         let functionABI = EncodedABIFunction(signature: signature, parameters: [
             ABIString(origin: idString),
             ABIString(origin: nameString)
