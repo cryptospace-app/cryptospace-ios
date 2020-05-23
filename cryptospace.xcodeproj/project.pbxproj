@@ -84,11 +84,11 @@
 			isa = PBXGroup;
 			children = (
 				2C72C1BE2466E4BD00A8AC47 /* EnterKeyViewController.swift */,
+				2CAAB1912479ABB000C297B8 /* EnterNameViewController.swift */,
 				2C72C1C22467345100A8AC47 /* EnterKahootViewController.swift */,
 				2C72C1C4246734A900A8AC47 /* CreateSpaceViewController.swift */,
 				2C72C1C6246734CA00A8AC47 /* JoinSpaceViewController.swift */,
 				2C72C1C8246735D100A8AC47 /* SpaceViewController.swift */,
-				2CAAB1912479ABB000C297B8 /* EnterNameViewController.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";

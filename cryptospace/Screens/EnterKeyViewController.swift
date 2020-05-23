@@ -24,8 +24,6 @@ class EnterKeyViewController: UIViewController {
     
     // TODO: rise button with keyboard - Ivan has code for that
     
-    // TODO: retreive ens name after address is known. if there is no ens name, then push name screen
-    
     @IBAction func textFieldEditingChanged(_ sender: Any) {
         
     }
@@ -44,8 +42,14 @@ class EnterKeyViewController: UIViewController {
         
         if let _ = try? EthPrivateKey(hex: text).address().value() {
             Defaults.privateKey = text
-            let enterKahoot = instantiate(EnterKahootViewController.self)
-            navigationController?.pushViewController(enterKahoot, animated: true)
+            // TODO: retreive ens name after address is known. if there is no ens name, then push name screen
+            if false {
+                let enterKahoot = instantiate(EnterKahootViewController.self)
+                navigationController?.pushViewController(enterKahoot, animated: true)
+            } else {
+                let enterName = instantiate(EnterNameViewController.self)
+                navigationController?.pushViewController(enterName, animated: true)
+            }
         }
     }
     

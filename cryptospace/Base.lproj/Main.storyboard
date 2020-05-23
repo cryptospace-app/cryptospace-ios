@@ -129,8 +129,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="doneButtonTapped:" destination="ckB-od-VHz" eventType="touchUpInside" id="voN-5z-FHZ"/>
-                                    <action selector="enterButtonTapped:" destination="ckB-od-VHz" eventType="touchUpInside" id="pwz-q2-HAl"/>
+                                    <action selector="doneButtonTapped:" destination="ckB-od-VHz" eventType="touchUpInside" id="dhh-qX-RUt"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -150,7 +149,7 @@
                         <viewLayoutGuide key="safeArea" id="qXa-7G-EM1"/>
                     </view>
                     <connections>
-                        <outlet property="enterButton" destination="dau-Rm-hIN" id="GdX-no-GRy"/>
+                        <outlet property="doneButton" destination="dau-Rm-hIN" id="dGq-tc-YBU"/>
                         <outlet property="textField" destination="htT-Go-olB" id="QPJ-bb-Hay"/>
                     </connections>
                 </viewController>

@@ -25,6 +25,13 @@ struct Defaults {
         }
     }
     
-    static var name: String { return "Ivan" } // TODO: name should be provided by user
+    static var name: String {
+        get {
+            return defaults.string(forKey: "name") ?? ""
+        }
+        set {
+            defaults.set(newValue, forKey: "name")
+        }
+    }
     
 }
