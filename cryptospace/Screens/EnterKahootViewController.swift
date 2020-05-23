@@ -13,8 +13,7 @@ class EnterKahootViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.setNavigationBarHidden(true, animated: false)
-        // TODO: initial button title should be "paste"
-        
+        endEditingOnTap()
         Ethereum.shared.getBalance { [weak self] result in
             guard case let .success(balance) = result else { return }
             self?.balanceLabel.text = balance
@@ -29,6 +28,8 @@ class EnterKahootViewController: UIViewController {
     private func showWrongInputError() {
         // TODO: implement
     }
+    
+    // TODO: implement all the same button logic as on 
     
     private func didEnterKahootId(_ kahootId: String) {
         ethereum.getContractChallenge(id: kahootId) { [weak self] result in

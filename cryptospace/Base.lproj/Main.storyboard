@@ -92,20 +92,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gKI-Kh-s1S">
-                                <rect key="frame" x="163" y="438" width="88" height="30"/>
-                                <state key="normal" title="Enter kahoot"/>
-                                <connections>
-                                    <action selector="enterButtonTapped:" destination="PJh-g3-gpx" eventType="touchUpInside" id="9xZ-bO-bFg"/>
-                                </connections>
-                            </button>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2eV-L0-w1S">
-                                <rect key="frame" x="20" y="384" width="374" height="34"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="https://kahoot.it/challenge/0690879?challenge-id=1269fde8-1e13-463b-b93d-6bcf69a83ac2_1590184883761" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2eV-L0-w1S">
+                                <rect key="frame" x="20" y="436" width="374" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mGd-vC-yZB">
-                                <rect key="frame" x="149.5" y="476" width="115" height="30"/>
+                                <rect key="frame" x="149.5" y="123.5" width="115" height="30"/>
                                 <state key="normal" title="Remove account">
                                     <color key="titleColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
@@ -113,9 +106,44 @@
                                     <action selector="removeAccountButtonTapped:" destination="PJh-g3-gpx" eventType="touchUpInside" id="buL-sj-Wvs"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wkV-Zz-bQu">
-                                <rect key="frame" x="207" y="95" width="0.0" height="0.0"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading balance..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wkV-Zz-bQu">
+                                <rect key="frame" x="137.5" y="95" width="139.5" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G3L-sk-YwD">
+                                <rect key="frame" x="20" y="798" width="374" height="52"/>
+                                <color key="backgroundColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <accessibility key="accessibilityConfiguration" identifier="Show all"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="52" id="rNj-z4-2J8"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Enter Kahoot">
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="font">
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                    </preferredSymbolConfiguration>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="12"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="enterButtonTapped:" destination="PJh-g3-gpx" eventType="touchUpInside" id="hTO-Z2-27x"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter link to Kahoot challenge" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="70v-P2-c8u">
+                                <rect key="frame" x="20" y="344.5" width="374" height="76.5"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="32"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="🔗" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xj7-CO-C1t">
+                                <rect key="frame" x="20" y="259.5" width="69" height="77"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="64"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -123,26 +151,32 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="wkV-Zz-bQu" firstAttribute="centerX" secondItem="h4r-zJ-DSt" secondAttribute="centerX" id="2Ta-Ms-KuK"/>
-                            <constraint firstItem="gKI-Kh-s1S" firstAttribute="centerX" secondItem="h4r-zJ-DSt" secondAttribute="centerX" id="LGg-dW-GYJ"/>
-                            <constraint firstItem="mGd-vC-yZB" firstAttribute="top" secondItem="gKI-Kh-s1S" secondAttribute="bottom" constant="8" id="Lzg-8E-C4v"/>
-                            <constraint firstItem="mGd-vC-yZB" firstAttribute="centerX" secondItem="gKI-Kh-s1S" secondAttribute="centerX" id="MHa-dU-JIl"/>
+                            <constraint firstItem="mGd-vC-yZB" firstAttribute="centerX" secondItem="wkV-Zz-bQu" secondAttribute="centerX" id="3ib-gh-wys"/>
+                            <constraint firstItem="2eV-L0-w1S" firstAttribute="top" secondItem="70v-P2-c8u" secondAttribute="bottom" constant="15" id="54u-gz-HEq"/>
+                            <constraint firstItem="xj7-CO-C1t" firstAttribute="leading" secondItem="70v-P2-c8u" secondAttribute="leading" id="6Eo-dN-qIU"/>
+                            <constraint firstItem="mGd-vC-yZB" firstAttribute="top" secondItem="wkV-Zz-bQu" secondAttribute="bottom" constant="8" id="FGm-cY-qB1"/>
+                            <constraint firstItem="h4r-zJ-DSt" firstAttribute="trailing" secondItem="G3L-sk-YwD" secondAttribute="trailing" constant="20" id="Juh-vO-YaX"/>
+                            <constraint firstItem="70v-P2-c8u" firstAttribute="trailing" secondItem="2eV-L0-w1S" secondAttribute="trailing" id="MzJ-ko-fQy"/>
                             <constraint firstItem="2eV-L0-w1S" firstAttribute="leading" secondItem="h4r-zJ-DSt" secondAttribute="leading" constant="20" id="Oov-5M-3lM"/>
-                            <constraint firstItem="gKI-Kh-s1S" firstAttribute="top" secondItem="2eV-L0-w1S" secondAttribute="bottom" constant="20" id="TMD-Es-nXH"/>
+                            <constraint firstItem="h4r-zJ-DSt" firstAttribute="bottom" secondItem="G3L-sk-YwD" secondAttribute="bottom" constant="12" id="aec-8G-VSM"/>
+                            <constraint firstItem="G3L-sk-YwD" firstAttribute="leading" secondItem="h4r-zJ-DSt" secondAttribute="leading" constant="20" id="bkH-he-0rs"/>
+                            <constraint firstItem="70v-P2-c8u" firstAttribute="leading" secondItem="2eV-L0-w1S" secondAttribute="leading" id="gll-ur-jSz"/>
+                            <constraint firstItem="70v-P2-c8u" firstAttribute="top" secondItem="xj7-CO-C1t" secondAttribute="bottom" constant="8" id="hWQ-YO-mBz"/>
                             <constraint firstItem="h4r-zJ-DSt" firstAttribute="trailing" secondItem="2eV-L0-w1S" secondAttribute="trailing" constant="20" id="nPe-qU-FAO"/>
                             <constraint firstItem="wkV-Zz-bQu" firstAttribute="top" secondItem="h4r-zJ-DSt" secondAttribute="top" constant="51" id="sE0-XR-Wq9"/>
-                            <constraint firstItem="gKI-Kh-s1S" firstAttribute="centerY" secondItem="h4r-zJ-DSt" secondAttribute="centerY" id="vmG-Jp-atO"/>
+                            <constraint firstItem="2eV-L0-w1S" firstAttribute="centerY" secondItem="h4r-zJ-DSt" secondAttribute="centerY" id="xKg-ZE-MoS"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="h4r-zJ-DSt"/>
                     </view>
                     <connections>
                         <outlet property="balanceLabel" destination="wkV-Zz-bQu" id="ODj-jA-0QB"/>
-                        <outlet property="enterButton" destination="gKI-Kh-s1S" id="BkW-Hm-lgI"/>
+                        <outlet property="enterButton" destination="G3L-sk-YwD" id="0e5-T4-Xwb"/>
                         <outlet property="textField" destination="2eV-L0-w1S" id="5dl-lJ-tDe"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x9Q-3c-Trc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="903" y="138"/>
+            <point key="canvasLocation" x="847.82608695652175" y="137.94642857142856"/>
         </scene>
         <!--Create Space View Controller-->
         <scene sceneID="tCU-DY-f6I">
@@ -173,7 +207,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GT4-WT-Nb5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1670" y="138"/>
+            <point key="canvasLocation" x="1575" y="138"/>
         </scene>
         <!--Join Space View Controller-->
         <scene sceneID="IHF-yI-hEA">
@@ -204,7 +238,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gFp-Af-UfR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2436" y="138"/>
+            <point key="canvasLocation" x="2284" y="138"/>
         </scene>
         <!--Space View Controller-->
         <scene sceneID="8eE-dG-q5i">
@@ -244,7 +278,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aDT-E6-hLx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3222" y="138"/>
+            <point key="canvasLocation" x="3000" y="138"/>
         </scene>
     </scenes>
 </document>
