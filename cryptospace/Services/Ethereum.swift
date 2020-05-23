@@ -19,7 +19,6 @@ class Ethereum {
     
     private let contractInteractor: ContractInteractor
     
-//    private let contractAddress = EthAddress(hex: "0xd9F3845f8A485d0474Df4bF2F0Fb03e702633F41")
     private let contractAddress = EthAddress(hex: "0x3fdd9353c4b56b9c0ee72083043b3e150f182855")
 
     init() {
@@ -37,7 +36,6 @@ class Ethereum {
         ])
         if let abiMessage = try? contractInteractor.call(function: functionABI) {
             let winner = try? ABIDecoder().string(message: abiMessage)
-            print("winner = \(winner)")
             if winner?.isEmpty == true {
                 return nil
             } else {
@@ -56,7 +54,6 @@ class Ethereum {
         ])
         let abiMessage = try! contractInteractor.call(function: functionABI)
         let bid = try! ABIDecoder().number(message: abiMessage)
-        print("bid = ", try! bid.value().toHexString())
         return bid
     }
     
@@ -77,7 +74,6 @@ class Ethereum {
                 )
         }, index: 0)
         let names = try! decodedMessage.value()
-        print("names = \(names)")
         return names
     }
     
@@ -109,9 +105,6 @@ class Ethereum {
             ABIString(origin: nameString)
         ])
         let privateKey = EthPrivateKey(hex: Defaults.privateKey!)
-        print("bid = ", try! bid.value().toHexString())
-        print("function = ", try! functionABI.value().toHexString())
-        print("address = ", try! privateKey.address().value().toHexString())
         _ = try! contractInteractor.send(function: functionABI, value: bid, sender: privateKey)
 
         // TODO: talk to contract
@@ -157,9 +150,7 @@ class Ethereum {
     func getBalance(completion: @escaping (Result<String, Error>) -> Void) {
         // TODO: process errors
         guard let key = Defaults.privateKey else { return }
-//        let address = String(bytes: try! EthPrivateKey(hex: key).address().value().bytes)
         let address = "0x" + (try! EthPrivateKey(hex: key).address().value().toHexString())
-//        let address = String(data: try! EthPrivateKey(hex: key).address().value(), encoding: .utf8)!
         client.eth_blockNumber { [weak client] error, block in
             guard let block = block else { return }
             client?.eth_getBalance(address: address, block: EthereumBlock(rawValue: block)) { error, balance in
