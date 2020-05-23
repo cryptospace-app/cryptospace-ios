@@ -6,6 +6,7 @@ class EnterKahootViewController: UIViewController {
 
     private let ethereum = Ethereum.shared
     
+    @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var balanceLabel: UILabel!
     @IBOutlet weak var textField: UITextField!
     @IBOutlet weak var enterButton: UIButton!
@@ -14,6 +15,7 @@ class EnterKahootViewController: UIViewController {
         super.viewDidLoad()
         navigationController?.setNavigationBarHidden(true, animated: false)
         endEditingOnTap()
+        nameLabel.text = Defaults.name
         Ethereum.shared.getBalance { [weak self] result in
             guard case let .success(balance) = result else { return }
             self?.balanceLabel.text = balance
@@ -29,7 +31,7 @@ class EnterKahootViewController: UIViewController {
         // TODO: implement
     }
     
-    // TODO: implement all the same button logic as on 
+    // TODO: implement all the same button logic as on
     
     private func didEnterKahootId(_ kahootId: String) {
         ethereum.getContractChallenge(id: kahootId) { [weak self] result in
