@@ -24,6 +24,8 @@ class EnterKeyViewController: UIViewController {
     
     // TODO: rise button with keyboard - Ivan has code for that
     
+    // TODO: retreive ens name after address is known. if there is no ens name, then push name screen
+    
     @IBAction func textFieldEditingChanged(_ sender: Any) {
         
     }

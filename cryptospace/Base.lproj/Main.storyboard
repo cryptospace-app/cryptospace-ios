@@ -82,7 +82,81 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="139" y="138"/>
+            <point key="canvasLocation" x="-533" y="138"/>
+        </scene>
+        <!--Enter Name View Controller-->
+        <scene sceneID="9Ji-bS-70k">
+            <objects>
+                <viewController storyboardIdentifier="EnterNameViewController" id="ckB-od-VHz" customClass="EnterNameViewController" customModule="cryptospace" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="OXH-qW-3mi">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Charlie" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="htT-Go-olB">
+                                <rect key="frame" x="20" y="245" width="374" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What's your name?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UHG-5G-1Ct">
+                                <rect key="frame" x="20" y="169" width="285" height="39"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="32"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="👋" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3m0-4L-7AM">
+                                <rect key="frame" x="20" y="84" width="69" height="77"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="64"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dau-Rm-hIN">
+                                <rect key="frame" x="20" y="798" width="374" height="52"/>
+                                <color key="backgroundColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <accessibility key="accessibilityConfiguration" identifier="Show all"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="52" id="21V-9g-2Bm"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Done">
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="font">
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                    </preferredSymbolConfiguration>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="12"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="doneButtonTapped:" destination="ckB-od-VHz" eventType="touchUpInside" id="voN-5z-FHZ"/>
+                                    <action selector="enterButtonTapped:" destination="ckB-od-VHz" eventType="touchUpInside" id="pwz-q2-HAl"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="3m0-4L-7AM" firstAttribute="top" secondItem="qXa-7G-EM1" secondAttribute="top" constant="40" id="4Sr-6j-Gmq"/>
+                            <constraint firstItem="htT-Go-olB" firstAttribute="leading" secondItem="qXa-7G-EM1" secondAttribute="leading" constant="20" id="EqS-Ye-zLe"/>
+                            <constraint firstItem="qXa-7G-EM1" firstAttribute="trailing" secondItem="dau-Rm-hIN" secondAttribute="trailing" constant="20" id="K4Z-H0-T8h"/>
+                            <constraint firstItem="qXa-7G-EM1" firstAttribute="trailing" secondItem="htT-Go-olB" secondAttribute="trailing" constant="20" id="TZh-JD-IKl"/>
+                            <constraint firstItem="UHG-5G-1Ct" firstAttribute="leading" secondItem="3m0-4L-7AM" secondAttribute="leading" id="Tmb-Xe-mYO"/>
+                            <constraint firstItem="qXa-7G-EM1" firstAttribute="bottom" secondItem="dau-Rm-hIN" secondAttribute="bottom" constant="12" id="XFf-2B-LhO"/>
+                            <constraint firstItem="UHG-5G-1Ct" firstAttribute="top" secondItem="3m0-4L-7AM" secondAttribute="bottom" constant="8" id="fzo-po-jZn"/>
+                            <constraint firstItem="dau-Rm-hIN" firstAttribute="leading" secondItem="qXa-7G-EM1" secondAttribute="leading" constant="20" id="jFU-qK-5Cy"/>
+                            <constraint firstItem="htT-Go-olB" firstAttribute="top" secondItem="UHG-5G-1Ct" secondAttribute="bottom" constant="37" id="kXm-Kd-3yb"/>
+                            <constraint firstItem="UHG-5G-1Ct" firstAttribute="leading" secondItem="htT-Go-olB" secondAttribute="leading" id="wPc-LG-vji"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="qXa-7G-EM1"/>
+                    </view>
+                    <connections>
+                        <outlet property="enterButton" destination="dau-Rm-hIN" id="GdX-no-GRy"/>
+                        <outlet property="textField" destination="htT-Go-olB" id="QPJ-bb-Hay"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aHx-AZ-jdA" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="159" y="138"/>
         </scene>
         <!--Enter Kahoot View Controller-->
         <scene sceneID="tvD-uX-lao">
@@ -147,6 +221,12 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="name label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jrm-fc-3vt">
+                                <rect key="frame" x="165.5" y="66" width="83" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
@@ -158,12 +238,14 @@
                             <constraint firstItem="h4r-zJ-DSt" firstAttribute="trailing" secondItem="G3L-sk-YwD" secondAttribute="trailing" constant="20" id="Juh-vO-YaX"/>
                             <constraint firstItem="70v-P2-c8u" firstAttribute="trailing" secondItem="2eV-L0-w1S" secondAttribute="trailing" id="MzJ-ko-fQy"/>
                             <constraint firstItem="2eV-L0-w1S" firstAttribute="leading" secondItem="h4r-zJ-DSt" secondAttribute="leading" constant="20" id="Oov-5M-3lM"/>
+                            <constraint firstItem="wkV-Zz-bQu" firstAttribute="top" secondItem="Jrm-fc-3vt" secondAttribute="bottom" constant="8" id="ZHD-xX-HNx"/>
                             <constraint firstItem="h4r-zJ-DSt" firstAttribute="bottom" secondItem="G3L-sk-YwD" secondAttribute="bottom" constant="12" id="aec-8G-VSM"/>
                             <constraint firstItem="G3L-sk-YwD" firstAttribute="leading" secondItem="h4r-zJ-DSt" secondAttribute="leading" constant="20" id="bkH-he-0rs"/>
                             <constraint firstItem="70v-P2-c8u" firstAttribute="leading" secondItem="2eV-L0-w1S" secondAttribute="leading" id="gll-ur-jSz"/>
                             <constraint firstItem="70v-P2-c8u" firstAttribute="top" secondItem="xj7-CO-C1t" secondAttribute="bottom" constant="8" id="hWQ-YO-mBz"/>
                             <constraint firstItem="h4r-zJ-DSt" firstAttribute="trailing" secondItem="2eV-L0-w1S" secondAttribute="trailing" constant="20" id="nPe-qU-FAO"/>
                             <constraint firstItem="wkV-Zz-bQu" firstAttribute="top" secondItem="h4r-zJ-DSt" secondAttribute="top" constant="51" id="sE0-XR-Wq9"/>
+                            <constraint firstItem="Jrm-fc-3vt" firstAttribute="centerX" secondItem="h4r-zJ-DSt" secondAttribute="centerX" id="sd9-tU-dob"/>
                             <constraint firstItem="2eV-L0-w1S" firstAttribute="centerY" secondItem="h4r-zJ-DSt" secondAttribute="centerY" id="xKg-ZE-MoS"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="h4r-zJ-DSt"/>
@@ -186,23 +268,41 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pdg-p3-6O6">
-                                <rect key="frame" x="161.5" y="438" width="91" height="30"/>
-                                <state key="normal" title="Create space"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q4F-D4-Kud">
+                                <rect key="frame" x="20" y="798" width="374" height="52"/>
+                                <color key="backgroundColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <accessibility key="accessibilityConfiguration" identifier="Show all"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="52" id="dte-gx-dOh"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Create space">
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="font">
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                    </preferredSymbolConfiguration>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="12"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="createButtonTapped:" destination="FBq-FJ-8fo" eventType="touchUpInside" id="YHi-iS-DCF"/>
+                                    <action selector="createButtonTapped:" destination="FBq-FJ-8fo" eventType="touchUpInside" id="YI1-f2-0QB"/>
+                                    <action selector="enterButtonTapped:" destination="PJh-g3-gpx" eventType="touchUpInside" id="gdU-gv-Ttz"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="Pdg-p3-6O6" firstAttribute="centerY" secondItem="Urj-BV-oZM" secondAttribute="centerY" id="J3c-b3-jH4"/>
-                            <constraint firstItem="Pdg-p3-6O6" firstAttribute="centerX" secondItem="Urj-BV-oZM" secondAttribute="centerX" id="ydJ-Lj-obT"/>
+                            <constraint firstItem="Q4F-D4-Kud" firstAttribute="leading" secondItem="Urj-BV-oZM" secondAttribute="leading" constant="20" id="6rv-Rj-ieX"/>
+                            <constraint firstItem="Urj-BV-oZM" firstAttribute="trailing" secondItem="Q4F-D4-Kud" secondAttribute="trailing" constant="20" id="mmr-Jp-6Iz"/>
+                            <constraint firstItem="Urj-BV-oZM" firstAttribute="bottom" secondItem="Q4F-D4-Kud" secondAttribute="bottom" constant="12" id="wDz-5J-NCC"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Urj-BV-oZM"/>
                     </view>
                     <connections>
-                        <outlet property="createButton" destination="Pdg-p3-6O6" id="R2X-9m-fcj"/>
+                        <outlet property="createButton" destination="Q4F-D4-Kud" id="3sq-qa-zWH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GT4-WT-Nb5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -217,23 +317,40 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7ru-2o-P7X">
-                                <rect key="frame" x="170" y="438" width="74" height="30"/>
-                                <state key="normal" title="Join space"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VPB-0Z-peh">
+                                <rect key="frame" x="20" y="798" width="374" height="52"/>
+                                <color key="backgroundColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <accessibility key="accessibilityConfiguration" identifier="Show all"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="52" id="lDe-vo-Olj"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Join space">
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="font">
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                    </preferredSymbolConfiguration>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="12"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="joinButtonTapped:" destination="qpd-CM-4Mg" eventType="touchUpInside" id="U6s-DO-dDR"/>
+                                    <action selector="joinButtonTapped:" destination="qpd-CM-4Mg" eventType="touchUpInside" id="r3d-1v-QrG"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="7ru-2o-P7X" firstAttribute="centerY" secondItem="nq1-Pp-8XH" secondAttribute="centerY" id="Ai3-1U-7wR"/>
-                            <constraint firstItem="7ru-2o-P7X" firstAttribute="centerX" secondItem="nq1-Pp-8XH" secondAttribute="centerX" id="mlA-Nn-jTP"/>
+                            <constraint firstItem="nq1-Pp-8XH" firstAttribute="bottom" secondItem="VPB-0Z-peh" secondAttribute="bottom" constant="12" id="QVH-1y-1cz"/>
+                            <constraint firstItem="nq1-Pp-8XH" firstAttribute="trailing" secondItem="VPB-0Z-peh" secondAttribute="trailing" constant="20" id="azH-HP-4e4"/>
+                            <constraint firstItem="VPB-0Z-peh" firstAttribute="leading" secondItem="nq1-Pp-8XH" secondAttribute="leading" constant="20" id="bk6-SN-zW2"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="nq1-Pp-8XH"/>
                     </view>
                     <connections>
-                        <outlet property="joinButton" destination="7ru-2o-P7X" id="U9M-1p-qP2"/>
+                        <outlet property="joinButton" destination="VPB-0Z-peh" id="x5c-6K-8jw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gFp-Af-UfR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -252,19 +369,36 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lit-Ow-jtb">
-                                <rect key="frame" x="175.5" y="812" width="63" height="30"/>
-                                <state key="normal" title="Get prize"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ACt-vf-FFk">
+                                <rect key="frame" x="20" y="798" width="374" height="52"/>
+                                <color key="backgroundColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <accessibility key="accessibilityConfiguration" identifier="Show all"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="52" id="eU8-Yz-oEe"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Get Prize">
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="font">
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                    </preferredSymbolConfiguration>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="12"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="getPrizeButtonTapped:" destination="LIw-Hb-teH" eventType="touchUpInside" id="glY-2W-Urp"/>
+                                    <action selector="getPrizeButtonTapped:" destination="LIw-Hb-teH" eventType="touchUpInside" id="v3L-gl-cM4"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="Lit-Ow-jtb" firstAttribute="centerX" secondItem="Oam-Kx-jm2" secondAttribute="centerX" id="6QG-og-c1v"/>
+                            <constraint firstItem="Oam-Kx-jm2" firstAttribute="trailing" secondItem="ACt-vf-FFk" secondAttribute="trailing" constant="20" id="CS6-VK-kvp"/>
+                            <constraint firstItem="Oam-Kx-jm2" firstAttribute="bottom" secondItem="ACt-vf-FFk" secondAttribute="bottom" constant="12" id="Cor-qS-Xcd"/>
+                            <constraint firstItem="ACt-vf-FFk" firstAttribute="leading" secondItem="Oam-Kx-jm2" secondAttribute="leading" constant="20" id="F30-PS-8q1"/>
                             <constraint firstItem="6XU-yL-FbL" firstAttribute="top" secondItem="JL3-t1-6j1" secondAttribute="top" id="FnH-nh-FN3"/>
-                            <constraint firstItem="Oam-Kx-jm2" firstAttribute="bottom" secondItem="Lit-Ow-jtb" secondAttribute="bottom" constant="20" id="KgJ-JJ-4hS"/>
                             <constraint firstItem="Oam-Kx-jm2" firstAttribute="trailing" secondItem="6XU-yL-FbL" secondAttribute="trailing" id="hWd-JN-Wv9"/>
                             <constraint firstItem="6XU-yL-FbL" firstAttribute="leading" secondItem="Oam-Kx-jm2" secondAttribute="leading" id="mBF-yg-YDE"/>
                             <constraint firstAttribute="bottom" secondItem="6XU-yL-FbL" secondAttribute="bottom" id="vAE-fA-QNu"/>
@@ -272,13 +406,13 @@
                         <viewLayoutGuide key="safeArea" id="Oam-Kx-jm2"/>
                     </view>
                     <connections>
-                        <outlet property="getPrizeButton" destination="Lit-Ow-jtb" id="uFA-ed-tf1"/>
+                        <outlet property="getPrizeButton" destination="ACt-vf-FFk" id="jeq-wo-ITz"/>
                         <outlet property="tableView" destination="6XU-yL-FbL" id="B1m-Pu-CCU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aDT-E6-hLx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3000" y="138"/>
+            <point key="canvasLocation" x="3000.0000000000005" y="137.94642857142856"/>
         </scene>
     </scenes>
 </document>
