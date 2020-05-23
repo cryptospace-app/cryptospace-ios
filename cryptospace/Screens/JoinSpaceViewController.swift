@@ -8,6 +8,8 @@ class JoinSpaceViewController: UIViewController {
     private let ethereum = Ethereum.shared
     
     @IBOutlet weak var joinButton: UIButton!
+    @IBOutlet weak var challengeNameLabel: UILabel!
+    @IBOutlet weak var prizeSizeLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()

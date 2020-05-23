@@ -171,7 +171,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mGd-vC-yZB">
-                                <rect key="frame" x="149.5" y="123.5" width="115" height="30"/>
+                                <rect key="frame" x="20" y="123.5" width="115" height="30"/>
                                 <state key="normal" title="Remove account">
                                     <color key="titleColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
@@ -180,7 +180,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading balance..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wkV-Zz-bQu">
-                                <rect key="frame" x="137.5" y="95" width="139.5" height="20.5"/>
+                                <rect key="frame" x="20" y="95" width="139.5" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -221,7 +221,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="name label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jrm-fc-3vt">
-                                <rect key="frame" x="165.5" y="66" width="83" height="21"/>
+                                <rect key="frame" x="20" y="66" width="83" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -229,11 +229,10 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="wkV-Zz-bQu" firstAttribute="centerX" secondItem="h4r-zJ-DSt" secondAttribute="centerX" id="2Ta-Ms-KuK"/>
-                            <constraint firstItem="mGd-vC-yZB" firstAttribute="centerX" secondItem="wkV-Zz-bQu" secondAttribute="centerX" id="3ib-gh-wys"/>
                             <constraint firstItem="2eV-L0-w1S" firstAttribute="top" secondItem="70v-P2-c8u" secondAttribute="bottom" constant="15" id="54u-gz-HEq"/>
                             <constraint firstItem="xj7-CO-C1t" firstAttribute="leading" secondItem="70v-P2-c8u" secondAttribute="leading" id="6Eo-dN-qIU"/>
                             <constraint firstItem="mGd-vC-yZB" firstAttribute="top" secondItem="wkV-Zz-bQu" secondAttribute="bottom" constant="8" id="FGm-cY-qB1"/>
+                            <constraint firstItem="Jrm-fc-3vt" firstAttribute="leading" secondItem="h4r-zJ-DSt" secondAttribute="leading" constant="20" id="Jo9-uI-Ygd"/>
                             <constraint firstItem="h4r-zJ-DSt" firstAttribute="trailing" secondItem="G3L-sk-YwD" secondAttribute="trailing" constant="20" id="Juh-vO-YaX"/>
                             <constraint firstItem="70v-P2-c8u" firstAttribute="trailing" secondItem="2eV-L0-w1S" secondAttribute="trailing" id="MzJ-ko-fQy"/>
                             <constraint firstItem="2eV-L0-w1S" firstAttribute="leading" secondItem="h4r-zJ-DSt" secondAttribute="leading" constant="20" id="Oov-5M-3lM"/>
@@ -242,9 +241,10 @@
                             <constraint firstItem="G3L-sk-YwD" firstAttribute="leading" secondItem="h4r-zJ-DSt" secondAttribute="leading" constant="20" id="bkH-he-0rs"/>
                             <constraint firstItem="70v-P2-c8u" firstAttribute="leading" secondItem="2eV-L0-w1S" secondAttribute="leading" id="gll-ur-jSz"/>
                             <constraint firstItem="70v-P2-c8u" firstAttribute="top" secondItem="xj7-CO-C1t" secondAttribute="bottom" constant="8" id="hWQ-YO-mBz"/>
+                            <constraint firstItem="mGd-vC-yZB" firstAttribute="leading" secondItem="wkV-Zz-bQu" secondAttribute="leading" id="ih5-GH-yRI"/>
+                            <constraint firstItem="wkV-Zz-bQu" firstAttribute="leading" secondItem="Jrm-fc-3vt" secondAttribute="leading" id="k3B-kt-vf0"/>
                             <constraint firstItem="h4r-zJ-DSt" firstAttribute="trailing" secondItem="2eV-L0-w1S" secondAttribute="trailing" constant="20" id="nPe-qU-FAO"/>
                             <constraint firstItem="wkV-Zz-bQu" firstAttribute="top" secondItem="h4r-zJ-DSt" secondAttribute="top" constant="51" id="sE0-XR-Wq9"/>
-                            <constraint firstItem="Jrm-fc-3vt" firstAttribute="centerX" secondItem="h4r-zJ-DSt" secondAttribute="centerX" id="sd9-tU-dob"/>
                             <constraint firstItem="2eV-L0-w1S" firstAttribute="centerY" secondItem="h4r-zJ-DSt" secondAttribute="centerY" id="xKg-ZE-MoS"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="h4r-zJ-DSt"/>
@@ -277,7 +277,7 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <state key="normal" title="Create space">
+                                <state key="normal" title="Create cryptospace">
                                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="font">
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                     </preferredSymbolConfiguration>
@@ -292,12 +292,38 @@
                                     <action selector="enterButtonTapped:" destination="PJh-g3-gpx" eventType="touchUpInside" id="gdU-gv-Ttz"/>
                                 </connections>
                             </button>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="0.01 ETH" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="237-iF-uj2">
+                                <rect key="frame" x="20" y="436" width="374" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Place initial bet" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EXx-ng-8jz">
+                                <rect key="frame" x="20" y="382.5" width="374" height="38.5"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="32"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="triangle" translatesAutoresizingMaskIntoConstraints="NO" id="6oA-KI-wwn">
+                                <rect key="frame" x="20" y="289.5" width="77" height="77"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="77" id="qsT-dZ-Fhb"/>
+                                    <constraint firstAttribute="height" constant="77" id="xlA-vQ-7Zm"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="237-iF-uj2" firstAttribute="top" secondItem="EXx-ng-8jz" secondAttribute="bottom" constant="15" id="1EK-US-p6o"/>
+                            <constraint firstItem="EXx-ng-8jz" firstAttribute="trailing" secondItem="237-iF-uj2" secondAttribute="trailing" id="2q4-Cb-IAV"/>
                             <constraint firstItem="Q4F-D4-Kud" firstAttribute="leading" secondItem="Urj-BV-oZM" secondAttribute="leading" constant="20" id="6rv-Rj-ieX"/>
+                            <constraint firstItem="EXx-ng-8jz" firstAttribute="top" secondItem="6oA-KI-wwn" secondAttribute="bottom" constant="16" id="a0C-pA-baS"/>
+                            <constraint firstItem="237-iF-uj2" firstAttribute="centerY" secondItem="Urj-BV-oZM" secondAttribute="centerY" id="gBh-q0-T3C"/>
+                            <constraint firstItem="237-iF-uj2" firstAttribute="leading" secondItem="Urj-BV-oZM" secondAttribute="leading" constant="20" id="kFR-bW-ahv"/>
                             <constraint firstItem="Urj-BV-oZM" firstAttribute="trailing" secondItem="Q4F-D4-Kud" secondAttribute="trailing" constant="20" id="mmr-Jp-6Iz"/>
+                            <constraint firstItem="Urj-BV-oZM" firstAttribute="trailing" secondItem="237-iF-uj2" secondAttribute="trailing" constant="20" id="ozO-Qx-Cak"/>
                             <constraint firstItem="Urj-BV-oZM" firstAttribute="bottom" secondItem="Q4F-D4-Kud" secondAttribute="bottom" constant="12" id="wDz-5J-NCC"/>
+                            <constraint firstItem="EXx-ng-8jz" firstAttribute="leading" secondItem="237-iF-uj2" secondAttribute="leading" id="xOf-QY-clF"/>
+                            <constraint firstItem="6oA-KI-wwn" firstAttribute="leading" secondItem="EXx-ng-8jz" secondAttribute="leading" id="ydb-NH-nXs"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Urj-BV-oZM"/>
                     </view>
@@ -307,7 +333,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GT4-WT-Nb5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1575" y="138"/>
+            <point key="canvasLocation" x="1573.913043478261" y="137.94642857142856"/>
         </scene>
         <!--Join Space View Controller-->
         <scene sceneID="IHF-yI-hEA">
@@ -326,7 +352,7 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <state key="normal" title="Join space">
+                                <state key="normal" title="Join for 0.001 ETH">
                                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="font">
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                     </preferredSymbolConfiguration>
@@ -340,17 +366,45 @@
                                     <action selector="joinButtonTapped:" destination="qpd-CM-4Mg" eventType="touchUpInside" id="r3d-1v-QrG"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Challenge name" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kyx-po-ODo">
+                                <rect key="frame" x="20" y="434" width="374" height="38.5"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="32"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="triangle" translatesAutoresizingMaskIntoConstraints="NO" id="Tci-EL-6sK">
+                                <rect key="frame" x="20" y="341" width="77" height="77"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="77" id="jee-iO-9hF"/>
+                                    <constraint firstAttribute="width" constant="77" id="oRV-1c-b3P"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Winner gets X" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5ZU-h8-tpL">
+                                <rect key="frame" x="20" y="488.5" width="108" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="Tci-EL-6sK" firstAttribute="leading" secondItem="Kyx-po-ODo" secondAttribute="leading" id="AWh-Sa-Yqy"/>
+                            <constraint firstItem="5ZU-h8-tpL" firstAttribute="top" secondItem="Kyx-po-ODo" secondAttribute="bottom" constant="16" id="BmK-9t-k6o"/>
+                            <constraint firstItem="Kyx-po-ODo" firstAttribute="top" secondItem="Tci-EL-6sK" secondAttribute="bottom" constant="16" id="F9Y-Ph-DnY"/>
                             <constraint firstItem="nq1-Pp-8XH" firstAttribute="bottom" secondItem="VPB-0Z-peh" secondAttribute="bottom" constant="12" id="QVH-1y-1cz"/>
                             <constraint firstItem="nq1-Pp-8XH" firstAttribute="trailing" secondItem="VPB-0Z-peh" secondAttribute="trailing" constant="20" id="azH-HP-4e4"/>
                             <constraint firstItem="VPB-0Z-peh" firstAttribute="leading" secondItem="nq1-Pp-8XH" secondAttribute="leading" constant="20" id="bk6-SN-zW2"/>
+                            <constraint firstItem="Kyx-po-ODo" firstAttribute="centerY" secondItem="nq1-Pp-8XH" secondAttribute="centerY" id="cbT-1H-ie3"/>
+                            <constraint firstItem="nq1-Pp-8XH" firstAttribute="trailing" secondItem="Kyx-po-ODo" secondAttribute="trailing" constant="20" id="nsh-N7-jOy"/>
+                            <constraint firstItem="Kyx-po-ODo" firstAttribute="leading" secondItem="nq1-Pp-8XH" secondAttribute="leading" constant="20" id="wGe-ge-9nq"/>
+                            <constraint firstItem="5ZU-h8-tpL" firstAttribute="leading" secondItem="Kyx-po-ODo" secondAttribute="leading" id="z75-gy-OsQ"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="nq1-Pp-8XH"/>
                     </view>
                     <connections>
+                        <outlet property="challengeNameLabel" destination="Kyx-po-ODo" id="pBd-2A-eHb"/>
                         <outlet property="joinButton" destination="VPB-0Z-peh" id="x5c-6K-8jw"/>
+                        <outlet property="prizeSizeLabel" destination="5ZU-h8-tpL" id="MqP-fw-stD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gFp-Af-UfR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -415,4 +469,7 @@
             <point key="canvasLocation" x="3000.0000000000005" y="137.94642857142856"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="triangle" width="128" height="128"/>
+    </resources>
 </document>
