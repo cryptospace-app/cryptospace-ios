@@ -12,7 +12,7 @@ class EnterKeyViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.setNavigationBarHidden(true, animated: false)
-        // TODO: initial button title should be "paste"
+        endEditingOnTap()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -20,7 +20,21 @@ class EnterKeyViewController: UIViewController {
         textField.text = nil
     }
     
+    // TODO: update button title when valid key is entered
+    
+    // TODO: rise button with keyboard - Ivan has code for that
+    
+    @IBAction func textFieldEditingChanged(_ sender: Any) {
+        
+    }
+    
+    
+    @IBAction func textFieldEditingDidEnd(_ sender: Any) {
+        
+    }
+    
     @IBAction func enterButtonTapped(_ sender: Any) {
+        // TODO: button should paste unless valid private key is entered
         guard let text = textField.text, !text.isEmpty else {
             textField.text = UIPasteboard.general.string
             return
