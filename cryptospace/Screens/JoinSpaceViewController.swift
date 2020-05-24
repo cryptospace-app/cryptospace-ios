@@ -20,7 +20,7 @@ class JoinSpaceViewController: UIViewController {
         navigationController?.setNavigationBarHidden(true, animated: false)
         let prizeString = "1 ETH"
         let bidString = "0.1 ETH"
-        prizeSizeLabel.text = "You can win \(prizeString)"
+        prizeSizeLabel.text = "Prize is \(prizeString)"
         joinButton.setTitle("Join for \(bidString)", for: .normal)
     }
 
