@@ -28,6 +28,13 @@ class Ethereum {
         )
     }
     
+    // TODO: растащить на функции с колбэками.
+//    - bid
+//    - раздали ли деньги
+//    - текущие участники с контракта
+//    - winner с контракта
+//    - (bid, участники)
+    
     private func getChallengeWinner(id: String) -> String? {
         let signature = "getChallengeWinner(string)"
         let ethString = SimpleString(string: id)
