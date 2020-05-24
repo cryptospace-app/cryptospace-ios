@@ -48,6 +48,10 @@ class SpaceViewController: UIViewController {
         }
     }
     
+    private func didFailToSendPrize() {
+        // TODO: show error message
+    }
+    
     deinit {
         refreshTimer?.invalidate()
         refreshTimer = nil
@@ -102,15 +106,14 @@ class SpaceViewController: UIViewController {
         navigationController?.popToViewController(enterKahoot, animated: true)
     }
     
-    private func sendPrize() {
+    private func sendPrize(leaveIfFailed: Bool) {
+        actionButton.setWaiting(true)
         ethereum.sendPrize(id: kahootId) { [weak self] success in
-            if success {
-                guard let enterKahoot = self?.navigationController?.viewControllers.first(where: { $0 is EnterKahootViewController }) else { return }
-                self?.navigationController?.popToViewController(enterKahoot, animated: true)
-                Defaults.kahootId = nil
-                // TODO: show some congratulation
+            if success || leaveIfFailed {
+                self?.leaveGame()
             } else {
-                // TODO: process error
+                self?.actionButton.setWaiting(false)
+                self?.didFailToSendPrize()
             }
         }
     }
@@ -120,11 +123,11 @@ class SpaceViewController: UIViewController {
         case .toBePlayed:
             openGame()
         case .youLost:
-            break // просто ливать с экрана
+            leaveGame()
         case .gameWasUnfair:
-            break // отправляется транзакция sendPrize. если не отправилась, просто вызывается leaveGame
+            sendPrize(leaveIfFailed: true)
         case .youWon:
-            break // вызывает sendPrize, кнопка переходит в waiting state, пока не отправилась транзакция. если не отправилась, кнопка возвращается в обычное состояние, показывается сообщение об ошибке.
+            sendPrize(leaveIfFailed: false)
         case .someoneElseIsPlaying, .unknown:
             break
         }
