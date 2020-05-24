@@ -1,6 +1,7 @@
 // Copyright © 2020 cryptospace. All rights reserved.
 
 import UIKit
+import Web3Swift
 
 class CreateSpaceViewController: KeyboardDependentViewController {
 
@@ -14,17 +15,46 @@ class CreateSpaceViewController: KeyboardDependentViewController {
         navigationController?.setNavigationBarHidden(true, animated: false)
     }
 
-    @IBAction func createButtonTapped(_ sender: Any) {
-        let kahootId = self.kahootId!
-        // TODO: name and bid size should be correct
-        ethereum.createContractChallenge(id: kahootId, name: Defaults.name, bidSize: 0.001) { [weak self] success in
-            if success {
-                Defaults.kahootId = kahootId
-                let space = instantiate(SpaceViewController.self)
-                space.kahootId = kahootId
-                self?.navigationController?.pushViewController(space, animated: true)
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        createButton.setWaiting(false)
+    }
+    
+    private func didFailToCreate() {
+        createButton.setWaiting(false)
+        // TODO: flash error message
+    }
+    
+    private func didCreateChallenge(bid: EthNumber) {
+        Defaults.kahootId = kahootId
+        let space = instantiate(SpaceViewController.self)
+        space.kahootId = kahootId
+        space.bidSize = bid
+        navigationController?.pushViewController(space, animated: true)
+    }
+    
+    private func didSendCreateTransaction(bid: EthNumber) {
+        ethereum.getBid(id: kahootId) { [weak self] result in
+            if case let .success(resultBid) = result, resultBid != nil {
+                self?.didCreateChallenge(bid: bid)
             } else {
-                // TODO: process error
+                DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                    self?.didSendCreateTransaction(bid: bid)
+                }
+            }
+        }
+    }
+    
+    @IBAction func createButtonTapped(_ sender: Any) {
+        let bidStr = String(UInt64(0.001 * 1e18)) // TODO: get bid size from text field
+        let bid = EthNumber(decimal: bidStr)
+        let kahootId = self.kahootId!
+        createButton.setWaiting(true)
+        ethereum.createContractChallenge(id: kahootId, name: Defaults.name, bid: bid) { [weak self] success in
+            if success {
+                self?.didSendCreateTransaction(bid: bid)
+            } else {
+                self?.didFailToCreate()
             }
         }
     }

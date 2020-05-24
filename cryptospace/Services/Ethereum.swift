@@ -130,14 +130,10 @@ class Ethereum {
         }
     }
     
-    func createContractChallenge(id: String, name: String, bidSize: Double, completion: @escaping (Bool) -> Void) {
+    func createContractChallenge(id: String, name: String, bid: EthNumber, completion: @escaping (Bool) -> Void) {
         // TODO: увести на бэкграунд тред
         // Вызывать completion на мейн треде
         // completion(false) — если по любой причине не удалось создать
-        
-        
-        let bidStr = String(UInt64(bidSize * 1e18))
-        let bid = EthNumber(decimal: bidStr)
         
         let signature = "createNewChallange(string,string)"
         let idString = SimpleString(string: id)

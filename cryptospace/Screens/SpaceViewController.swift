@@ -1,10 +1,12 @@
 // Copyright © 2020 cryptospace. All rights reserved.
 
 import UIKit
+import Web3Swift
 
 class SpaceViewController: UIViewController {
 
     var kahootId: String!
+    var bidSize: EthNumber?
     
     private let ethereum = Ethereum.shared
     private var results = [String]()
