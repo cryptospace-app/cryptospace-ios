@@ -20,18 +20,46 @@ class JoinSpaceViewController: UIViewController {
         navigationController?.setNavigationBarHidden(true, animated: false)
     }
 
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        joinButton.setWaiting(false)
+    }
+    
+    private func didFailToJoin() {
+        joinButton.setWaiting(false)
+        // TODO: flash error message
+    }
+    
+    private func didJoinChallenge(withPlayers players: [String]) {
+        Defaults.kahootId = challengeId
+        let space = instantiate(SpaceViewController.self)
+        space.kahootId = challengeId
+        space.bidSize = bid
+        space.playersFromContract = players
+        navigationController?.pushViewController(space, animated: true)
+    }
+    
+    private func didSendJoinTransaction() {
+        ethereum.getPlayers(id: challengeId) { [weak self] result in
+            if case let .success(players) = result, players.contains(where: { $0.lowercased() == Defaults.name.lowercased() }) {
+                self?.didJoinChallenge(withPlayers: players)
+            } else {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                    self?.didSendJoinTransaction()
+                }
+            }
+        }
+    }
+    
     @IBAction func joinButtonTapped(_ sender: Any) {
-        // TODO: implement join
-//        ethereum.joinContractChallenge(id: challenge.id, name: Defaults.name, bidSize: 0.01) { [weak self] success in
-//            if success {
-//                Defaults.kahootId = challenge.id // TODO: it'd better to store entire challenge model
-//                let space = instantiate(SpaceViewController.self)
-//                space.kahootId = challenge.id
-//                self?.navigationController?.pushViewController(space, animated: true)
-//            } else {
-//                // TODO: process error
-//            }
-//        }
+        joinButton.setWaiting(true)
+        ethereum.joinContractChallenge(id: challengeId, name: Defaults.name, bid: bid) { [weak self] success in
+            if success {
+                self?.didSendJoinTransaction()
+            } else {
+                self?.didFailToJoin()
+            }
+        }
     }
     
 }

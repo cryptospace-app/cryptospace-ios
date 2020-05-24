@@ -7,6 +7,7 @@ class SpaceViewController: UIViewController {
 
     var kahootId: String!
     var bidSize: EthNumber?
+    var playersFromContract = [String]()
     
     private let ethereum = Ethereum.shared
     private var results = [String]()

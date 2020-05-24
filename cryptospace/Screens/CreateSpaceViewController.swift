@@ -38,7 +38,7 @@ class CreateSpaceViewController: KeyboardDependentViewController {
             if case let .success(resultBid) = result, resultBid != nil {
                 self?.didCreateChallenge(bid: bid)
             } else {
-                DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
                     self?.didSendCreateTransaction(bid: bid)
                 }
             }
