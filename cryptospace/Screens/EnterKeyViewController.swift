@@ -44,23 +44,6 @@ class EnterKeyViewController: UIViewController {
         
     }
     
-    private let ens = EthereumNameService(
-        client: EthereumClient(url:
-            URL(string: "https://ropsten.infura.io/v3/3f99b6096fda424bbb26e17866dcddfc")!
-        ),
-        registryAddress: EthereumAddress("0x112234455c3a32fd11230c42e7bccd4a84e02010")
-    )
-    
-    private func getENSName(address: String, completion: @escaping (String?) -> Void) {
-        ens.resolve(address: EthereumAddress(address)) { error, result  in
-            if error != nil || result == nil {
-                completion(nil)
-            } else {
-                completion(result)
-            }
-        }
-    }
-    
     @IBAction func enterButtonTapped(_ sender: Any) {
         // TODO: button should paste unless valid private key is entered
         guard let text = textField.text, !text.isEmpty else {
@@ -70,18 +53,20 @@ class EnterKeyViewController: UIViewController {
         
         if let address = try? EthPrivateKey(hex: text).address().value().toHexString() {
             Defaults.privateKey = text
+            enterButton.setWaiting(true)
             
-            
-            getENSName(address:"0x" + address) { result in
-                
-            }
-            // TODO: retreive ens name after address is known. if there is no ens name, then push name screen
-            if false {
-                let enterKahoot = instantiate(EnterKahootViewController.self)
-                navigationController?.pushViewController(enterKahoot, animated: true)
-            } else {
-                let enterName = instantiate(EnterNameViewController.self)
-                navigationController?.pushViewController(enterName, animated: true)
+            Ethereum.shared.getENSName(address:"0x" + address) { [weak self] result in
+                DispatchQueue.main.async {
+                    self?.enterButton.setWaiting(false)
+                    if let ensName = result {
+                        Defaults.name = ensName
+                        let enterKahoot = instantiate(EnterKahootViewController.self)
+                        self?.navigationController?.pushViewController(enterKahoot, animated: true)
+                    } else {
+                        let enterName = instantiate(EnterNameViewController.self)
+                        self?.navigationController?.pushViewController(enterName, animated: true)
+                    }
+                }
             }
         }
     }

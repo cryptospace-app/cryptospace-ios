@@ -20,6 +20,23 @@ class Ethereum {
     private let contractInteractor: ContractInteractor
     
     private let contractAddress = EthAddress(hex: "0x3fdd9353c4b56b9c0ee72083043b3e150f182855")
+    
+    private let ens = EthereumNameService(
+        client: EthereumClient(url:
+            URL(string: "https://ropsten.infura.io/v3/3f99b6096fda424bbb26e17866dcddfc")!
+        ),
+        registryAddress: EthereumAddress("0x00000000000C2E074eC69A0dFb2997BA6C7d2e1e")
+    )
+    
+    func getENSName(address: String, completion: @escaping (String?) -> Void) {
+        ens.resolve(address: EthereumAddress(address)) { error, result in
+            if error == nil, let name = result {
+                completion(name)
+            } else {
+                completion(nil)
+            }
+        }
+    }
 
     init() {
         contractInteractor = Web3ContractInteractor(
@@ -145,6 +162,17 @@ class Ethereum {
             _ = self.sendFunds(id: id)
             completion(true)
         }
+    }
+    
+    func gameFinished(id: String, completion: @escaping (Bool) -> Void) {
+        let signature = "didSentFunds(string)"
+        let ethString = SimpleString(string: id)
+        let functionABI = EncodedABIFunction(signature: signature, parameters: [
+            ABIString(origin: ethString)
+        ])
+        let abiMessage = try! contractInteractor.call(function: functionABI)
+        let finished = try! ABIDecoder().boolean(message: abiMessage)
+        completion(finished)
     }
     
     func getBalance(completion: @escaping (Result<String, Error>) -> Void) {
