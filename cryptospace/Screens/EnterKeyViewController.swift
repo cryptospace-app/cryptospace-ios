@@ -17,6 +17,7 @@ class EnterKeyViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         textField.text = nil
+        enterButton.setWaiting(false)
     }
     
     @IBAction func textFieldEditingChanged(_ sender: Any) {
@@ -40,19 +41,18 @@ class EnterKeyViewController: UIViewController {
     }
     
     @IBAction func enterButtonTapped(_ sender: Any) {
-        // TODO: button should paste unless valid private key is entered
         guard let text = textField.text, !text.isEmpty else {
             textField.text = UIPasteboard.general.string
+            textFieldEditingChanged(textField!)
             return
         }
         
+        enterButton.setWaiting(true)
         if let address = try? EthPrivateKey(hex: text).address().value().toHexString() {
             Defaults.privateKey = text
-            enterButton.setWaiting(true)
             
             Ethereum.shared.getENSName(address:"0x" + address) { [weak self] result in
                 DispatchQueue.main.async {
-                    self?.enterButton.setWaiting(false)
                     if let ensName = result {
                         Defaults.name = ensName
                         let enterKahoot = instantiate(EnterKahootViewController.self)
@@ -63,6 +63,8 @@ class EnterKeyViewController: UIViewController {
                     }
                 }
             }
+        } else {
+            enterButton.setWaiting(false)
         }
     }
     
