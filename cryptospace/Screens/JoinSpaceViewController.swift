@@ -7,6 +7,7 @@ class JoinSpaceViewController: UIViewController {
 
     var challengeId: String!
     var bid: EthNumber!
+    var players: [String]!
     
     private let ethereum = Ethereum.shared
     

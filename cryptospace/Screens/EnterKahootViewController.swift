@@ -1,9 +1,10 @@
 // Copyright © 2020 cryptospace. All rights reserved.
 
 import UIKit
+import Web3Swift
 
 class EnterKahootViewController: KeyboardDependentViewController {
-
+    
     private let ethereum = Ethereum.shared
     
     @IBOutlet weak var nameLabel: UILabel!
@@ -21,12 +22,12 @@ class EnterKahootViewController: KeyboardDependentViewController {
             self?.balanceLabel.text = balance
         }
     }
-
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         textField.text = nil
     }
-
+    
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         enterButton.setWaiting(false)
@@ -42,11 +43,7 @@ class EnterKahootViewController: KeyboardDependentViewController {
             switch result {
             case let .success(bid):
                 if let bid = bid {
-                    let joinSpace = instantiate(JoinSpaceViewController.self)
-                    // TODO: get participants for join screen
-                    joinSpace.bid = bid
-                    joinSpace.challengeId = kahootId
-                    self?.navigationController?.pushViewController(joinSpace, animated: true)
+                    self?.join(kahootId: kahootId, bid: bid)
                 } else {
                     let createSpace = instantiate(CreateSpaceViewController.self)
                     createSpace.kahootId = kahootId
@@ -60,8 +57,26 @@ class EnterKahootViewController: KeyboardDependentViewController {
         }
     }
     
+    private func join(kahootId: String, bid: EthNumber) {
+        ethereum.getPlayers(id: kahootId) { [weak self] result in
+            switch result {
+            case let .success(players):
+                let joinSpace = instantiate(JoinSpaceViewController.self)
+                joinSpace.players = players
+                joinSpace.bid = bid
+                joinSpace.challengeId = kahootId
+                self?.navigationController?.pushViewController(joinSpace, animated: true)
+            case .failure:
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                    self?.join(kahootId: kahootId, bid: bid)
+                }
+            }
+        }
+    }
+    
     @IBAction func removeAccountButtonTapped(_ sender: Any) {
         Defaults.privateKey = nil
+        Defaults.name = ""
         navigationController?.popToRootViewController(animated: true)
     }
     
@@ -73,8 +88,8 @@ class EnterKahootViewController: KeyboardDependentViewController {
         
         let challengeKey = "challenge-id="
         guard let url = URL(string: text), let query = url.query, let challengeQueryItem = query.split(separator: "&").first(where: { $0.hasPrefix(challengeKey) }) else {
-                showWrongInputError()
-                return
+            showWrongInputError()
+            return
         }
         let id = challengeQueryItem.dropFirst(challengeKey.count)
         guard !id.isEmpty else {
@@ -84,5 +99,5 @@ class EnterKahootViewController: KeyboardDependentViewController {
         
         didEnterKahootId(String(id))
     }
-
+    
 }
