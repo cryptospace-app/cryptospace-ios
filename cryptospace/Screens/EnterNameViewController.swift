@@ -2,7 +2,7 @@
 
 import UIKit
 
-class EnterNameViewController: UIViewController {
+class EnterNameViewController: KeyboardDependentViewController {
 
     @IBOutlet weak var doneButton: UIButton!
     @IBOutlet weak var textField: UITextField!

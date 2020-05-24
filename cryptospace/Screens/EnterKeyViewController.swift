@@ -4,7 +4,7 @@ import UIKit
 import web3
 import Web3Swift
 
-class EnterKeyViewController: UIViewController {
+class EnterKeyViewController: KeyboardDependentViewController {
     
     @IBOutlet weak var enterButton: UIButton!
     @IBOutlet weak var textField: UITextField!

@@ -2,7 +2,7 @@
 
 import UIKit
 
-class EnterKahootViewController: UIViewController {
+class EnterKahootViewController: KeyboardDependentViewController {
 
     private let ethereum = Ethereum.shared
     

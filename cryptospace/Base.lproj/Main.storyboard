@@ -18,7 +18,7 @@
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="0000000000000000000000000000000000000000000000000000000000000000" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="DuL-q6-W1j">
                                 <rect key="frame" x="20" y="245" width="374" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="next" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
                                 <connections>
                                     <action selector="textFieldEditingChanged:" destination="BYZ-38-t0r" eventType="editingChanged" id="lLp-8H-Xzv"/>
                                     <action selector="textFieldEditingDidEnd:" destination="BYZ-38-t0r" eventType="editingDidEnd" id="waD-ya-WVD"/>
@@ -72,10 +72,13 @@
                             <constraint firstItem="hAE-Mv-PqG" firstAttribute="leading" secondItem="DuL-q6-W1j" secondAttribute="leading" id="rCo-Ee-q7r"/>
                             <constraint firstItem="Hic-mT-Tcg" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="40" id="reO-ZJ-M1V"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="ktf-cA-CbM" secondAttribute="bottom" constant="12" id="rvq-Li-NuR"/>
+                            <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="ktf-cA-CbM" secondAttribute="bottom" constant="16" id="uog-tS-yNA"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="bottomToSafeAreaConstraint" destination="rvq-Li-NuR" id="wKK-Nb-RGZ"/>
+                        <outlet property="bottomToSuperviewConstraint" destination="uog-tS-yNA" id="2eS-o5-bod"/>
                         <outlet property="enterButton" destination="ktf-cA-CbM" id="hCB-qM-9tc"/>
                         <outlet property="textField" destination="DuL-q6-W1j" id="1S3-tH-Vsz"/>
                     </connections>
@@ -95,7 +98,7 @@
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Charlie" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="htT-Go-olB">
                                 <rect key="frame" x="20" y="245" width="374" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" spellCheckingType="no" returnKeyType="done" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no" textContentType="name"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What's your name?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UHG-5G-1Ct">
                                 <rect key="frame" x="20" y="169" width="285" height="39"/>
@@ -144,11 +147,14 @@
                             <constraint firstItem="UHG-5G-1Ct" firstAttribute="top" secondItem="3m0-4L-7AM" secondAttribute="bottom" constant="8" id="fzo-po-jZn"/>
                             <constraint firstItem="dau-Rm-hIN" firstAttribute="leading" secondItem="qXa-7G-EM1" secondAttribute="leading" constant="20" id="jFU-qK-5Cy"/>
                             <constraint firstItem="htT-Go-olB" firstAttribute="top" secondItem="UHG-5G-1Ct" secondAttribute="bottom" constant="37" id="kXm-Kd-3yb"/>
+                            <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="dau-Rm-hIN" secondAttribute="bottom" constant="16" id="tsd-cM-NNA"/>
                             <constraint firstItem="UHG-5G-1Ct" firstAttribute="leading" secondItem="htT-Go-olB" secondAttribute="leading" id="wPc-LG-vji"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="qXa-7G-EM1"/>
                     </view>
                     <connections>
+                        <outlet property="bottomToSafeAreaConstraint" destination="XFf-2B-LhO" id="DhV-9w-fje"/>
+                        <outlet property="bottomToSuperviewConstraint" destination="tsd-cM-NNA" id="QEt-ov-Gt5"/>
                         <outlet property="doneButton" destination="dau-Rm-hIN" id="dGq-tc-YBU"/>
                         <outlet property="textField" destination="htT-Go-olB" id="QPJ-bb-Hay"/>
                     </connections>
@@ -168,7 +174,7 @@
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="https://kahoot.it/challenge/0690879?challenge-id=1269fde8-1e13-463b-b93d-6bcf69a83ac2_1590184883761" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="2eV-L0-w1S">
                                 <rect key="frame" x="20" y="436" width="374" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="URL" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no" textContentType="url"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mGd-vC-yZB">
                                 <rect key="frame" x="20" y="123.5" width="115" height="30"/>
@@ -238,6 +244,7 @@
                             <constraint firstItem="2eV-L0-w1S" firstAttribute="leading" secondItem="h4r-zJ-DSt" secondAttribute="leading" constant="20" id="Oov-5M-3lM"/>
                             <constraint firstItem="wkV-Zz-bQu" firstAttribute="top" secondItem="Jrm-fc-3vt" secondAttribute="bottom" constant="8" id="ZHD-xX-HNx"/>
                             <constraint firstItem="h4r-zJ-DSt" firstAttribute="bottom" secondItem="G3L-sk-YwD" secondAttribute="bottom" constant="12" id="aec-8G-VSM"/>
+                            <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="G3L-sk-YwD" secondAttribute="bottom" constant="16" id="ayT-Vf-1ZA"/>
                             <constraint firstItem="G3L-sk-YwD" firstAttribute="leading" secondItem="h4r-zJ-DSt" secondAttribute="leading" constant="20" id="bkH-he-0rs"/>
                             <constraint firstItem="70v-P2-c8u" firstAttribute="leading" secondItem="2eV-L0-w1S" secondAttribute="leading" id="gll-ur-jSz"/>
                             <constraint firstItem="70v-P2-c8u" firstAttribute="top" secondItem="xj7-CO-C1t" secondAttribute="bottom" constant="8" id="hWQ-YO-mBz"/>
@@ -251,6 +258,8 @@
                     </view>
                     <connections>
                         <outlet property="balanceLabel" destination="wkV-Zz-bQu" id="ODj-jA-0QB"/>
+                        <outlet property="bottomToSafeAreaConstraint" destination="aec-8G-VSM" id="Kow-CX-5dx"/>
+                        <outlet property="bottomToSuperviewConstraint" destination="ayT-Vf-1ZA" id="lGb-UO-PIR"/>
                         <outlet property="enterButton" destination="G3L-sk-YwD" id="0e5-T4-Xwb"/>
                         <outlet property="nameLabel" destination="Jrm-fc-3vt" id="l0V-b3-ytt"/>
                         <outlet property="textField" destination="2eV-L0-w1S" id="5dl-lJ-tDe"/>
@@ -295,7 +304,7 @@
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="0.01 ETH" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="237-iF-uj2">
                                 <rect key="frame" x="20" y="436" width="374" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="decimalPad" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Place initial bet" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EXx-ng-8jz">
                                 <rect key="frame" x="20" y="382.5" width="374" height="38.5"/>
@@ -316,6 +325,7 @@
                             <constraint firstItem="237-iF-uj2" firstAttribute="top" secondItem="EXx-ng-8jz" secondAttribute="bottom" constant="15" id="1EK-US-p6o"/>
                             <constraint firstItem="EXx-ng-8jz" firstAttribute="trailing" secondItem="237-iF-uj2" secondAttribute="trailing" id="2q4-Cb-IAV"/>
                             <constraint firstItem="Q4F-D4-Kud" firstAttribute="leading" secondItem="Urj-BV-oZM" secondAttribute="leading" constant="20" id="6rv-Rj-ieX"/>
+                            <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="Q4F-D4-Kud" secondAttribute="bottom" constant="16" id="Kmy-OI-jhh"/>
                             <constraint firstItem="EXx-ng-8jz" firstAttribute="top" secondItem="6oA-KI-wwn" secondAttribute="bottom" constant="16" id="a0C-pA-baS"/>
                             <constraint firstItem="237-iF-uj2" firstAttribute="centerY" secondItem="Urj-BV-oZM" secondAttribute="centerY" id="gBh-q0-T3C"/>
                             <constraint firstItem="237-iF-uj2" firstAttribute="leading" secondItem="Urj-BV-oZM" secondAttribute="leading" constant="20" id="kFR-bW-ahv"/>
@@ -328,6 +338,8 @@
                         <viewLayoutGuide key="safeArea" id="Urj-BV-oZM"/>
                     </view>
                     <connections>
+                        <outlet property="bottomToSafeAreaConstraint" destination="wDz-5J-NCC" id="l7E-3P-3pf"/>
+                        <outlet property="bottomToSuperviewConstraint" destination="Kmy-OI-jhh" id="eVF-4R-8ch"/>
                         <outlet property="createButton" destination="Q4F-D4-Kud" id="3sq-qa-zWH"/>
                     </connections>
                 </viewController>
