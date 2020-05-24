@@ -13,6 +13,8 @@ extension UIButton {
             activityIndicator.translatesAutoresizingMaskIntoConstraints = false
             if let activityIndicatorColor = activityIndicatorColor {
                 activityIndicator.color = activityIndicatorColor
+            } else {
+                activityIndicator.color = .white
             }
             addSubview(activityIndicator)
             activityIndicator.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
