@@ -444,7 +444,7 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <state key="normal" title="Get Prize">
+                                <state key="normal" title="Play">
                                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="font">
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                     </preferredSymbolConfiguration>
@@ -455,7 +455,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="getPrizeButtonTapped:" destination="LIw-Hb-teH" eventType="touchUpInside" id="v3L-gl-cM4"/>
+                                    <action selector="actionButtonTapped:" destination="LIw-Hb-teH" eventType="touchUpInside" id="f28-a8-QS3"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -472,7 +472,7 @@
                         <viewLayoutGuide key="safeArea" id="Oam-Kx-jm2"/>
                     </view>
                     <connections>
-                        <outlet property="getPrizeButton" destination="ACt-vf-FFk" id="jeq-wo-ITz"/>
+                        <outlet property="actionButton" destination="ACt-vf-FFk" id="9DP-tc-uCq"/>
                         <outlet property="tableView" destination="6XU-yL-FbL" id="B1m-Pu-CCU"/>
                     </connections>
                 </viewController>
