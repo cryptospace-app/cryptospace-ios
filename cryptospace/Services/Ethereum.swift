@@ -256,22 +256,20 @@ struct ContractChallenge {
 
 extension EthNumber {
     
+    private func toDouble() -> Double {
+        guard
+            let bidHex = try? self.value().toHexString(),
+            let bidInt = UInt64(bidHex, radix: 16) else { return 0 }
+        let bid = Double(bidInt) / 1e18
+        return bid
+    }
+    
+    func prizeFor(_ users: Int) -> String {
+        return String(toDouble() * Double(users)) + " ETH"
+    }
+    
     var ethString: String {
-        guard let hex = try? value().toHexString(), let balance = BigInt(hex, radix: 16) else { return "0 ETH" }
-        var balanceString = String(balance, radix: 10)
-        if balanceString != "0", !balanceString.isEmpty {
-            while balanceString.hasSuffix("0") {
-                balanceString.removeLast(1)
-            }
-            balanceString = String(balanceString.prefix(5))
-            if balanceString.count > 1 {
-                balanceString.insert(".", at: balanceString.index(balanceString.startIndex, offsetBy: 1))
-            }
-            balanceString = "\(balanceString) ETH"
-        } else {
-            balanceString = "0 ETH"
-        }
-        return balanceString
+        return String(toDouble()) + " ETH"
     }
     
 }

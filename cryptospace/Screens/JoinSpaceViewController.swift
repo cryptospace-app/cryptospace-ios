@@ -18,7 +18,7 @@ class JoinSpaceViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.setNavigationBarHidden(true, animated: false)
-        let prizeString = "1 ETH" // TODO: multiply
+        let prizeString = bid.prizeFor(players.count)
         let bidString = bid.ethString
         prizeSizeLabel.text = "Prize is \(prizeString)"
         joinButton.setTitle("Join for \(bidString)", for: .normal)
