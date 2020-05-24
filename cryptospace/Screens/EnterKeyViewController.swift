@@ -25,9 +25,20 @@ class EnterKeyViewController: KeyboardDependentViewController {
     // TODO: rise button with keyboard - Ivan has code for that
     
     @IBAction func textFieldEditingChanged(_ sender: Any) {
-        
+        if isValidPrivateKey(textField.text ?? "") {
+            enterButton.setTitle("Next", for: .normal)
+        } else {
+            enterButton.setTitle("Paste", for: .normal)
+        }
     }
     
+    private func isValidPrivateKey(_ key: String) -> Bool {
+        if let _ = try? EthPrivateKey(hex: key).address().value() {
+            return true
+        } else {
+            return false
+        }
+    }
     
     @IBAction func textFieldEditingDidEnd(_ sender: Any) {
         
@@ -40,15 +51,22 @@ class EnterKeyViewController: KeyboardDependentViewController {
             return
         }
         
-        if let _ = try? EthPrivateKey(hex: text).address().value() {
+        if let address = try? EthPrivateKey(hex: text).address().value().toHexString() {
             Defaults.privateKey = text
-            // TODO: retreive ens name after address is known. if there is no ens name, then push name screen
-            if false {
-                let enterKahoot = instantiate(EnterKahootViewController.self)
-                navigationController?.pushViewController(enterKahoot, animated: true)
-            } else {
-                let enterName = instantiate(EnterNameViewController.self)
-                navigationController?.pushViewController(enterName, animated: true)
+            enterButton.setWaiting(true)
+            
+            Ethereum.shared.getENSName(address:"0x" + address) { [weak self] result in
+                DispatchQueue.main.async {
+                    self?.enterButton.setWaiting(false)
+                    if let ensName = result {
+                        Defaults.name = ensName
+                        let enterKahoot = instantiate(EnterKahootViewController.self)
+                        self?.navigationController?.pushViewController(enterKahoot, animated: true)
+                    } else {
+                        let enterName = instantiate(EnterNameViewController.self)
+                        self?.navigationController?.pushViewController(enterName, animated: true)
+                    }
+                }
             }
         }
     }
