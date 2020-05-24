@@ -178,6 +178,8 @@ class Ethereum {
     }
     
     func sendPrize(id: String, completion: @escaping (Bool) -> Void) {
+        // TODO: call true completion if transaction was sent successfully.
+        // call false completion if failed to send transaction.
         DispatchQueue.main.async {
             _ = self.sendFunds(id: id)
             completion(true)
