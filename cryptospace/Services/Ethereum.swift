@@ -264,7 +264,9 @@ extension EthNumber {
                 balanceString.removeLast(1)
             }
             balanceString = String(balanceString.prefix(5))
-            balanceString.insert(".", at: balanceString.index(balanceString.startIndex, offsetBy: 1))
+            if balanceString.count > 1 {
+                balanceString.insert(".", at: balanceString.index(balanceString.startIndex, offsetBy: 1))
+            }
             balanceString = "\(balanceString) ETH"
         } else {
             balanceString = "0 ETH"
