@@ -47,24 +47,24 @@ class Ethereum {
     
     // TODO: вызывать completion-ы на мейн треде
     
-    private func getWinner(id: String, completion: @escaping (Result<String?, Error>) -> Void) {
+    func getWinner(id: String, completion: @escaping (Result<String?, Error>) -> Void) {
         // если nil, значит еще нет на контракте
         // если пустая строка, значит оракул ответил пустой строкой
     }
     
-    private func getBid(id: String, completion: @escaping (Result<EthNumber?, Error>) -> Void) {
+    func getBid(id: String, completion: @escaping (Result<EthNumber?, Error>) -> Void) {
         
     }
     
-    private func getIsFinished(id: String, completion: @escaping (Result<Bool, Error>) -> Void) {
+    func getIsFinished(id: String, completion: @escaping (Result<Bool, Error>) -> Void) {
         
     }
     
-    private func getPlayers(id: String, completion: @escaping (Result<Array<String>, Error>) -> Void) {
+    func getPlayers(id: String, completion: @escaping (Result<Array<String>, Error>) -> Void) {
         
     }
     
-    private func getPlayersAndBid(id: String, completion: @escaping (Result<(players: Array<String>, bid: EthNumber?), Error>) -> Void) {
+    func getPlayersAndBid(id: String, completion: @escaping (Result<(players: Array<String>, bid: EthNumber?), Error>) -> Void) {
         // если bid == nil, значит челенж еще не завели
     }
     
