@@ -15,16 +15,13 @@ class EnterKahootViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.setNavigationBarHidden(true, animated: false)
-        nameLabel.text = Defaults.name
-        Ethereum.shared.getBalance { [weak self] result in
-            guard case let .success(balance) = result else { return }
-            self?.balanceLabel.text = balance
-        }
+        nameLabel.text = "👤 " + Defaults.name
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         textField.text = nil
+        updateBalance()
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -32,8 +29,23 @@ class EnterKahootViewController: UIViewController {
         enterButton.setWaiting(false)
     }
     
+    private func updateBalance() {
+        Ethereum.shared.getBalance { [weak self] result in
+            guard case let .success(balance) = result else { return }
+            self?.balanceLabel.text = balance
+        }
+    }
+    
     private func showWrongInputError() {
         // TODO: implement
+    }
+    
+    private func updateButtonTitle() {
+        let hasInput = textField.text?.isEmpty == false
+        let newTitle = hasInput ? "Continue" : "Paste"
+        if newTitle != enterButton.title(for: .normal) {
+            enterButton.setTitle(newTitle, for: .normal)
+        }
     }
     
     private func didEnterKahootId(_ kahootId: String) {
@@ -82,6 +94,7 @@ class EnterKahootViewController: UIViewController {
     @IBAction func enterButtonTapped(_ sender: Any) {
         guard let text = textField.text, !text.isEmpty else {
             textField.text = UIPasteboard.general.string
+            updateButtonTitle()
             return
         }
         
@@ -98,6 +111,10 @@ class EnterKahootViewController: UIViewController {
         }
         
         didEnterKahootId(String(id))
+    }
+    
+    @IBAction func textFieldEditingChanged(_ sender: Any) {
+        updateButtonTitle()
     }
     
 }

@@ -21,7 +21,7 @@ class EnterKeyViewController: UIViewController {
     }
     
     @IBAction func textFieldEditingChanged(_ sender: Any) {
-        if isValidPrivateKey(textField.text ?? "") {
+        if textField.text?.isEmpty == false {
             enterButton.setTitle("Next", for: .normal)
         } else {
             enterButton.setTitle("Paste", for: .normal)
