@@ -45,12 +45,9 @@ class Ethereum {
         )
     }
     
-    // TODO: вызывать completion-ы на мейн треде
     let queue = DispatchQueue(label: "Ethereum", qos: .userInteractive)
     
     func getWinner(id: String, completion: @escaping (Result<String, Error>) -> Void) {
-        // если nil, значит виннера еще нет на контракте
-        // если пустая строка, значит оракул ответил пустой строкой
         queue.async { [weak self] in
             if let winner = try? self?.getChallengeWinner(id: id) {
                 DispatchQueue.main.async { completion(.success(winner)) }
@@ -65,7 +62,6 @@ class Ethereum {
     }
     
     func getBid(id: String, completion: @escaping (Result<EthNumber?, Error>) -> Void) {
-        // если bid == nil, значит челенж еще не завели
         queue.async { [weak self] in
             if let bid = try? self?.getChallengeBid(id: id),
                 let bidData = try? bid.value() {
@@ -90,7 +86,6 @@ class Ethereum {
     }
     
     func getIsFinished(id: String, completion: @escaping (Result<Bool, Error>) -> Void) {
-        // false если не завели, или еще не доиграли
         queue.async { [weak self] in
             if let finished = try? self?.gameFinished(id: id) {
                 DispatchQueue.main.async { completion(.success(finished)) }
@@ -101,7 +96,6 @@ class Ethereum {
     }
     
     func getPlayers(id: String, completion: @escaping (Result<Array<String>, Error>) -> Void) {
-        // пустой массив, если челенж еще не завели
         queue.async { [weak self] in
             if let names = try? self?.getChallengeNames(id: id) {
                 DispatchQueue.main.async { completion(.success(names)) }
@@ -154,39 +148,39 @@ class Ethereum {
     }
     
     func createContractChallenge(id: String, name: String, bid: EthNumber, completion: @escaping (Bool) -> Void) {
-        // TODO: увести на бэкграунд тред
-        // Вызывать completion на мейн треде
-        // completion(false) — если по любой причине не удалось создать
-        
-        let signature = "createNewChallange(string,string)"
-        let idString = SimpleString(string: id)
-        let nameString = SimpleString(string: name.lowercased())
-        let functionABI = EncodedABIFunction(signature: signature, parameters: [
-            ABIString(origin: idString),
-            ABIString(origin: nameString)
-        ])
-        let privateKey = EthPrivateKey(hex: Defaults.privateKey!)
-        _ = try! contractInteractor.send(function: functionABI, value: bid, sender: privateKey)
-
-        // TODO: talk to contract
-        completion(true) // this means challenge was created successfully
+        queue.async { [weak self] in
+            let signature = "createNewChallange(string,string)"
+            let idString = SimpleString(string: id)
+            let nameString = SimpleString(string: name.lowercased())
+            let functionABI = EncodedABIFunction(signature: signature, parameters: [
+                ABIString(origin: idString),
+                ABIString(origin: nameString)
+            ])
+            let privateKey = EthPrivateKey(hex: Defaults.privateKey!)
+            if let _ = try? self?.contractInteractor.send(function: functionABI, value: bid, sender: privateKey) {
+                DispatchQueue.main.async { completion(true) }
+            } else {
+                DispatchQueue.main.async { completion(false) }
+            }
+        }
     }
     
     func joinContractChallenge(id: String, name: String, bid: EthNumber, completion: @escaping (Bool) -> Void) {
-        // TODO: увести на бэкграунд тред
-        // Вызывать completion на мейн треде
-        // completion(false) — если по любой причине не удалось присоединиться
-        
-        let signature = "connectToChallenge(string,string)"
-        let idString = SimpleString(string: id)
-        let nameString = SimpleString(string: name.lowercased())
-        let functionABI = EncodedABIFunction(signature: signature, parameters: [
-            ABIString(origin: idString),
-            ABIString(origin: nameString)
-        ])
-        let privateKey = EthPrivateKey(hex: Defaults.privateKey!)
-        _ = try! contractInteractor.send(function: functionABI, value: bid, sender: privateKey)
-        completion(true)
+        queue.async { [weak self] in
+            let signature = "connectToChallenge(string,string)"
+            let idString = SimpleString(string: id)
+            let nameString = SimpleString(string: name.lowercased())
+            let functionABI = EncodedABIFunction(signature: signature, parameters: [
+                ABIString(origin: idString),
+                ABIString(origin: nameString)
+            ])
+            let privateKey = EthPrivateKey(hex: Defaults.privateKey!)
+            if let _ = try? self?.contractInteractor.send(function: functionABI, value: bid, sender: privateKey) {
+                DispatchQueue.main.async { completion(true) }
+            } else {
+                DispatchQueue.main.async { completion(false) }
+            }
+        }
     }
     
     private func sendFunds(id: String) -> Bool {
