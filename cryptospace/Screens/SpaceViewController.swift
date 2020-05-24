@@ -5,13 +5,31 @@ import Web3Swift
 
 class SpaceViewController: UIViewController {
 
+    private var gameState = GameState.unknown
+
+    struct PlayerCellModel {
+        let name: String
+        let score: String
+    }
+    
+    enum GameState {
+        case unknown, toBePlayed, youLost, youWon, someoneElseIsPlaying, gameWasUnfair
+    }
+    
     var kahootId: String!
+    
+    private var playerCellModels = [PlayerCellModel]()
+    
     var bidSize: EthNumber?
     var playersFromContract = [String]()
+    private var challenge: Challenge?
+    private var isFinished = false
+    private var winnerName = ""
     
     private let ethereum = Ethereum.shared
-    private var results = [String]()
+    private var refreshTimer: Timer?
     
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var actionButton: UIButton!
     @IBOutlet weak var tableView: UITableView! {
         didSet {
@@ -23,99 +41,55 @@ class SpaceViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.setNavigationBarHidden(true, animated: false)
-        loadKahootChallenge(id: kahootId)
         
+        refreshData()
         refreshTimer = Timer.scheduledTimer(withTimeInterval: 4, repeats: true) { [weak self] _ in
-            if self?.viewIfLoaded?.window != nil, let id = self?.kahootId {
-                self?.refreshData(id: id)
-            }
+            self?.refreshData()
         }
     }
     
-    private func loadKahootChallenge(id: String) {
-        NetworkService.shared.getChallenge(id: kahootId) { [weak self] result in
-            guard case .success(let challenge) = result,
-                let players = challenge.leaderboard?.players else { return }
-            let playerNames = Set(players.map { $0.playerId.lowercased() })
-            
-            var results = players.map({ "\($0.playerId) — \($0.finalScore)" })
-            self?.contractNames.forEach {
-                if !playerNames.contains($0) {
-                    results.append("\($0) - 0")
-                }
-            }
-            self?.results = results
-            self?.tableView.reloadData()
-            self?.update()
-        }
+    deinit {
+        refreshTimer?.invalidate()
+        refreshTimer = nil
     }
     
-    private var refreshTimer: Timer?
-    
-    private var isFinished = false
-    private var contractNames = [String]()
-    private var winnerName = ""
-    
-    enum GameState {
-//        case play
-//        case leave
-//        case getPrize
-//        case
-//
-    }
-
-    private var state: GameState?
-    
-    @objc private func refreshData(id: String) {
-        ethereum.getIsFinished(id: id) { [weak self] result in
+    @objc private func refreshData() {
+        ethereum.getIsFinished(id: kahootId) { [weak self] result in
             if case let .success(finished) = result {
                 self?.isFinished = finished
                 self?.update()
             }
         }
         
-        ethereum.getPlayers(id: id) { [weak self] result in
+        ethereum.getPlayers(id: kahootId) { [weak self] result in
             if case let .success(names) = result {
-                self?.contractNames = names
+                self?.playersFromContract = names
                 self?.update()
             }
         }
         
-        ethereum.getWinner(id: id) { [weak self] result in
+        ethereum.getWinner(id: kahootId) { [weak self] result in
             if case let .success(winner) = result {
                 self?.winnerName = winner
                 self?.update()
             }
         }
         
-        loadKahootChallenge(id: id)
-
+        NetworkService.shared.getChallenge(id: kahootId) { [weak self] result in
+            guard case .success(let challenge) = result else { return }
+            self?.challenge = challenge
+            self?.update()
+        }
     }
     
     private func update() {
-        // tablica
-        // gamestate
-        //
+        // TODO: update table view
+        // TODO: update game state
+        // TODO: update button
+        // TODO: stop animating activityIndicator
     }
     
-    // TODO: на viewWillAppear и каждые четыре секунды делать запросы: (не делать запросы, когда чувак ушел на GameViewController)
-    // - isFinished
-    // - players
-    // - winner
-    // - челендж с кахута
-    
-    // записывать все полученные данные в переменные
-    
-    // регулярно обновлять таблицу: показывать текущие результаты с кахута, добавлять к ним игроков с контракта, которые еще не появились в ответе кахута
-    
-    // в зависимости от состояния игры, при каждом обновлении данных, обновлять текст кнопки и действие при нажатии на нее (завести enum)
-    
-    // состояния кнопки:
-    // - play (если еще не сыграл). она в самом начале, вызывает openGame()
-    // - leave (если уже точно проебал) —
-    // - get prize (если уже точно выиграл) — вызывает sendPrize, кнопка переходит в waiting state, пока не отправилась транзакция. если не отправилась, кнопка возвращается в обычное состояние, показывается сообщение об ошибке.
-    // - спрятана (когда уже сыграл, но кто-то другой еще не доиграл)
-    // - finish (если игра оказалась нечестной) — отправляется транзакция sendPrize. если не отправилась, просто вызывается leaveGame
+    // MARK: - Actions
     
     private func openGame() {
         let game = instantiate(GameViewController.self)
@@ -128,10 +102,6 @@ class SpaceViewController: UIViewController {
         navigationController?.popToViewController(enterKahoot, animated: true)
     }
     
-    @IBAction func actionButtonTapped(_ sender: Any) {
-        openGame()
-    }
-    
     private func sendPrize() {
         ethereum.sendPrize(id: kahootId) { [weak self] success in
             if success {
@@ -142,6 +112,21 @@ class SpaceViewController: UIViewController {
             } else {
                 // TODO: process error
             }
+        }
+    }
+    
+    @IBAction func actionButtonTapped(_ sender: Any) {
+        switch gameState {
+        case .toBePlayed:
+            openGame()
+        case .youLost:
+            break // просто ливать с экрана
+        case .gameWasUnfair:
+            break // отправляется транзакция sendPrize. если не отправилась, просто вызывается leaveGame
+        case .youWon:
+            break // вызывает sendPrize, кнопка переходит в waiting state, пока не отправилась транзакция. если не отправилась, кнопка возвращается в обычное состояние, показывается сообщение об ошибке.
+        case .someoneElseIsPlaying, .unknown:
+            break
         }
     }
     
@@ -158,12 +143,12 @@ extension SpaceViewController: UITableViewDelegate {
 extension SpaceViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return results.count
+        return playerCellModels.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell()
-        cell.textLabel?.text = results[indexPath.row]
+        cell.textLabel?.text = playerCellModels[indexPath.row].name + " " + String(playerCellModels[indexPath.row].score)
         return cell
     }
     

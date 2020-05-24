@@ -476,6 +476,9 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             </tableView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="XFv-Rh-087">
+                                <rect key="frame" x="197" y="443" width="20" height="20"/>
+                            </activityIndicatorView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ACt-vf-FFk">
                                 <rect key="frame" x="20" y="798" width="374" height="52"/>
                                 <color key="backgroundColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -502,18 +505,21 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="XFv-Rh-087" firstAttribute="centerX" secondItem="Oam-Kx-jm2" secondAttribute="centerX" id="1AO-v1-4hP"/>
                             <constraint firstItem="Oam-Kx-jm2" firstAttribute="trailing" secondItem="ACt-vf-FFk" secondAttribute="trailing" constant="20" id="CS6-VK-kvp"/>
                             <constraint firstItem="Oam-Kx-jm2" firstAttribute="bottom" secondItem="ACt-vf-FFk" secondAttribute="bottom" constant="12" id="Cor-qS-Xcd"/>
                             <constraint firstItem="ACt-vf-FFk" firstAttribute="leading" secondItem="Oam-Kx-jm2" secondAttribute="leading" constant="20" id="F30-PS-8q1"/>
                             <constraint firstItem="6XU-yL-FbL" firstAttribute="top" secondItem="JL3-t1-6j1" secondAttribute="top" id="FnH-nh-FN3"/>
                             <constraint firstItem="Oam-Kx-jm2" firstAttribute="trailing" secondItem="6XU-yL-FbL" secondAttribute="trailing" id="hWd-JN-Wv9"/>
                             <constraint firstItem="6XU-yL-FbL" firstAttribute="leading" secondItem="Oam-Kx-jm2" secondAttribute="leading" id="mBF-yg-YDE"/>
+                            <constraint firstItem="XFv-Rh-087" firstAttribute="centerY" secondItem="Oam-Kx-jm2" secondAttribute="centerY" id="npG-gA-WUl"/>
                             <constraint firstAttribute="bottom" secondItem="6XU-yL-FbL" secondAttribute="bottom" id="vAE-fA-QNu"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Oam-Kx-jm2"/>
                     </view>
                     <connections>
                         <outlet property="actionButton" destination="ACt-vf-FFk" id="9DP-tc-uCq"/>
+                        <outlet property="activityIndicator" destination="XFv-Rh-087" id="Xwa-LY-Bjj"/>
                         <outlet property="tableView" destination="6XU-yL-FbL" id="B1m-Pu-CCU"/>
                     </connections>
                 </viewController>
