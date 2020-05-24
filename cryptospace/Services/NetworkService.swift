@@ -32,15 +32,17 @@ class NetworkService {
 
 struct Challenge: Codable {
     let kahootTitle: String
-    let leaderboard: Leaderboard // TODO: убедиться, что ок парсится, когда еще никто не играл
+    let leaderboard: Leaderboard?
 }
 
 struct Leaderboard: Codable {
-    let players: [KahootPlayer]
+    let players: [KahootPlayer]?
 }
 
 struct KahootPlayer: Codable {
     let playerId: String
     let finalScore: Int
-    let gamesPlayed: Int // TODO: make sure == 1
+    let gamesPlayed: Int
+    let gameUnfinished: Bool
+    let rank: Int
 }
