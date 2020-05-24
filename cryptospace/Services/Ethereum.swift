@@ -19,7 +19,7 @@ class Ethereum {
     
     private let contractInteractor: ContractInteractor
     
-    private let contractAddress = EthAddress(hex: "0x3fdd9353c4b56b9c0ee72083043b3e150f182855")
+    private let contractAddress = EthAddress(hex: "0xDa48cf4b77cbA177C0234A382d994Ed1d79A9ee4")
     
     private let ens = EthereumNameService(
         client: EthereumClient(url:
