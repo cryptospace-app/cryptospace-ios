@@ -153,9 +153,10 @@ class Ethereum {
         return names
     }
     
-    func createContractChallenge(id: String, name: String, bidSize: Double, completion: @escaping (Bool) -> Void) {
-        let bidStr = String(UInt64(bidSize * 1e18))
-        let bid = EthNumber(decimal: bidStr)
+    func createContractChallenge(id: String, name: String, bid: EthNumber, completion: @escaping (Bool) -> Void) {
+        // TODO: увести на бэкграунд тред
+        // Вызывать completion на мейн треде
+        // completion(false) — если по любой причине не удалось создать
         
         let signature = "createNewChallange(string,string)"
         let idString = SimpleString(string: id)
@@ -172,8 +173,10 @@ class Ethereum {
     }
     
     func joinContractChallenge(id: String, name: String, bid: EthNumber, completion: @escaping (Bool) -> Void) {
-        // TODO: talk to contract
-//        completion(true) // this means challenge was joined successfully
+        // TODO: увести на бэкграунд тред
+        // Вызывать completion на мейн треде
+        // completion(false) — если по любой причине не удалось присоединиться
+        
         let signature = "connectToChallenge(string,string)"
         let idString = SimpleString(string: id)
         let nameString = SimpleString(string: name.lowercased())

@@ -50,7 +50,7 @@ class EnterKahootViewController: KeyboardDependentViewController {
                     self?.navigationController?.pushViewController(createSpace, animated: true)
                 }
             case .failure:
-                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
                     self?.didEnterKahootId(kahootId)
                 }
             }
@@ -67,7 +67,7 @@ class EnterKahootViewController: KeyboardDependentViewController {
                 joinSpace.challengeId = kahootId
                 self?.navigationController?.pushViewController(joinSpace, animated: true)
             case .failure:
-                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
                     self?.join(kahootId: kahootId, bid: bid)
                 }
             }

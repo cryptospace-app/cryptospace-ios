@@ -1,15 +1,18 @@
 // Copyright © 2020 cryptospace. All rights reserved.
 
 import UIKit
+import Web3Swift
 
 class SpaceViewController: UIViewController {
 
     var kahootId: String!
+    var bidSize: EthNumber?
+    var playersFromContract = [String]()
     
     private let ethereum = Ethereum.shared
     private var results = [String]()
     
-    @IBOutlet weak var getPrizeButton: UIButton!
+    @IBOutlet weak var actionButton: UIButton!
     @IBOutlet weak var tableView: UITableView! {
         didSet {
             tableView.delegate = self
@@ -28,7 +31,7 @@ class SpaceViewController: UIViewController {
         }
     }
 
-    @IBAction func getPrizeButtonTapped(_ sender: Any) {
+    @IBAction func actionButtonTapped(_ sender: Any) {
         ethereum.sendPrize(id: kahootId) { [weak self] success in
             if success {
                 guard let enterKahoot = self?.navigationController?.viewControllers.first(where: { $0 is EnterKahootViewController }) else { return }
