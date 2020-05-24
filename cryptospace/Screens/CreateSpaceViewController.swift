@@ -28,12 +28,15 @@ class CreateSpaceViewController: UIViewController {
     
     private func didFailToCreate() {
         createButton.setWaiting(false)
+        textField.becomeFirstResponder()
         // TODO: flash error message
     }
     
     private func didTapReturn() {
+        guard let bidString = textField.text, let bidFloat = Float(bidString) else { return }
+        textField.resignFirstResponder()
         createButton.setWaiting(true)
-        let bidStr = String(UInt64(0.001 * 1e18)) // TODO: get bid size from text field
+        let bidStr = String(UInt64(bidFloat * 1e18))
         let bid = EthNumber(decimal: bidStr)
         let kahootId = self.kahootId!
         ethereum.createContractChallenge(id: kahootId, name: Defaults.name, bid: bid) { [weak self] success in
