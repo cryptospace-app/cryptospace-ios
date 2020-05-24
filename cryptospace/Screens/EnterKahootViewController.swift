@@ -27,19 +27,25 @@ class EnterKahootViewController: KeyboardDependentViewController {
         textField.text = nil
     }
 
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        enterButton.setWaiting(false)
+    }
+    
     private func showWrongInputError() {
         // TODO: implement
     }
     
-    // TODO: implement all the same button logic as on
-    
     private func didEnterKahootId(_ kahootId: String) {
-        ethereum.getContractChallenge(id: kahootId) { [weak self] result in
+        enterButton.setWaiting(true)
+        ethereum.getBid(id: kahootId) { [weak self] result in
             switch result {
-            case let .success(challenge):
-                if let challenge = challenge {
+            case let .success(bid):
+                if let bid = bid {
                     let joinSpace = instantiate(JoinSpaceViewController.self)
-                    joinSpace.challenge = challenge
+                    // TODO: get participants for join screen
+                    joinSpace.bid = bid
+                    joinSpace.challengeId = kahootId
                     self?.navigationController?.pushViewController(joinSpace, animated: true)
                 } else {
                     let createSpace = instantiate(CreateSpaceViewController.self)
@@ -47,8 +53,9 @@ class EnterKahootViewController: KeyboardDependentViewController {
                     self?.navigationController?.pushViewController(createSpace, animated: true)
                 }
             case .failure:
-                // TODO: process error
-                break
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                    self?.didEnterKahootId(kahootId)
+                }
             }
         }
     }

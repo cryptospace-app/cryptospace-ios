@@ -148,12 +148,9 @@ class Ethereum {
         completion(true) // this means challenge was created successfully
     }
     
-    func joinContractChallenge(id: String, name: String, bidSize: Double, completion: @escaping (Bool) -> Void) {
+    func joinContractChallenge(id: String, name: String, bid: EthNumber, completion: @escaping (Bool) -> Void) {
         // TODO: talk to contract
 //        completion(true) // this means challenge was joined successfully
-        let bidStr = String(UInt64(bidSize * 1e18))
-        let bid = EthNumber(decimal: bidStr)
-
         let signature = "connectToChallenge(string,string)"
         let idString = SimpleString(string: id)
         let nameString = SimpleString(string: name.lowercased())
