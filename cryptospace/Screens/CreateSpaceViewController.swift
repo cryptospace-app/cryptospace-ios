@@ -46,10 +46,10 @@ class CreateSpaceViewController: KeyboardDependentViewController {
     }
     
     @IBAction func createButtonTapped(_ sender: Any) {
+        createButton.setWaiting(true)
         let bidStr = String(UInt64(0.001 * 1e18)) // TODO: get bid size from text field
         let bid = EthNumber(decimal: bidStr)
         let kahootId = self.kahootId!
-        createButton.setWaiting(true)
         ethereum.createContractChallenge(id: kahootId, name: Defaults.name, bid: bid) { [weak self] success in
             if success {
                 self?.didSendCreateTransaction(bid: bid)
