@@ -166,18 +166,9 @@ class Ethereum {
                     return
                 }
                 
-                var balanceString = String(balance, radix: 10)
-                if balanceString != "0", !balanceString.isEmpty {
-                    while balanceString.hasSuffix("0") {
-                        balanceString.removeLast(1)
-                    }
-                    balanceString = String(balanceString.prefix(5))
-                    balanceString.insert(".", at: balanceString.index(balanceString.startIndex, offsetBy: 1))
-                    balanceString = "\(balanceString) ETH"
-                } else {
-                    balanceString = "0 ETH"
-                }
-                DispatchQueue.main.async { completion(.success(balanceString)) }
+                let balanceString = String(balance, radix: 10)
+                let ethString = String((Double(balanceString) ?? 0) / 1e18)
+                DispatchQueue.main.async { completion(.success(ethString)) }
             }
         }
     }
