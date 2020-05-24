@@ -23,13 +23,79 @@ class SpaceViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.setNavigationBarHidden(true, animated: false)
-        NetworkService.shared.getChallenge(id: kahootId) { [weak self] result in
-            guard case .success(let challenge) = result else { return }
-            if let results = challenge.leaderboard?.players?.map({ "\($0.playerId) — \($0.finalScore)" }) {
-                self?.results = results
-                self?.tableView.reloadData()
+        loadKahootChallenge(id: kahootId)
+        
+        refreshTimer = Timer.scheduledTimer(withTimeInterval: 4, repeats: true) { [weak self] _ in
+            if self?.viewIfLoaded?.window != nil, let id = self?.kahootId {
+                self?.refreshData(id: id)
             }
         }
+    }
+    
+    private func loadKahootChallenge(id: String) {
+        NetworkService.shared.getChallenge(id: kahootId) { [weak self] result in
+            guard case .success(let challenge) = result,
+                let players = challenge.leaderboard?.players else { return }
+            let playerNames = Set(players.map { $0.playerId.lowercased() })
+            
+            var results = players.map({ "\($0.playerId) — \($0.finalScore)" })
+            self?.contractNames.forEach {
+                if !playerNames.contains($0) {
+                    results.append("\($0) - 0")
+                }
+            }
+            self?.results = results
+            self?.tableView.reloadData()
+            self?.update()
+        }
+    }
+    
+    private var refreshTimer: Timer?
+    
+    private var isFinished = false
+    private var contractNames = [String]()
+    private var winnerName = ""
+    
+    enum GameState {
+//        case play
+//        case leave
+//        case getPrize
+//        case
+//
+    }
+
+    private var state: GameState?
+    
+    @objc private func refreshData(id: String) {
+        ethereum.getIsFinished(id: id) { [weak self] result in
+            if case let .success(finished) = result {
+                self?.isFinished = finished
+                self?.update()
+            }
+        }
+        
+        ethereum.getPlayers(id: id) { [weak self] result in
+            if case let .success(names) = result {
+                self?.contractNames = names
+                self?.update()
+            }
+        }
+        
+        ethereum.getWinner(id: id) { [weak self] result in
+            if case let .success(winner) = result {
+                self?.winnerName = winner
+                self?.update()
+            }
+        }
+        
+        loadKahootChallenge(id: id)
+
+    }
+    
+    private func update() {
+        // tablica
+        // gamestate
+        //
     }
     
     // TODO: на viewWillAppear и каждые четыре секунды делать запросы: (не делать запросы, когда чувак ушел на GameViewController)
