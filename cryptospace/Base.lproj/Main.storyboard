@@ -480,6 +480,40 @@
             </objects>
             <point key="canvasLocation" x="3000.0000000000005" y="137.94642857142856"/>
         </scene>
+        <!--Game View Controller-->
+        <scene sceneID="xLo-R1-2dF">
+            <objects>
+                <viewController storyboardIdentifier="GameViewController" automaticallyAdjustsScrollViewInsets="NO" id="OJ6-EW-hCA" customClass="GameViewController" customModule="cryptospace" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="gn5-hp-9Wc">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3XL-6G-8i0">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <color key="backgroundColor" red="0.25117141009999999" green="0.1020481661" blue="0.53727585079999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <wkWebViewConfiguration key="configuration">
+                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                    <wkPreferences key="preferences"/>
+                                </wkWebViewConfiguration>
+                            </wkWebView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.25119051339999998" green="0.1022524908" blue="0.53335404399999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="3XL-6G-8i0" secondAttribute="bottom" id="1O0-lN-o6I"/>
+                            <constraint firstItem="3XL-6G-8i0" firstAttribute="leading" secondItem="fuI-as-ThE" secondAttribute="leading" id="6rO-Tx-Lrf"/>
+                            <constraint firstItem="fuI-as-ThE" firstAttribute="trailing" secondItem="3XL-6G-8i0" secondAttribute="trailing" id="7cx-eT-lYR"/>
+                            <constraint firstItem="3XL-6G-8i0" firstAttribute="top" secondItem="gn5-hp-9Wc" secondAttribute="top" id="APL-2L-JhO"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="fuI-as-ThE"/>
+                    </view>
+                    <connections>
+                        <outlet property="webView" destination="3XL-6G-8i0" id="sJz-uK-HDM"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="R0K-lO-aU0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3694" y="138"/>
+        </scene>
     </scenes>
     <resources>
         <image name="triangle" width="128" height="128"/>

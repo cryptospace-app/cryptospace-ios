@@ -31,8 +31,17 @@ class SpaceViewController: UIViewController {
             }
         }
     }
-
+    
+    private func openGame() {
+        let game = instantiate(GameViewController.self)
+        present(game, animated: true)
+    }
+    
     @IBAction func actionButtonTapped(_ sender: Any) {
+        openGame()
+    }
+    
+    private func sendPrize() {
         ethereum.sendPrize(id: kahootId) { [weak self] success in
             if success {
                 guard let enterKahoot = self?.navigationController?.viewControllers.first(where: { $0 is EnterKahootViewController }) else { return }
