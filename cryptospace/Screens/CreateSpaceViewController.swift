@@ -3,7 +3,7 @@
 import UIKit
 import Web3Swift
 
-class CreateSpaceViewController: KeyboardDependentViewController {
+class CreateSpaceViewController: UIViewController {
 
     var kahootId: String!
     private let ethereum = Ethereum.shared

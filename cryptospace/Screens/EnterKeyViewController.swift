@@ -4,7 +4,7 @@ import UIKit
 import web3
 import Web3Swift
 
-class EnterKeyViewController: KeyboardDependentViewController {
+class EnterKeyViewController: UIViewController {
     
     @IBOutlet weak var enterButton: UIButton!
     @IBOutlet weak var textField: UITextField!
@@ -12,17 +12,12 @@ class EnterKeyViewController: KeyboardDependentViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.setNavigationBarHidden(true, animated: false)
-        endEditingOnTap()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         textField.text = nil
     }
-    
-    // TODO: update button title when valid key is entered
-    
-    // TODO: rise button with keyboard - Ivan has code for that
     
     @IBAction func textFieldEditingChanged(_ sender: Any) {
         if isValidPrivateKey(textField.text ?? "") {

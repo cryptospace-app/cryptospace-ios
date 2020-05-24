@@ -3,7 +3,7 @@
 import UIKit
 import Web3Swift
 
-class EnterKahootViewController: KeyboardDependentViewController {
+class EnterKahootViewController: UIViewController {
     
     private let ethereum = Ethereum.shared
     
@@ -15,7 +15,6 @@ class EnterKahootViewController: KeyboardDependentViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.setNavigationBarHidden(true, animated: false)
-        endEditingOnTap()
         nameLabel.text = Defaults.name
         Ethereum.shared.getBalance { [weak self] result in
             guard case let .success(balance) = result else { return }

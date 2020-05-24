@@ -2,16 +2,14 @@
 
 import UIKit
 
-class EnterNameViewController: KeyboardDependentViewController {
+class EnterNameViewController: UIViewController {
 
     @IBOutlet weak var doneButton: UIButton!
     @IBOutlet weak var textField: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // TODO: make text field first responser
-        // TODO: rise button with keyboard
-        endEditingOnTap()
+        textField.becomeFirstResponder()
     }
     
     @IBAction func doneButtonTapped(_ sender: Any) {

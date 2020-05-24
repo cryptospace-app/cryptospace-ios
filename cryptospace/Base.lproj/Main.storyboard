@@ -77,8 +77,6 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
-                        <outlet property="bottomToSafeAreaConstraint" destination="rvq-Li-NuR" id="wKK-Nb-RGZ"/>
-                        <outlet property="bottomToSuperviewConstraint" destination="uog-tS-yNA" id="2eS-o5-bod"/>
                         <outlet property="enterButton" destination="ktf-cA-CbM" id="hCB-qM-9tc"/>
                         <outlet property="textField" destination="DuL-q6-W1j" id="1S3-tH-Vsz"/>
                     </connections>
@@ -153,8 +151,6 @@
                         <viewLayoutGuide key="safeArea" id="qXa-7G-EM1"/>
                     </view>
                     <connections>
-                        <outlet property="bottomToSafeAreaConstraint" destination="XFf-2B-LhO" id="DhV-9w-fje"/>
-                        <outlet property="bottomToSuperviewConstraint" destination="tsd-cM-NNA" id="QEt-ov-Gt5"/>
                         <outlet property="doneButton" destination="dau-Rm-hIN" id="dGq-tc-YBU"/>
                         <outlet property="textField" destination="htT-Go-olB" id="QPJ-bb-Hay"/>
                     </connections>
@@ -258,8 +254,6 @@
                     </view>
                     <connections>
                         <outlet property="balanceLabel" destination="wkV-Zz-bQu" id="ODj-jA-0QB"/>
-                        <outlet property="bottomToSafeAreaConstraint" destination="aec-8G-VSM" id="Kow-CX-5dx"/>
-                        <outlet property="bottomToSuperviewConstraint" destination="ayT-Vf-1ZA" id="lGb-UO-PIR"/>
                         <outlet property="enterButton" destination="G3L-sk-YwD" id="0e5-T4-Xwb"/>
                         <outlet property="nameLabel" destination="Jrm-fc-3vt" id="l0V-b3-ytt"/>
                         <outlet property="textField" destination="2eV-L0-w1S" id="5dl-lJ-tDe"/>
@@ -338,8 +332,6 @@
                         <viewLayoutGuide key="safeArea" id="Urj-BV-oZM"/>
                     </view>
                     <connections>
-                        <outlet property="bottomToSafeAreaConstraint" destination="wDz-5J-NCC" id="l7E-3P-3pf"/>
-                        <outlet property="bottomToSuperviewConstraint" destination="Kmy-OI-jhh" id="eVF-4R-8ch"/>
                         <outlet property="createButton" destination="Q4F-D4-Kud" id="3sq-qa-zWH"/>
                     </connections>
                 </viewController>

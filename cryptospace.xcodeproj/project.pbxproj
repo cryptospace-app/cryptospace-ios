@@ -28,7 +28,6 @@
 		2CA0E46A2470513700D1BB52 /* Defaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CA0E4692470513700D1BB52 /* Defaults.swift */; };
 		2CAAB1922479ABB000C297B8 /* EnterNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CAAB1912479ABB000C297B8 /* EnterNameViewController.swift */; };
 		2CAAB1942479E37200C297B8 /* UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CAAB1932479E37200C297B8 /* UIButton.swift */; };
-		2CAAB1962479EC9B00C297B8 /* KeyboardDependentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CAAB1952479EC9B00C297B8 /* KeyboardDependentViewController.swift */; };
 		2CAAB198247ABE2700C297B8 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CAAB197247ABE2700C297B8 /* GameViewController.swift */; };
 		2CAAB19A247AC5FF00C297B8 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CAAB199247AC5FF00C297B8 /* WebKit.framework */; };
 		2CBABC72B6B5D0E832F83B42 /* Pods_cryptospace.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB683D097DC8022B02CA6E96 /* Pods_cryptospace.framework */; };
@@ -61,7 +60,6 @@
 		2CA0E4692470513700D1BB52 /* Defaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Defaults.swift; sourceTree = "<group>"; };
 		2CAAB1912479ABB000C297B8 /* EnterNameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterNameViewController.swift; sourceTree = "<group>"; };
 		2CAAB1932479E37200C297B8 /* UIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButton.swift; sourceTree = "<group>"; };
-		2CAAB1952479EC9B00C297B8 /* KeyboardDependentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardDependentViewController.swift; sourceTree = "<group>"; };
 		2CAAB197247ABE2700C297B8 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		2CAAB199247AC5FF00C297B8 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		2CD91788244B16D100DB055C /* cryptospace.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = cryptospace.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -117,7 +115,6 @@
 			isa = PBXGroup;
 			children = (
 				0D6FAC422472C7A300C94214 /* ContractInteractor.swift */,
-				2CAAB1952479EC9B00C297B8 /* KeyboardDependentViewController.swift */,
 				2C72C1D12467431600A8AC47 /* UIViewController.swift */,
 				2C72C1DD2467445A00A8AC47 /* ButtonWithExtendedArea.swift */,
 				2C72C1DF2467448F00A8AC47 /* MessageView.swift */,
@@ -330,7 +327,6 @@
 				2C72C1E02467448F00A8AC47 /* MessageView.swift in Sources */,
 				2C72C1D92467439C00A8AC47 /* UITableView.swift in Sources */,
 				2CAAB1942479E37200C297B8 /* UIButton.swift in Sources */,
-				2CAAB1962479EC9B00C297B8 /* KeyboardDependentViewController.swift in Sources */,
 				2CD9178C244B16D100DB055C /* AppDelegate.swift in Sources */,
 				2CD9178E244B16D100DB055C /* SceneDelegate.swift in Sources */,
 			);
