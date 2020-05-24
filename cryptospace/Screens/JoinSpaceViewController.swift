@@ -18,8 +18,8 @@ class JoinSpaceViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.setNavigationBarHidden(true, animated: false)
-        let prizeString = "1 ETH"
-        let bidString = "0.1 ETH"
+        let prizeString = "1 ETH" // TODO: multiply
+        let bidString = bid.ethString
         prizeSizeLabel.text = "Prize is \(prizeString)"
         joinButton.setTitle("Join for \(bidString)", for: .normal)
     }
@@ -27,6 +27,10 @@ class JoinSpaceViewController: UIViewController {
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         joinButton.setWaiting(false)
+    }
+    
+    @IBAction func backButtonTapped(_ sender: Any) {
+        navigationController?.popViewController(animated: true)
     }
     
     private func didFailToJoin() {

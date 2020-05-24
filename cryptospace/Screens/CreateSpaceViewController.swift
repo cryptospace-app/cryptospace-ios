@@ -32,6 +32,10 @@ class CreateSpaceViewController: UIViewController {
         // TODO: flash error message
     }
     
+    @IBAction func backButtonTapped(_ sender: Any) {
+        navigationController?.popViewController(animated: true)
+    }
+    
     private func didTapReturn() {
         guard let bidString = textField.text, let bidFloat = Float(bidString) else { return }
         textField.resignFirstResponder()

@@ -319,13 +319,36 @@
                                     <constraint firstAttribute="height" constant="77" id="xlA-vQ-7Zm"/>
                                 </constraints>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LF3-Tq-2ob">
+                                <rect key="frame" x="16" y="60" width="20" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="tintColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" image="arrow.left.circle" catalog="system">
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="font">
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    </preferredSymbolConfiguration>
+                                </state>
+                                <connections>
+                                    <action selector="backButtonTapped:" destination="FBq-FJ-8fo" eventType="touchUpInside" id="brg-It-gcN"/>
+                                    <action selector="removeAccountButtonTapped:" destination="PJh-g3-gpx" eventType="touchUpInside" id="YAc-4V-Cxf"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JVu-PI-vaV">
+                                <rect key="frame" x="253" y="129" width="0.0" height="0.0"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="237-iF-uj2" firstAttribute="top" secondItem="EXx-ng-8jz" secondAttribute="bottom" constant="25" id="1EK-US-p6o"/>
                             <constraint firstItem="6oA-KI-wwn" firstAttribute="centerX" secondItem="Urj-BV-oZM" secondAttribute="centerX" id="2qu-qf-ouF"/>
+                            <constraint firstItem="LF3-Tq-2ob" firstAttribute="top" secondItem="Urj-BV-oZM" secondAttribute="top" constant="16" id="3UE-AU-zzh"/>
                             <constraint firstItem="Q4F-D4-Kud" firstAttribute="leading" secondItem="Urj-BV-oZM" secondAttribute="leading" constant="50" id="6rv-Rj-ieX"/>
                             <constraint firstItem="Q4F-D4-Kud" firstAttribute="top" secondItem="237-iF-uj2" secondAttribute="bottom" constant="25" id="KvY-hu-uHI"/>
+                            <constraint firstItem="LF3-Tq-2ob" firstAttribute="leading" secondItem="Urj-BV-oZM" secondAttribute="leading" constant="16" id="Qs2-6L-gPr"/>
                             <constraint firstItem="Urj-BV-oZM" firstAttribute="trailing" secondItem="EXx-ng-8jz" secondAttribute="trailing" constant="20" id="TUE-fd-Ruv"/>
                             <constraint firstItem="EXx-ng-8jz" firstAttribute="top" secondItem="6oA-KI-wwn" secondAttribute="bottom" constant="20" id="a0C-pA-baS"/>
                             <constraint firstItem="Q4F-D4-Kud" firstAttribute="centerY" secondItem="Urj-BV-oZM" secondAttribute="centerY" constant="-10" id="hD7-64-2J2"/>
@@ -398,6 +421,20 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CAr-Vl-DHS">
+                                <rect key="frame" x="16" y="60" width="20" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="tintColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" image="arrow.left.circle" catalog="system">
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="font">
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    </preferredSymbolConfiguration>
+                                </state>
+                                <connections>
+                                    <action selector="backButtonTapped:" destination="qpd-CM-4Mg" eventType="touchUpInside" id="R7q-Kq-erS"/>
+                                    <action selector="removeAccountButtonTapped:" destination="PJh-g3-gpx" eventType="touchUpInside" id="6sF-Wv-yuL"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
@@ -405,9 +442,11 @@
                             <constraint firstItem="5ZU-h8-tpL" firstAttribute="top" secondItem="Kyx-po-ODo" secondAttribute="bottom" constant="25" id="BmK-9t-k6o"/>
                             <constraint firstItem="Kyx-po-ODo" firstAttribute="top" secondItem="Tci-EL-6sK" secondAttribute="bottom" constant="20" id="F9Y-Ph-DnY"/>
                             <constraint firstItem="5ZU-h8-tpL" firstAttribute="leading" secondItem="nq1-Pp-8XH" secondAttribute="leading" constant="20" id="GYX-QV-Kxw"/>
+                            <constraint firstItem="CAr-Vl-DHS" firstAttribute="leading" secondItem="nq1-Pp-8XH" secondAttribute="leading" constant="16" id="JU0-rf-wsQ"/>
                             <constraint firstItem="nq1-Pp-8XH" firstAttribute="trailing" secondItem="Kyx-po-ODo" secondAttribute="trailing" constant="50" id="QoQ-mc-sqA"/>
                             <constraint firstItem="nq1-Pp-8XH" firstAttribute="trailing" secondItem="VPB-0Z-peh" secondAttribute="trailing" constant="50" id="azH-HP-4e4"/>
                             <constraint firstItem="VPB-0Z-peh" firstAttribute="leading" secondItem="nq1-Pp-8XH" secondAttribute="leading" constant="50" id="bk6-SN-zW2"/>
+                            <constraint firstItem="CAr-Vl-DHS" firstAttribute="top" secondItem="nq1-Pp-8XH" secondAttribute="top" constant="16" id="fRs-wh-o3H"/>
                             <constraint firstItem="VPB-0Z-peh" firstAttribute="centerY" secondItem="nq1-Pp-8XH" secondAttribute="centerY" constant="-10" id="krm-xC-s6h"/>
                             <constraint firstItem="Tci-EL-6sK" firstAttribute="centerX" secondItem="nq1-Pp-8XH" secondAttribute="centerX" id="lLz-VI-oK4"/>
                             <constraint firstItem="Kyx-po-ODo" firstAttribute="leading" secondItem="nq1-Pp-8XH" secondAttribute="leading" constant="50" id="wGe-ge-9nq"/>
@@ -518,6 +557,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="arrow.left.circle" catalog="system" width="128" height="121"/>
         <image name="escape" catalog="system" width="128" height="121"/>
         <image name="triangle" width="128" height="128"/>
     </resources>

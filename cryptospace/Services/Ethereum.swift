@@ -253,3 +253,23 @@ struct ContractChallenge {
     let winner: String?
     let isFinished: Bool
 }
+
+extension EthNumber {
+    
+    var ethString: String {
+        guard let hex = try? value().toHexString(), let balance = BigInt(hex, radix: 16) else { return "0 ETH" }
+        var balanceString = String(balance, radix: 10)
+        if balanceString != "0", !balanceString.isEmpty {
+            while balanceString.hasSuffix("0") {
+                balanceString.removeLast(1)
+            }
+            balanceString = String(balanceString.prefix(5))
+            balanceString.insert(".", at: balanceString.index(balanceString.startIndex, offsetBy: 1))
+            balanceString = "\(balanceString) ETH"
+        } else {
+            balanceString = "0 ETH"
+        }
+        return balanceString
+    }
+    
+}
