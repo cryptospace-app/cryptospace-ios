@@ -25,6 +25,15 @@ struct Defaults {
         }
     }
     
+    static var kahootURL: String? {
+        get {
+            return defaults.string(forKey: "kahoot_url")
+        }
+        set {
+            defaults.set(newValue, forKey: "kahoot_url")
+        }
+    }
+    
     static var name: String {
         get {
             return defaults.string(forKey: "name") ?? ""

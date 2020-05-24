@@ -91,6 +91,7 @@ class EnterKahootViewController: KeyboardDependentViewController {
             showWrongInputError()
             return
         }
+        Defaults.kahootURL = text
         let id = challengeQueryItem.dropFirst(challengeKey.count)
         guard !id.isEmpty else {
             showWrongInputError()
