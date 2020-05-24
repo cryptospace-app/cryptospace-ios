@@ -48,16 +48,12 @@ class Ethereum {
     // TODO: вызывать completion-ы на мейн треде
     let queue = DispatchQueue(label: "Ethereum", qos: .userInteractive)
     
-    func getWinner(id: String, completion: @escaping (Result<String?, Error>) -> Void) {
+    func getWinner(id: String, completion: @escaping (Result<String, Error>) -> Void) {
         // если nil, значит виннера еще нет на контракте
         // если пустая строка, значит оракул ответил пустой строкой
         queue.async { [weak self] in
             if let winner = try? self?.getChallengeWinner(id: id) {
-                var result: String?
-                if winner != "" {
-                    result = winner
-                }
-                DispatchQueue.main.async { completion(.success(result)) }
+                DispatchQueue.main.async { completion(.success(winner)) }
             } else {
                 DispatchQueue.main.async { completion(.failure(ContractError.unknownError)) }
             }
