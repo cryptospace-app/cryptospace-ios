@@ -25,9 +25,10 @@ class SpaceViewController: UIViewController {
         navigationController?.setNavigationBarHidden(true, animated: false)
         NetworkService.shared.getChallenge(id: kahootId) { [weak self] result in
             guard case .success(let challenge) = result else { return }
-            let results = challenge.leaderboard.players.map { "\($0.playerId) — \($0.finalScore)" }
-            self?.results = results
-            self?.tableView.reloadData()
+            if let results = challenge.leaderboard?.players?.map({ "\($0.playerId) — \($0.finalScore)" }) {
+                self?.results = results
+                self?.tableView.reloadData()
+            }
         }
     }
 
