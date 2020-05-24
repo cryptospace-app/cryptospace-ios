@@ -100,17 +100,32 @@ class EnterKahootViewController: UIViewController {
         
         let challengeKey = "challenge-id="
         guard let url = URL(string: text), let query = url.query, let challengeQueryItem = query.split(separator: "&").first(where: { $0.hasPrefix(challengeKey) }) else {
-            showWrongInputError()
+            tryToDecode(text)
             return
         }
         Defaults.kahootURL = text
         let id = challengeQueryItem.dropFirst(challengeKey.count)
         guard !id.isEmpty else {
-            showWrongInputError()
+            tryToDecode(text)
             return
         }
         
         didEnterKahootId(String(id))
+    }
+    
+    private func tryToDecode(_ text: String) {
+        let neededPrefix = "https://kahoot.it/challenge/"
+        guard text.hasPrefix(neededPrefix) else {
+            showWrongInputError()
+            return
+        }
+        let id = String(text.dropFirst(neededPrefix.count))
+        let seperators = CharacterSet(charactersIn: "/&?")
+        if id.rangeOfCharacter(from: seperators) == nil {
+            didEnterKahootId(id)
+        } else {
+            showWrongInputError()
+        }
     }
     
     @IBAction func textFieldEditingChanged(_ sender: Any) {
