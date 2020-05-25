@@ -15,8 +15,32 @@
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
                 <rect key="frame" x="0.0" y="0.0" width="334" height="54"/>
                 <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kt9-5g-J1b">
+                        <rect key="frame" x="16" y="16.5" width="43" height="21"/>
+                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tv0-O8-jgP">
+                        <rect key="frame" x="279" y="16.5" width="42" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="Tv0-O8-jgP" secondAttribute="trailing" constant="13" id="0F7-VA-1fc"/>
+                    <constraint firstItem="Tv0-O8-jgP" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="6xD-Vw-UlC"/>
+                    <constraint firstItem="kt9-5g-J1b" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="PfM-tL-BO1"/>
+                    <constraint firstItem="kt9-5g-J1b" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="mOQ-aP-mzJ"/>
+                </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="nameLabel" destination="kt9-5g-J1b" id="F31-eD-cjh"/>
+                <outlet property="scoreLabel" destination="Tv0-O8-jgP" id="av7-Qu-Xps"/>
+            </connections>
             <point key="canvasLocation" x="147.82608695652175" y="156.02678571428569"/>
         </tableViewCell>
     </objects>

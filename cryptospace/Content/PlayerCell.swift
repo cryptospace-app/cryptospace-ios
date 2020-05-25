@@ -4,8 +4,14 @@ import UIKit
 
 class PlayerCell: UITableViewCell {
 
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var scoreLabel: UILabel!
+    
     func setup(_ model: PlayerCellModel) {
-        // TODO: setup
+        nameLabel.text = (model.isWinner ? "🥇 " : "") + model.name
+        scoreLabel.text = model.score
+        let meColor = UIColor.systemYellow.withAlphaComponent(0.1)
+        backgroundColor = model.itsMe ? meColor : .clear
     }
     
 }
