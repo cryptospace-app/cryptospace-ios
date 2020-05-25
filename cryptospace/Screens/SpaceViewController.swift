@@ -29,6 +29,7 @@ class SpaceViewController: UIViewController {
     private let ethereum = Ethereum.shared
     private var refreshTimer: Timer?
     
+    @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var actionButton: UIButton!
     @IBOutlet weak var tableView: UITableView! {
@@ -40,7 +41,7 @@ class SpaceViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationController?.setNavigationBarHidden(false, animated: false)
+        navigationController?.setNavigationBarHidden(true, animated: false)
         updateTitle()
         refreshData()
         refreshTimer = Timer.scheduledTimer(withTimeInterval: 4, repeats: true) { [weak self] _ in
@@ -50,9 +51,9 @@ class SpaceViewController: UIViewController {
     
     private func updateTitle() {
         if !playersFromContract.isEmpty {
-            navigationItem.title = bid.prizeFor(playersFromContract.count)
+            titleLabel.text = bid.prizeFor(playersFromContract.count)
         } else {
-            navigationItem.title = "Welcome"
+            titleLabel.text = "Welcome"
             // TODO: set correct title
         }
     }
@@ -156,6 +157,14 @@ extension SpaceViewController: UITableViewDelegate {
 }
 
 extension SpaceViewController: UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return .leastNormalMagnitude
+    }
+    
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return .leastNormalMagnitude
+    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return playerCellModels.count
