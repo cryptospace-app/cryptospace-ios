@@ -1,6 +1,7 @@
 // Copyright © 2020 cryptospace. All rights reserved.
 
 import Foundation
+import Web3Swift
 
 struct Defaults {
     
@@ -40,6 +41,20 @@ struct Defaults {
         }
         set {
             defaults.set(newValue, forKey: "name")
+        }
+    }
+    
+    static var bid: EthNumber? {
+        get {
+            if let hexString = defaults.string(forKey: "bid") {
+                return EthNumber(hex: hexString)
+            } else {
+                return nil
+            }
+        }
+        set {
+            let data = try? newValue?.value().toHexString()
+            defaults.set(data, forKey: "bid")
         }
     }
     

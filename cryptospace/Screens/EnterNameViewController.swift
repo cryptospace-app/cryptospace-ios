@@ -26,7 +26,7 @@ class EnterNameViewController: UIViewController {
             let enterKahoot = instantiate(EnterKahootViewController.self)
             navigationController?.pushViewController(enterKahoot, animated: true)
         } else {
-            // TODO: flash error message
+            showErrorMessage("Please enter your name")
         }
     }
     

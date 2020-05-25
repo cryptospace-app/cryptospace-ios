@@ -29,7 +29,7 @@ class CreateSpaceViewController: UIViewController {
     private func didFailToCreate() {
         createButton.setWaiting(false)
         textField.becomeFirstResponder()
-        // TODO: flash error message
+        showErrorMessage("Please try again")
     }
     
     @IBAction func backButtonTapped(_ sender: Any) {
@@ -71,9 +71,9 @@ class CreateSpaceViewController: UIViewController {
     
     private func didCreateChallenge(bid: EthNumber) {
         Defaults.kahootId = kahootId
+        Defaults.bid = bid
         let space = instantiate(SpaceViewController.self)
         space.kahootId = kahootId
-        space.bidSize = bid
         navigationController?.pushViewController(space, animated: true)
     }
     

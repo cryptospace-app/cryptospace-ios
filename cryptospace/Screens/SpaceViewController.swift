@@ -10,6 +10,8 @@ class SpaceViewController: UIViewController {
     struct PlayerCellModel {
         let name: String
         let score: String
+        let itsMe: Bool
+        let isWinner: Bool
     }
     
     enum GameState {
@@ -20,15 +22,16 @@ class SpaceViewController: UIViewController {
     
     private var playerCellModels = [PlayerCellModel]()
     
-    var bidSize: EthNumber?
     var playersFromContract = [String]()
     private var challenge: Challenge?
     private var isFinished = false
     private var winnerName = ""
     
+    private let bid = Defaults.bid!
     private let ethereum = Ethereum.shared
     private var refreshTimer: Timer?
     
+    @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var actionButton: UIButton!
     @IBOutlet weak var tableView: UITableView! {
@@ -41,10 +44,19 @@ class SpaceViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.setNavigationBarHidden(true, animated: false)
-        
+        updateTitle()
         refreshData()
         refreshTimer = Timer.scheduledTimer(withTimeInterval: 4, repeats: true) { [weak self] _ in
             self?.refreshData()
+        }
+    }
+    
+    private func updateTitle() {
+        if !playersFromContract.isEmpty {
+            titleLabel.text = bid.prizeFor(playersFromContract.count)
+        } else {
+            titleLabel.text = "Welcome"
+            // TODO: set correct title
         }
     }
     
@@ -91,6 +103,8 @@ class SpaceViewController: UIViewController {
         // TODO: update game state
         // TODO: update button
         // TODO: stop animating activityIndicator
+        
+        updateTitle()
     }
     
     // MARK: - Actions
@@ -103,6 +117,7 @@ class SpaceViewController: UIViewController {
     private func leaveGame() {
         guard let enterKahoot = navigationController?.viewControllers.first(where: { $0 is EnterKahootViewController }) else { return }
         Defaults.kahootId = nil
+        Defaults.bid = nil
         navigationController?.popToViewController(enterKahoot, animated: true)
     }
     
@@ -144,6 +159,14 @@ extension SpaceViewController: UITableViewDelegate {
 }
 
 extension SpaceViewController: UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return .leastNormalMagnitude
+    }
+    
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return .leastNormalMagnitude
+    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return playerCellModels.count

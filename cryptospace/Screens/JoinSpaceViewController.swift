@@ -35,14 +35,14 @@ class JoinSpaceViewController: UIViewController {
     
     private func didFailToJoin() {
         joinButton.setWaiting(false)
-        // TODO: flash error message
+        showErrorMessage("Please try again")
     }
     
     private func didJoinChallenge(withPlayers players: [String]) {
         Defaults.kahootId = challengeId
         let space = instantiate(SpaceViewController.self)
         space.kahootId = challengeId
-        space.bidSize = bid
+        Defaults.bid = bid
         space.playersFromContract = players
         navigationController?.pushViewController(space, animated: true)
     }

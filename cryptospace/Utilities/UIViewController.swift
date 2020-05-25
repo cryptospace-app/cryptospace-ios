@@ -34,6 +34,10 @@ extension UIViewController {
         child.didMove(toParent: self)
     }
     
+    func showErrorMessage(_ text: String) {
+        flashMessage(text: text, image: Images.errorIndicator, fast: false)
+    }
+    
     func flashMessage(text: String, image: UIImage = Images.okIndicator, fast: Bool = false) {
         let tag = 999
         if let oldMessageView = view.viewWithTag(tag) {
