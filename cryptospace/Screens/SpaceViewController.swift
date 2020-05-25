@@ -121,10 +121,13 @@ class SpaceViewController: UIViewController {
         }
         
         newCellModels = playersWithScores.map { PlayerCellModel(name: $0.player.lowercased(), score: $0.score, itsMe: false, isWinner: false) }
-        let gameIsFinished = kahootPlayers.count == playersFromContract.count && !kahootPlayers.contains(where: { $0.gameUnfinished })
+        
+        let total = challenge?.summary?.totalAnswerCount
+        
+        let gameIsFinished = kahootPlayers.count == playersFromContract.count && !kahootPlayers.contains(where: { $0.isGameUnfinished(total: total) })
         let leaderName = kahootPlayers.first(where: { $0.rank == 1 })?.playerId
         let leaderIsMe = leaderName?.lowercased() == Defaults.name.lowercased()
-        let myGameIsFinished = !(kahootPlayers.first(where: { $0.playerId == Defaults.name })?.gameUnfinished ?? true)
+        let myGameIsFinished = !(kahootPlayers.first(where: { $0.playerId == Defaults.name })?.isGameUnfinished(total: total) ?? true)
         
         for i in 0..<newCellModels.count {
             let model = newCellModels[i]

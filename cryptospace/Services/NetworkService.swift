@@ -33,6 +33,7 @@ class NetworkService {
 struct Challenge: Codable {
     let kahootTitle: String
     let leaderboard: Leaderboard?
+    let summary: Summary?
 }
 
 struct Leaderboard: Codable {
@@ -43,6 +44,14 @@ struct KahootPlayer: Codable {
     let playerId: String
     let finalScore: Int
     let gamesPlayed: Int
-    let gameUnfinished: Bool
     let rank: Int
+    let totalAnswerCount: Int
+    
+    func isGameUnfinished(total: Int?) -> Bool {
+        return total != totalAnswerCount
+    }
+}
+
+struct Summary: Codable {
+    let totalAnswerCount: Int
 }
