@@ -9,7 +9,7 @@ class PlayerCell: UITableViewCell {
     
     func setup(_ model: PlayerCellModel) {
         nameLabel.text = (model.isWinner ? "🥇 " : "") + model.name
-        scoreLabel.text = model.score
+        scoreLabel.text = String(model.score)
         let meColor = UIColor.systemYellow.withAlphaComponent(0.1)
         backgroundColor = model.itsMe ? meColor : .clear
     }
