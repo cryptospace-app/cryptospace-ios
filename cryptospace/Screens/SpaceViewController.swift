@@ -137,7 +137,11 @@ class SpaceViewController: UIViewController {
         }
         
         if gameIsFinished {
-            newGameState = leaderIsMe ? .youWon : .youLost
+            if playersFromContract.isEmpty {
+                newGameState = .unknown
+            } else {
+                newGameState = leaderIsMe ? .youWon : .youLost
+            }
         } else {
             newGameState = myGameIsFinished ? .someoneElseIsPlaying : .toBePlayed
         }
