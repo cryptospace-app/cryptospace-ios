@@ -10,6 +10,8 @@
 		0D6FAC432472C7A300C94214 /* ContractInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D6FAC422472C7A300C94214 /* ContractInteractor.swift */; };
 		0DBB2A0F24759AA70037C046 /* ABIType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DBB2A0E24759AA60037C046 /* ABIType.swift */; };
 		0DBB2A1124759ACF0037C046 /* ABIDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DBB2A1024759ACF0037C046 /* ABIDecoder.swift */; };
+		2C4D5498247B4CC300F7DB19 /* PlayerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4D5496247B4CC300F7DB19 /* PlayerCell.swift */; };
+		2C4D5499247B4CC300F7DB19 /* PlayerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C4D5497247B4CC300F7DB19 /* PlayerCell.xib */; };
 		2C72C1BF2466E4BD00A8AC47 /* EnterKeyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C72C1BE2466E4BD00A8AC47 /* EnterKeyViewController.swift */; };
 		2C72C1C32467345100A8AC47 /* EnterKahootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C72C1C22467345100A8AC47 /* EnterKahootViewController.swift */; };
 		2C72C1C5246734A900A8AC47 /* CreateSpaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C72C1C4246734A900A8AC47 /* CreateSpaceViewController.swift */; };
@@ -42,6 +44,8 @@
 		0D6FAC422472C7A300C94214 /* ContractInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContractInteractor.swift; sourceTree = "<group>"; };
 		0DBB2A0E24759AA60037C046 /* ABIType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ABIType.swift; sourceTree = "<group>"; };
 		0DBB2A1024759ACF0037C046 /* ABIDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ABIDecoder.swift; sourceTree = "<group>"; };
+		2C4D5496247B4CC300F7DB19 /* PlayerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerCell.swift; sourceTree = "<group>"; };
+		2C4D5497247B4CC300F7DB19 /* PlayerCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlayerCell.xib; sourceTree = "<group>"; };
 		2C72C1BE2466E4BD00A8AC47 /* EnterKeyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterKeyViewController.swift; sourceTree = "<group>"; };
 		2C72C1C22467345100A8AC47 /* EnterKahootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterKahootViewController.swift; sourceTree = "<group>"; };
 		2C72C1C4246734A900A8AC47 /* CreateSpaceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateSpaceViewController.swift; sourceTree = "<group>"; };
@@ -133,6 +137,8 @@
 			isa = PBXGroup;
 			children = (
 				2C72C1DA246743E300A8AC47 /* Images.swift */,
+				2C4D5496247B4CC300F7DB19 /* PlayerCell.swift */,
+				2C4D5497247B4CC300F7DB19 /* PlayerCell.xib */,
 			);
 			path = Content;
 			sourceTree = "<group>";
@@ -253,6 +259,7 @@
 				2CD91798244B16D300DB055C /* LaunchScreen.storyboard in Resources */,
 				2C72C1E4246744B100A8AC47 /* MessageView.xib in Resources */,
 				2CD91795244B16D300DB055C /* Assets.xcassets in Resources */,
+				2C4D5499247B4CC300F7DB19 /* PlayerCell.xib in Resources */,
 				2CD91793244B16D100DB055C /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -306,6 +313,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2C4D5498247B4CC300F7DB19 /* PlayerCell.swift in Sources */,
 				2C72C1DE2467445A00A8AC47 /* ButtonWithExtendedArea.swift in Sources */,
 				2C72C1C9246735D100A8AC47 /* SpaceViewController.swift in Sources */,
 				0DBB2A0F24759AA70037C046 /* ABIType.swift in Sources */,

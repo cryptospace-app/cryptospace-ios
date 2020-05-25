@@ -479,8 +479,8 @@
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="66"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p7Y-7I-Oir">
-                                            <rect key="frame" x="166.5" y="16" width="81.5" height="38.5"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="p7Y-7I-Oir">
+                                            <rect key="frame" x="20" y="16" width="374" height="38.5"/>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="32"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -488,7 +488,9 @@
                                     </subviews>
                                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                     <constraints>
+                                        <constraint firstItem="p7Y-7I-Oir" firstAttribute="leading" secondItem="Rsw-ZC-Ghm" secondAttribute="leading" constant="20" id="2fy-cD-ssf"/>
                                         <constraint firstItem="p7Y-7I-Oir" firstAttribute="centerX" secondItem="Rsw-ZC-Ghm" secondAttribute="centerX" id="X4S-KD-OyX"/>
+                                        <constraint firstAttribute="trailing" secondItem="p7Y-7I-Oir" secondAttribute="trailing" constant="20" id="kdy-sd-Gp9"/>
                                         <constraint firstItem="p7Y-7I-Oir" firstAttribute="top" secondItem="Rsw-ZC-Ghm" secondAttribute="top" constant="16" id="x8p-r2-46o"/>
                                     </constraints>
                                 </view>
@@ -496,7 +498,7 @@
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="XFv-Rh-087">
                                 <rect key="frame" x="197" y="443" width="20" height="20"/>
                             </activityIndicatorView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ACt-vf-FFk">
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ACt-vf-FFk">
                                 <rect key="frame" x="20" y="798" width="374" height="52"/>
                                 <color key="backgroundColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <accessibility key="accessibilityConfiguration" identifier="Show all"/>

@@ -3,16 +3,16 @@
 import UIKit
 import Web3Swift
 
+struct PlayerCellModel: Equatable {
+    let name: String
+    let score: String
+    let itsMe: Bool
+    let isWinner: Bool
+}
+
 class SpaceViewController: UIViewController {
 
     private var gameState = GameState.unknown
-
-    struct PlayerCellModel {
-        let name: String
-        let score: String
-        let itsMe: Bool
-        let isWinner: Bool
-    }
     
     enum GameState {
         case unknown, toBePlayed, youLost, youWon, someoneElseIsPlaying, gameWasUnfair
@@ -52,16 +52,24 @@ class SpaceViewController: UIViewController {
     }
     
     private func updateTitle() {
-        if !playersFromContract.isEmpty {
-            titleLabel.text = bid.prizeFor(playersFromContract.count)
-        } else {
-            titleLabel.text = "Welcome"
-            // TODO: set correct title
+        let text: String
+        switch gameState {
+        case .gameWasUnfair:
+            text = "Game was unfair"
+        case .someoneElseIsPlaying:
+            text = "Waiting for other players to finish"
+        case .toBePlayed, .youWon:
+            text = "🏆 = \(bid.prizeFor(playersFromContract.count))"
+        case .unknown:
+            text = "Welcome"
+        case .youLost:
+            text = "You've lost"
         }
+        titleLabel.text = text
     }
     
     private func didFailToSendPrize() {
-        // TODO: show error message
+        showErrorMessage("Please try again")
     }
     
     deinit {
@@ -99,12 +107,49 @@ class SpaceViewController: UIViewController {
     }
     
     private func update() {
-        // TODO: update table view
-        // TODO: update game state
-        // TODO: update button
-        // TODO: stop animating activityIndicator
+        let newCellModels = [PlayerCellModel]() // TODO: calculate
+        let newGameState = GameState.unknown // TODO: calculate
         
+        // TODO: update playerCellModels
+        // TODO: update game state
+        
+        if newCellModels != playerCellModels {
+            playerCellModels = newCellModels
+            tableView.reloadData()
+        }
+        
+        if !activityIndicator.isHidden, !playerCellModels.isEmpty {
+            activityIndicator.stopAnimating()
+            activityIndicator.isHidden = true
+        }
+        
+        updateButton()
         updateTitle()
+    }
+    
+    private func updateButton() {
+        let title: String?
+        switch gameState {
+        case .toBePlayed:
+            title = "Play"
+        case .youLost:
+            title = "Leave game"
+        case .gameWasUnfair:
+            title = "Get money back"
+        case .youWon:
+            title = "Get prize 🎉"
+        case .someoneElseIsPlaying, .unknown:
+            title = nil
+        }
+        
+        if let title = title {
+            actionButton.isHidden = false
+            if actionButton.title(for: .normal) != title {
+                actionButton.setTitle(title, for: .normal)
+            }
+        } else {
+            actionButton.isHidden = true
+        }
     }
     
     // MARK: - Actions
@@ -173,8 +218,9 @@ extension SpaceViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell()
-        cell.textLabel?.text = playerCellModels[indexPath.row].name + " " + String(playerCellModels[indexPath.row].score)
+        let cell = tableView.dequeueReusableCellOfType(PlayerCell.self, for: indexPath)
+        let model = playerCellModels[indexPath.row]
+        cell.setup(model)
         return cell
     }
     
