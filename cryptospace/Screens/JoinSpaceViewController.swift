@@ -42,7 +42,7 @@ class JoinSpaceViewController: UIViewController {
         Defaults.kahootId = challengeId
         let space = instantiate(SpaceViewController.self)
         space.kahootId = challengeId
-        space.bidSize = bid
+        Defaults.bid = bid
         space.playersFromContract = players
         navigationController?.pushViewController(space, animated: true)
     }

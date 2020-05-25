@@ -20,12 +20,12 @@ class SpaceViewController: UIViewController {
     
     private var playerCellModels = [PlayerCellModel]()
     
-    var bidSize: EthNumber?
     var playersFromContract = [String]()
     private var challenge: Challenge?
     private var isFinished = false
     private var winnerName = ""
     
+    private let bid = Defaults.bid!
     private let ethereum = Ethereum.shared
     private var refreshTimer: Timer?
     
@@ -40,11 +40,20 @@ class SpaceViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationController?.setNavigationBarHidden(true, animated: false)
-        
+        navigationController?.setNavigationBarHidden(false, animated: false)
+        updateTitle()
         refreshData()
         refreshTimer = Timer.scheduledTimer(withTimeInterval: 4, repeats: true) { [weak self] _ in
             self?.refreshData()
+        }
+    }
+    
+    private func updateTitle() {
+        if !playersFromContract.isEmpty {
+            navigationItem.title = bid.prizeFor(playersFromContract.count)
+        } else {
+            navigationItem.title = "Welcome"
+            // TODO: set correct title
         }
     }
     
@@ -91,6 +100,8 @@ class SpaceViewController: UIViewController {
         // TODO: update game state
         // TODO: update button
         // TODO: stop animating activityIndicator
+        
+        updateTitle()
     }
     
     // MARK: - Actions
@@ -103,6 +114,7 @@ class SpaceViewController: UIViewController {
     private func leaveGame() {
         guard let enterKahoot = navigationController?.viewControllers.first(where: { $0 is EnterKahootViewController }) else { return }
         Defaults.kahootId = nil
+        Defaults.bid = nil
         navigationController?.popToViewController(enterKahoot, animated: true)
     }
     
