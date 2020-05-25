@@ -37,7 +37,7 @@ class EnterKahootViewController: UIViewController {
     }
     
     private func showWrongInputError() {
-        // TODO: implement
+        showErrorMessage("Please enter Kahoot URL")
     }
     
     private func updateButtonTitle() {

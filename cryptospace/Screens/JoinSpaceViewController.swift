@@ -35,7 +35,7 @@ class JoinSpaceViewController: UIViewController {
     
     private func didFailToJoin() {
         joinButton.setWaiting(false)
-        // TODO: flash error message
+        showErrorMessage("Please try again")
     }
     
     private func didJoinChallenge(withPlayers players: [String]) {

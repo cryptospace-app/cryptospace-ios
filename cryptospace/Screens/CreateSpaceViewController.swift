@@ -29,7 +29,7 @@ class CreateSpaceViewController: UIViewController {
     private func didFailToCreate() {
         createButton.setWaiting(false)
         textField.becomeFirstResponder()
-        // TODO: flash error message
+        showErrorMessage("Please try again")
     }
     
     @IBAction func backButtonTapped(_ sender: Any) {
