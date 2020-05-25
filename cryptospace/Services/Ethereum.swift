@@ -256,11 +256,11 @@ extension EthNumber {
     }
     
     func prizeFor(_ users: Int) -> String {
-        return String(toDouble() * Double(users)).prefix(4) + " ETH"
+        return String(toDouble() * Double(users)).prefix(7) + " ETH"
     }
     
     var ethString: String {
-        return String(toDouble()).prefix(4) + " ETH"
+        return String(toDouble()).prefix(7) + " ETH"
     }
     
 }
