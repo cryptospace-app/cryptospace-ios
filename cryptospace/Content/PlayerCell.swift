@@ -8,9 +8,9 @@ class PlayerCell: UITableViewCell {
     @IBOutlet weak var scoreLabel: UILabel!
     
     func setup(_ model: PlayerCellModel) {
-        nameLabel.text = (model.isWinner ? "🥇 " : "") + model.name
+        nameLabel.text = model.name
         scoreLabel.text = String(model.score)
-        let meColor = UIColor.systemYellow.withAlphaComponent(0.1)
+        let meColor = UIColor.systemYellow.withAlphaComponent(0.3)
         backgroundColor = model.itsMe ? meColor : .clear
     }
     
