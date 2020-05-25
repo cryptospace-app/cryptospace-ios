@@ -10,6 +10,8 @@ class SpaceViewController: UIViewController {
     struct PlayerCellModel {
         let name: String
         let score: String
+        let itsMe: Bool
+        let isWinner: Bool
     }
     
     enum GameState {
