@@ -5,9 +5,9 @@ import Web3Swift
 
 struct PlayerCellModel: Equatable {
     let name: String
-    let score: String
-    let itsMe: Bool
-    let isWinner: Bool
+    let score: Int
+    var itsMe: Bool
+    var isWinner: Bool
 }
 
 class SpaceViewController: UIViewController {
@@ -23,6 +23,7 @@ class SpaceViewController: UIViewController {
     private var playerCellModels = [PlayerCellModel]()
     
     var playersFromContract = [String]()
+    
     private var challenge: Challenge?
     private var isFinished = false
     private var winnerName = ""
@@ -107,11 +108,46 @@ class SpaceViewController: UIViewController {
     }
     
     private func update() {
-        let newCellModels = [PlayerCellModel]() // TODO: calculate
-        let newGameState = GameState.unknown // TODO: calculate
+        var newCellModels = [PlayerCellModel]()
+        var newGameState = GameState.unknown
         
-        // TODO: update playerCellModels
-        // TODO: update game state
+        let kahootPlayers = challenge?.leaderboard?.players ?? []
+        
+        var playersWithScores: [(player: String, score: Int)] = kahootPlayers.map({ (player: $0.playerId, score: $0.finalScore) })
+        for playerOnContract in playersFromContract {
+            if !playersWithScores.contains(where: { $0.player.lowercased() == playerOnContract }) {
+                playersWithScores.append((player: playerOnContract, score: 0))
+            }
+        }
+        
+        newCellModels = playersWithScores.map { PlayerCellModel(name: $0.player.lowercased(), score: $0.score, itsMe: false, isWinner: false) }
+        let gameIsFinished = kahootPlayers.count == playersFromContract.count && !kahootPlayers.contains(where: { $0.gameUnfinished })
+        let leaderName = kahootPlayers.first(where: { $0.rank == 1 })?.playerId
+        let leaderIsMe = leaderName?.lowercased() == Defaults.name.lowercased()
+        let myGameIsFinished = !(kahootPlayers.first(where: { $0.playerId == Defaults.name })?.gameUnfinished ?? true)
+        
+        for i in 0..<newCellModels.count {
+            let model = newCellModels[i]
+            if model.name == leaderName {
+                newCellModels[i].isWinner = true
+            }
+            if model.name == Defaults.name {
+                newCellModels[i].itsMe = true
+            }
+        }
+        
+        if gameIsFinished {
+            newGameState = leaderIsMe ? .youWon : .youLost
+        } else {
+            newGameState = myGameIsFinished ? .someoneElseIsPlaying : .toBePlayed
+        }
+        
+        let onContract = Set(playersFromContract)
+        if kahootPlayers.contains(where: { !onContract.contains($0.playerId.lowercased()) }) {
+            newGameState = .gameWasUnfair
+        }
+        
+        gameState = newGameState
         
         if newCellModels != playerCellModels {
             playerCellModels = newCellModels
