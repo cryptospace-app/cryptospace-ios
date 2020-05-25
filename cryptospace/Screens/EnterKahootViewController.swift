@@ -122,6 +122,7 @@ class EnterKahootViewController: UIViewController {
         let id = String(text.dropFirst(neededPrefix.count))
         let seperators = CharacterSet(charactersIn: "/&?")
         if id.rangeOfCharacter(from: seperators) == nil {
+            Defaults.kahootURL = text
             didEnterKahootId(id)
         } else {
             showWrongInputError()
